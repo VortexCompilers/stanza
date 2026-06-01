@@ -1,7 +1,3 @@
-Com certeza! Essa nova direção é fantástica porque dá protagonismo absoluto à equipe. Vocês deixam de ser "consumidores de uma API" e passam a ser os **engenheiros do próprio modelo**. Além de ser um projeto muito mais original, distribui o peso do trabalho perfeitamente entre os talentos do Jonas, da Viola e do Tadala.
-
-Aqui está a documentação oficial reformulada, pronta para vocês copiarem e colarem no repositório do projeto:
-
 # ✍ Planejamento e Proposta de Plataforma: Portal StanzAI
 
 ---
