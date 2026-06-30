@@ -33,7 +33,7 @@
 
 ## 5️⃣ Identidade Visual
 
-* **Nome da Empresa:** StanzAI.
+* **Nome da Empresa:** Stanza.
 * **Dados Fictícios:** Avenida 9 de Julho, 3575, Anhangabaú, Jundiaí/SP.
 * **Descrição do Logo:** O logotipo apresenta um design minimalista e sofisticado com o nome "stanzai" escrito em fonte cursiva (manuscrita) de cor branca sobre um fundo preto sólido. O detalhe distintivo é uma pena estilizada (caneta-tinteiro) que substitui o ponto da letra "i", inclinada para a direita, simbolizando a união entre a escrita tradicional e a inteligência de dados.
 * A paleta de cores da StanzAI foi selecionada para unir a sofisticação tecnológica à tradição literária, garantindo acessibilidade e conforto visual.
@@ -69,6 +69,6 @@ Aqui está o texto formatado em Markdown, estruturado para ficar visualmente lim
 
 Para garantir a execução autossuficiente e o alto nível técnico do projeto, as responsabilidades foram divididas conforme as especialidades de cada membro:
 
-* **Jonas (Design, UI/UX e Documentação):** Responsável pela criação das interfaces limpas e imersivas do editor de textos e do feed de leitura, aplicando a identidade visual e garantindo a navegação *Mobile First*. Também atua como líder da documentação acadêmica, traduzindo a complexidade técnica do projeto para a monografia do TCC.
-* **Viola (Engenharia de Machine Learning):** Responsável pelo "cérebro" do StanzAI. Focará na construção do motor de recomendação do zero, lidando com a vetorização dos textos (TF-IDF), treinamento e ajustes do algoritmo KNN, além de criar a interface de comunicação (API interna) entre o modelo matemático e o site.
-* **Tadala (Arquitetura, Banco de Dados e Analytics):** Responsável pela infraestrutura lógica e comercial da plataforma. Focará na modelagem do banco de dados relacional (SQL) que sustenta a comunidade, no desenvolvimento do painel de inteligência de dados (*Dashboard Analytics* do Portal do Autor) e na programação das mecânicas da Arena gamificada.
+* **João (Design, UI/UX e Documentação):** Responsável pela criação das interfaces limpas e imersivas do editor de textos e do feed de leitura, aplicando a identidade visual e garantindo a navegação *Mobile First*. Também atua como líder da documentação acadêmica, traduzindo a complexidade técnica do projeto para a monografia do TCC.
+* **Igor Matheus (Engenharia de Machine Learning):** Responsável pelo "cérebro" do StanzAI. Focará na construção do motor de recomendação do zero, lidando com a vetorização dos textos (TF-IDF), treinamento e ajustes do algoritmo KNN, além de criar a interface de comunicação (API interna) entre o modelo matemático e o site.
+* **Igor Daniel (Arquitetura, Banco de Dados e Analytics):** Responsável pela infraestrutura lógica e comercial da plataforma. Focará na modelagem do banco de dados relacional (SQL) que sustenta a comunidade, no desenvolvimento do painel de inteligência de dados (*Dashboard Analytics* do Portal do Autor) e na programação das mecânicas da Arena gamificada.

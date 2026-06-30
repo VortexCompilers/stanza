@@ -14,11 +14,7 @@ Utilizamos commits semânticos baseados no padrão do
 | `style` | Formatação de código (sem alterar lógica) |
 | `refactor` | Refatoração sem mudança de funcionalidade |
 | `test` | Criação ou alteração de testes |
-| `build` | Dependências e arquivos de build |
 | `chore` | Configurações gerais, .gitignore, etc |
-| `ci` | Integração contínua |
-| `perf` | Melhorias de performance |
-| `cleanup` | Remoção de código comentado/desnecessário |
 | `remove` | Exclusão de arquivos ou funcionalidades |
 
 ### Formato
