@@ -28,3 +28,11 @@ raw: create users and texts tables - closes #5
 feat: add TF-IDF vectorizer for text recommendations - closes #12
 fix: correct foreign key constraint on texts table - closes #8
 \`\`\`
+
+### Backend tooling
+\`\`\`
+lint: faz a checagem de boas práticas do código python
+format: executa a formatação do código em relação às convenções de estilo de código
+run: executa o servidor de desenvolvimento do FastAPI
+test: executa os testes com pytest de forma verbosa (-vv) e adiciona nosso código como base de cobertura
+\`\`\`  

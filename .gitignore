@@ -1,0 +1,16 @@
+# Variáveis de ambiente
+.env
+.env.local
+
+# Ambiente virtual
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Pytest e cobertura
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
