@@ -1,0 +1,159 @@
+:root{
+    --colorPrim:rgb(229, 237, 254);
+    --colorSec:rgb(81, 131, 247);
+    --colorThr:rgb(11, 11, 50);
+
+}
+
+body{
+background-color: var(--colorPrim);
+margin: 0;
+}
+
+
+
+
+
+
+
+/* Blocos de Post */
+
+.post{
+background-color: rgb(235, 235, 235);
+border:solid 3px gray;
+border-radius: 14px;
+
+height: 140px;
+width: 220px;
+
+display: flex;
+ flex: 0 0 auto;
+}
+
+
+.post .img{
+    position: relative;
+
+    background-color: rgb(109, 165, 109);
+    width: 45%;
+    height: 92%;
+
+    margin: 4px;
+    
+    border-radius: 10px;
+
+}
+
+.post .info{
+
+    width: 55%;
+    height: 90%;
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.post a{
+    
+    font-weight: 500;
+    font-size: 14px; 
+    text-decoration: none;
+
+    color:rgb(27, 26, 26); 
+    word-break: break-word;
+    margin: 10px auto 0 auto;
+}
+.post h2, h3{font-size: 12px; color: gray; }
+.post h3{margin-top: auto; margin-bottom: 0;}
+
+
+
+
+
+
+/* Barra Deslizável */
+
+
+h1{
+    margin: 4px 0 4px 18px;
+    font-size: 20px;
+    color: rgb(21, 21, 21);
+}
+
+.carousel{
+    margin: 2px 12px 24px 12px;
+
+    display: flex;
+    gap: 8px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+
+    scroll-behavior:auto;
+}
+
+
+
+
+/* Seção Categorias (Acesso Rápido) */
+
+.card{
+display: flex;
+align-items: center;
+
+
+height: 50px;
+width: 90%;
+margin: 10px auto;
+padding: 10px;
+
+border-radius: 10px;
+background-color: brown;
+
+
+}
+.card h1, a{color: white;}
+
+.card a{
+margin: 0 0 0 auto;
+background-color: rgb(68, 20, 20);
+width: 50%;
+padding:10px;
+
+text-align: end;
+text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Seção STANZAI */
+
+    .Bsection{
+        padding: 12px 0;
+        margin: 24px 0;
+        background-color:rgb(15, 15, 34);
+}
+.Bsection h1, p{
+    color: aliceblue;
+}
+.Bsection p {
+    margin: 8px 12px 24px 20px;
+    font-size: 32px;
+    font-weight: bold;
+    
+}
+
