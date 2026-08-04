@@ -1,3 +1,6 @@
+-- Fonte de verdade do banco StanzAI.
+-- O back-end (backend-php/) e o motor de ML (ml-engine/) rodam contra
+-- este schema; não há mais ORM/migrations definindo as tabelas.
 CREATE DATABASE IF NOT EXISTS stanza;
 USE stanza;
 

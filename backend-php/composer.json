@@ -1,0 +1,37 @@
+{
+    "name": "vortexcompilers/stanzai-backend-php",
+    "description": "StanzAI back-end API (Slim Framework) — users, texts, reading logs, and the integration with the Python ML engine",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "ext-json": "*",
+        "slim/slim": "^4.15",
+        "slim/psr7": "^1.8",
+        "vlucas/phpdotenv": "^5.6",
+        "illuminate/database": "^11.0",
+        "firebase/php-jwt": "^7.1",
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public",
+        "test": "phpunit"
+    }
+}

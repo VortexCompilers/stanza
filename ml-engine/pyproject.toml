@@ -1,5 +1,5 @@
 [project]
-name = "stanza-api"
+name = "ml-engine"
 version = "0.1.0"
 description = ""
 authors = [
@@ -9,11 +9,11 @@ readme = "README.md"
 requires-python = ">=3.13,<4.0"
 dependencies = [
     "fastapi[standard] (>=0.139.0,<0.140.0)",
-    "sqlalchemy (>=2.0.51,<3.0.0)",
-    "alembic (>=1.18.5,<2.0.0)",
     "pydantic (>=2.13.4,<3.0.0)",
-    "pydantic-settings (>=2.14.2,<3.0.0)",
-    "pymysql (>=1.2.0,<2.0.0)"
+    "pandas (>=2.2.0,<3.0.0)",
+    "numpy (>=2.0.0,<3.0.0)",
+    "nltk (>=3.9.0,<4.0.0)",
+    "scikit-learn (>=1.5.0,<2.0.0)"
 ]
 
 
@@ -31,7 +31,6 @@ dev = [
 
 [tool.ruff]
 line-length = 79
-extend-exclude = ['migrations']
 
 [tool.ruff.lint]
 preview = true
@@ -43,13 +42,13 @@ quote-style = 'single'
 
 [tool.pytest]
 pythonpath = ['.']
-addopts = ['-p', 'no:warnings', '--cov=stanza_api', '--cov-context=test']
+addopts = ['-p', 'no:warnings', '--cov=ml_engine', '--cov-context=test']
 
 [tool.taskipy.tasks]
 lint = 'ruff check'
 pre_format = 'ruff check --fix'
 format = 'ruff format'
-run = 'fastapi dev stanza_api/app.py'
+run = 'fastapi dev ml_engine/app.py'
 pre_test = 'task lint'
 test = 'pytest -s -x -vv'
 post_test = 'coverage html --show-contexts'

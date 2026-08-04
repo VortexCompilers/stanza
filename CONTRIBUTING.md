@@ -29,36 +29,53 @@ feat: add TF-IDF vectorizer for text recommendations - closes #12
 fix: correct foreign key constraint on texts table - closes #8
 \`\`\`
 
-### Backend tooling
+### ml-engine tooling (Python)
 \`\`\`
 lint: faz a checagem de boas práticas do código python
 format: executa a formatação do código em relação às convenções de estilo de código
-run: executa o servidor de desenvolvimento do FastAPI
+run: executa o servidor de desenvolvimento do FastAPI (só o endpoint de recomendação)
 test: executa os testes com pytest de forma verbosa (-vv) e adiciona nosso código como base de cobertura
 \`\`\`
 
-### Configurando o backend localmente
+### Configurando o backend localmente (PHP / Slim)
+
+O back-end principal do StanzAI (`backend-php/`) é PHP com o Slim Framework. O motor de recomendação (`ml-engine/`) continua em Python, como um serviço HTTP separado.
 
 1. Instale as dependências:
    \`\`\`
-   cd stanza_api
-   poetry install
+   cd backend-php
+   composer install
    \`\`\`
 2. Copie `.env.example` para `.env` e preencha com as credenciais do seu MySQL local:
    \`\`\`
-   DATABASE_URL=mysql+pymysql://usuario:senha@localhost:3306/stanza
+   DB_HOST=127.0.0.1
+   DB_NAME=stanza
+   DB_USER=root
+   DB_PASSWORD=
+   ML_ENGINE_URL=http://localhost:8000
    \`\`\`
-3. Crie um banco vazio chamado `stanza` no seu MySQL — não precisa rodar `db/schema.sql`, as tabelas são criadas pelo Alembic a partir dos models:
-   \`\`\`sql
-   CREATE DATABASE stanza;
+3. Rode `db/schema.sql` no seu MySQL — é a fonte de verdade do banco, não há mais ORM/migrations gerando as tabelas:
    \`\`\`
-4. Aplique as migrations:
+   mysql -u root -p < ../db/schema.sql
    \`\`\`
-   poetry run alembic upgrade head
+4. Suba o servidor de desenvolvimento:
    \`\`\`
-5. Suba o servidor de desenvolvimento:
+   composer start
+   \`\`\`
+   (ou sirva `backend-php/public/` via Apache do XAMPP, já que o repo vive em `htdocs/`)
+
+O `.env` nunca deve ser commitado (já está no `.gitignore`) — cada membro do time usa suas próprias credenciais locais.
+
+### Configurando o motor de ML localmente (Python)
+
+1. Instale as dependências:
+   \`\`\`
+   cd ml-engine
+   poetry install
+   \`\`\`
+2. Suba o servidor de desenvolvimento:
    \`\`\`
    poetry run task run
    \`\`\`
 
-O `.env` nunca deve ser commitado (já está no `.gitignore`) — cada membro do time usa suas próprias credenciais locais. Ao mudar um model, gere uma nova migration com `poetry run alembic revision --autogenerate -m "descrição"`, teste com `alembic upgrade head` e comite o arquivo gerado em `migrations/versions/`.
+O motor de ML não acessa o banco diretamente — ele só recebe um `text_id` do back-end PHP e devolve recomendações (ver contrato em `ml-engine/README.md`).
