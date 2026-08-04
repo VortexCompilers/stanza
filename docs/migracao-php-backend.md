@@ -187,12 +187,14 @@ Isso já vem com uma estrutura de pastas parecida com a proposta no §3 (pode va
 # Conexão com MySQL (escolha uma abordagem — ver comparação abaixo)
 composer require vlucas/phpdotenv       # variáveis de ambiente (.env)
 composer require illuminate/database    # Eloquent ORM "standalone" (opcional)
-composer require firebase/php-jwt       # autenticação via token JWT
+composer require firebase/php-jwt       # autenticação via token JWT (instalado, mas não é o mecanismo em uso — ver nota abaixo)
 composer require guzzlehttp/guzzle      # cliente HTTP p/ chamar a API do Python (Viola)
 
 # Testes
 composer require --dev phpunit/phpunit
 ```
+
+> **Nota (04/08/2026):** este documento listava JWT como a autenticação planejada quando foi escrito. A decisão vigente, fechada em `docs/plano-apresentacao-14-08.md`, é sessão PHP nativa para o MVP da apresentação de 14/08 — os formulários são server-rendered na mesma origem, então sessão é mais simples e suficiente. `firebase/php-jwt` continua instalado, reservado pro dia em que existir um cliente desacoplado (app mobile, SPA fora da mesma origem).
 
 **PDO puro vs. Eloquent standalone — qual escolher?**
 
