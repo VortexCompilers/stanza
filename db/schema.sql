@@ -1,7 +1,4 @@
--- Fonte de verdade do banco StanzAI.
--- O back-end (backend-php/) e o motor de ML (ml-engine/) rodam contra
--- este schema; não há mais ORM/migrations definindo as tabelas.
-CREATE DATABASE IF NOT EXISTS stanza;
+zCREATE DATABASE IF NOT EXISTS stanza;
 USE stanza;
 
 CREATE TABLE users (
@@ -10,7 +7,7 @@ CREATE TABLE users (
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    role ENUM('author', 'reader') NOT NULL
+    role ENUM('author', 'reader', 'admin') NOT NULL DEFAULT 'reader'
 );
 
 CREATE TABLE texts (
@@ -21,10 +18,8 @@ CREATE TABLE texts (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     genre VARCHAR(100) NOT NULL,
     read_count INT DEFAULT 0,
-
-    FOREIGN KEY (author_id) REFERENCES users(id)
+    FOREIGN KEY (author_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
-
 CREATE TABLE reading_logs(
     id INT AUTO_INCREMENT PRIMARY KEY,
     reader_id INT NOT NULL,
