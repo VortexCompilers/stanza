@@ -1,0 +1,99 @@
+:root{
+    --colorPrim:rgb(229, 237, 254);
+    --colorSec:rgb(81, 131, 247);
+    --colorThr:rgb(11, 11, 50);
+
+}
+
+body{
+
+background-color: var(--colorSec);
+}
+
+/* Create */ 
+
+.cblock{
+
+background-color: rgb(227, 228, 228);
+border: 4px solid darkgray;
+border-radius: 10px;
+
+width: 90%;
+
+margin: 0 auto;
+padding: 6px;
+}
+
+
+.cblock label{
+    display: block;
+
+    font-family: arial;
+    font-size: 20px;
+
+    margin-top: 10px;
+}
+
+
+
+
+.cblock input[type="text"], select{
+    background-color: aliceblue;
+      border: 2px solid gray;
+    border-radius: 4px;
+ 
+      font-family: arial;
+      font-size: 18px;
+
+
+    height: 26px;
+
+}
+
+
+.cblock input[type="text"]{
+    width: 90%;
+}
+
+.cblock select{
+    display: inline;
+      width: 48%;
+
+      margin: 16px 0;
+}
+
+
+
+
+
+.visibt{
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+
+    gap:20px;
+}
+.visibt label{
+    
+    text-align: center;
+
+    background-color: aliceblue;
+    border: 3px solid darkgray;
+    border-radius: 4px;
+
+    padding: 2px 6px;
+    width: 50%;
+}
+
+.visibt input[type="radio"]:checked + label{
+    background-color: var(--colorSec);
+    border-color:rgb(24, 52, 155);
+    color: aliceblue;
+    font-weight: bold;
+}
+.visibt input {
+display: none;
+}
+
+
+

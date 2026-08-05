@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/create.css">
+
+    <title>Stanza</title>
+</head>
+<body>
+
+
+    <div class="cblock">
+        <form action=" ddd ">
+        
+            <label for="title">Título</label>
+        
+            <input type="text" id="title" name="title">
+        
+
+
+            
+            <label for="desc">Descrição</label>
+        
+            <input type="text" id="desc" name="desc">
+        
+
+
+
+
+
+            <label for="cape">Capa</label>
+                <input 
+                type="file" 
+                id="image-picker" 
+                name="imageUpload" 
+
+                accept="image/png, image/jpeg, image/webp" 
+                />
+
+
+
+
+
+
+
+                <select id="category" name="category">
+                    <option value="">Categoria</option>
+                    <option value="book">Livro</option>
+                    <option value="poetry">Poesia</option>
+                    <option value="story">Conto</option>
+                </select>
+
+
+
+                    
+                <select id="language" name="langugage">
+                    <option value="">Idioma</option>
+                    <option value="enus">English</option>
+                    <option value="ptbr">Português</option>
+                </select>
+
+
+
+              <label for="visibility">Visibilidade</label>
+                <div class="visibt">
+            <input type="radio" name="visibility" id="public" checked>
+            <label for="public">Público</label>
+
+            <input type="radio" name="visibility" id="private">
+            <label for="private">Privado</label>
+</div>
+
+
+
+
+
+
+
+
+        <button type="submit">Entrar</button>
+
+        </form> 
+
+</div>
+
+
+
+
+
+
+</body>
+</html>
