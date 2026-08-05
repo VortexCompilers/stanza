@@ -14,3 +14,9 @@ __pycache__/
 .coverage.*
 htmlcov/
 .pytest_cache/
+
+CLAUDE.md
+
+/professor-exemplos-conteudo/
+
+/backend-php/

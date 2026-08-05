@@ -25,8 +25,9 @@
 
         <select id="gender" name="gender">
             <option value="">Gênero</option>
-            <option value="masc">Masculino</option>
-            <option value="fem">Feminino</option>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+            <option value="other">Outro</option>
         </select>
 
 

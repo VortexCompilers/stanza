@@ -1,8 +1,33 @@
 # Plano — Apresentação de 14/08/2026
 
-> Documento de acompanhamento para as 3 exigências do professor até a apresentação de 14/08/2026: landing page, autenticação e parte administrativa. "PHP em ação" já está coberto pela migração feita em `docs/migracao-php-backend.md` — o back-end é PHP agora, então qualquer uma dessas três entregas já demonstra isso.
+> Documento de acompanhamento para as 3 exigências do professor até a apresentação de 14/08/2026: landing page, autenticação e parte administrativa. "PHP em ação" significa especificamente **conteúdo recém-ensinado em aula** — ver decisão abaixo.
 >
-> Escrito por Claude como orientador; a implementação é toda do Igor Daniel. Hoje é terça, 04/08 — restam **10 dias corridos**, apresentação na sexta 14/08.
+> Escrito por Claude como orientador; a implementação é toda do Igor Daniel.
+>
+> **Pivô de 04/08/2026:** o dia 14/08 é um checkpoint de evolução, não a defesa oficial do TCC (essa é só daqui ~15 meses, Mês 18). Não faz sentido mostrar agora uma arquitetura (Slim + Eloquent, OOP, Composer) que ninguém do grupo aprendeu em aula ainda. Decisão: **congelar `backend-php/` como fase futura** e construir `backend-basico/`, só com PHP procedural, para as 3 entregas do dia 14.
+>
+> **Revisão de 05/08/2026:** o professor passou `professor-exemplos-conteudo/`, com o material teórico (igual ao que já tínhamos em `docs/php-conteudo/`) **e um site de referência completo** (`tre-fratelli-paninoteca/`) que ele considera o nível-alvo. Isso é uma fonte muito mais precisa do que "básico" significa na prática do que eu tinha antes — várias decisões deste plano mudam por causa disso. O que mudou está marcado abaixo com **[REVISADO 05/08]**.
+
+---
+
+## 0. O que o exemplo do professor revela
+
+Li o código de `tre-fratelli-paninoteca/` (não só a documentação dele) — o que interessa não é o domínio (uma paninoteca), é o *padrão de código*:
+
+- **Nenhum JavaScript em formulário nenhum.** Todo formulário é `<form method="post" action="algo.php">` tradicional, com reload de página. O `.php` que recebe processa e responde com `header('Location: ...'); exit;`. Não existe `fetch`, não existe `assets/js/` com conteúdo.
+- **Sem registro de usuário real.** O login do admin usa credenciais fixas no código (`$validUsername = 'admin'; $validPassword = '123456';`, comentado como "temporary fixed credentials for the first didactic version"). Isso é mais simples que o nosso caso — nós *precisamos* de cadastro real, é uma das 3 exigências — mas confirma que não tem problema o cadastro ser bem direto, sem nada além do que já planejamos.
+- **Guarda de sessão como include reutilizável.** `includes/auth.php`:
+  ```php
+  <?php
+  if (session_status() === PHP_SESSION_NONE) { session_start(); }
+  if (!isset($_SESSION['user'])) { header('Location: ../index.php'); exit; }
+  ```
+  Incluído com `require_once '../includes/auth.php';` no topo de toda página administrativa. Exatamente o padrão de reuso via `include`/`require` do material de aula — só que aplicado a controle de acesso, não a HTML repetido.
+- **Estrutura de pastas:** `config/` (conexão + constantes), `includes/` (header, navbar, footer, auth), `admin/` (páginas internas, com subpastas por recurso — `admin/products/index.php` listar, `create.php` formulário, `store.php` processa e redireciona, `edit.php`, `update.php`, `delete.php`), `database/` (um `.sql` por tabela, formato de export do phpMyAdmin).
+- **Schema:** toda tabela declara `ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci` explicitamente — o `db/schema.sql` atual do StanzAI não declara nenhum dos dois.
+- **Sem Composer, sem `.env`, sem dotenv.** Credenciais direto em `config/database.php` (`$host`, `$dbname`, `$username`, `$password`).
+- **Bootstrap 5 via CDN** (`<link>`/`<script>` direto, sem build step), mesmo em `includes/header.php`/`footer.php`.
+- **Fora de escopo pra nós:** internacionalização (`lang/`, seletor de idioma), versionamento Beta/RC/Stable (`docs/releases/`) e a estrutura `docs/didactic/`+`docs/website/` — são convenções específicas daquele projeto/professor pro *repositório de exemplo*, não uma exigência de arquitetura de backend. Não vale replicar isso no StanzAI, focar no que é padrão de código PHP/CRUD/organização.
 
 ---
 
@@ -10,110 +35,139 @@
 
 | Decisão | Escolha | Por quê |
 |---|---|---|
-| Autenticação | **Sessão PHP nativa** (`session_start()` + `$_SESSION['user_id']`) | Formulários são server-rendered, não uma SPA. JWT (já no `composer.json`) fica reservado pro dia em que existir um cliente desacoplado (app mobile, front em JS puro consumindo a API). |
-| Papéis do usuário | **Trocar `role ENUM('author','reader')` por duas flags booleanas: `is_author` e `is_admin`** em `users` | "Reader" vira o estado base implícito de todo usuário (não precisa de coluna). `is_author` é uma extensão de capacidade em cima disso — literalmente "author herda de reader" — e resolve o "Sou os dois" da Tela 2 (`docs/descricao-telas.md`), que o ENUM não conseguia representar. `is_admin` fica num eixo próprio, independente: um admin continua podendo ser reader e/ou author ao mesmo tempo, o que fazia menos sentido com ENUM de valor único. Custo: quem já tem banco local precisa recriar a tabela `users` (ver Dia 1). |
-| Landing page | **HTML/CSS estático primeiro**, com espaço para evoluir para view PHP se sobrar tempo | Prioriza ter algo pronto cedo. Se os Dias 1–3 (auth) forem tranquilos, migrar pra uma rota `GET /` no Slim é o primeiro item de polimento — mantém tudo servido pelo mesmo front controller.
-| Servidor e admin de banco | **XAMPP (Apache) + phpMyAdmin do próprio XAMPP** | Já é o ambiente instalado (`/opt/lampp`) e o repo já vive em `htdocs/`. phpMyAdmin evita depender do cliente `mysql` via linha de comando, que nem está no `PATH` neste ambiente (só o binário empacotado do XAMPP). |
-| Banco de dados | **Local (XAMPP), não online/hospedado** — cada máquina tem seu próprio MySQL, sincronizadas via `db/schema.sql` + um novo `db/seed.sql` versionado (dados de exemplo como `INSERT`s) | Banco online evitaria "cada um ter um diferente", mas troca isso por um risco pior: depender de internet estável no dia da apresentação, e configurar hosting/segurança sob prazo de 10 dias. Como a apresentação **pode ser em outra máquina** (confirmado), o que resolve isso não é centralizar o banco — é o `schema.sql` + `seed.sql` reproduzirem o mesmo estado em qualquer lugar com 2 imports no phpMyAdmin, sem rede. |
-| Estilo de integração front↔back | **`fetch()` + JSON, mesma origem (Apache/XAMPP dos dois lados)**, sem reload de página nos formulários | Confirmado: já que tudo roda sob `localhost/stanza/...` via Apache, é a mesma origem — cookie de sessão vai junto no `fetch` automaticamente, sem CORS e sem precisar de `credentials: 'include'`. Isso muda a forma dos Controllers (JSON, não redirect) e o trabalho do Dia 3 (ver abaixo). |
+| **Backend para o dia 14/08** | **`backend-basico/` — PHP procedural puro**, sem Composer, sem framework, sem ORM | Bate 1:1 com `docs/php-conteudo/` e com o exemplo do professor. |
+| `backend-php/` (Slim + Eloquent) | **Congelado, não usado no dia 14/08** | Direção de longo prazo, retomada quando o grupo aprender OOP/Composer em aula. |
+| **Estilo de formulário** **[REVISADO 05/08]** | **POST tradicional com reload de página**, sem `fetch()`/JSON | O exemplo do professor não usa JS em formulário nenhum — só `<form method="post">` → PHP processa → `header('Location: ...')`. Reverte a decisão anterior (fetch+FormData), que era um meio-termo baseado num exemplo seu de outro projeto, sem ainda ter visto a referência real do professor. Menos código, e bate exatamente com o que ele vai reconhecer como "nível certo". |
+| **Guarda de acesso administrativo** **[REVISADO 05/08]** | **`includes/auth.php`**, um `require_once` no topo de páginas protegidas, no padrão exato do exemplo do professor | Antes eu tinha nomeado esse arquivo `verificar_admin.php` solto na raiz do `backend-basico/`; agora sigo a mesma pasta (`includes/`) e o mesmo padrão de guarda do professor, checando `$_SESSION['role'] === 'admin'` (o dele checa só "logado", porque o admin dele não tem outros tipos de usuário). |
+| **Estrutura de pastas do `backend-basico/`** **[REVISADO 05/08]** | `config/database.php`, `includes/auth.php`, arquivos de ação na raiz (`cadastro.php`, `login.php`, `logout.php`), painel em `admin/index.php` | Mirror direto da estrutura do exemplo (`config/`, `includes/`, `admin/`), em vez de um `config.php` solto como eu tinha proposto antes. |
+| Autenticação | **Sessão PHP nativa** (`session_start()` + `$_SESSION['user_id']`) | Confirmado pelo próprio exemplo do professor, que também usa sessão nativa (`$_SESSION['user']`). |
+| Papéis do usuário **[REVISADO 05/08, de novo]** | **`role ENUM('reader', 'author', 'admin')`, tratado como hierarquia no código** — não duas colunas booleanas | Chegamos a trocar pra `is_author`/`is_admin` booleanos (pra resolver "author herda de reader" e "admin também pode ser author"), mas quem editou o schema por último voltou pro ENUM. Reavaliando: dá pra resolver o mesmo problema **sem mexer no schema**, só decidindo que a hierarquia é uma convenção do código — `admin` inclui as permissões de `author`, que inclui as de `reader`. Ver detalhe na seção 1.1 abaixo. Mantém o schema mais simples (uma coluna, igual ao `gender`) sem perder a capacidade de "quem é admin também pode publicar". |
+| Campos `gender`/`birthdate` | **Entram no schema como `NOT NULL`**, adicionados por outra pessoa do time | Sem mudança — são obrigatórios no formulário de cadastro. |
+| **Convenções do `db/schema.sql`** **[REVISADO 05/08]** | Toda tabela ganha `ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci` | O schema atual não declara engine nem charset/collation — o exemplo do professor declara os dois em toda tabela. Já aplicado. |
+| Landing page | **HTML/CSS estático** | Sem mudança. |
+| Servidor e admin de banco | **XAMPP (Apache) + phpMyAdmin do próprio XAMPP** | Sem mudança. |
+| Banco de dados | **Local (XAMPP), não online/hospedado**, com `db/schema.sql` + `db/seed.sql` versionados | Sem mudança. |
 
-**Divisão de pastas que você vai usar:**
-- `frontend/` — as páginas estáticas do João (`login.php`, `register.php`, landing) continuam aqui, com JS puro (`fetch`) fazendo a ponte com o back-end — sem framework, no estilo `addEventListener` + `async/await` que você já usa em outros projetos.
-- `backend-php/` — é quem processa: `Controllers/AuthController.php`, `Controllers/AdminController.php`, `Models/User.php`, `Middleware/AuthMiddleware.php`. Cada endpoint devolve **JSON** (`$response->getBody()->write(json_encode(...))`, ver `src/Routes/api.php` do `/health` como modelo) com o status HTTP certo (`200`/`201` sucesso, `401` credencial inválida, `422` validação, `409` e-mail duplicado) — quem decide o que fazer com a resposta (redirecionar, mostrar erro) é o JS no `frontend/`, não o PHP.
-- Como tudo roda sob o mesmo host (`localhost/stanza/...` via XAMPP), sessão PHP funciona sem CORS entre `frontend/` e `backend-php/public/`.
-- **Atenção a um detalhe do seu exemplo:** não hardcode `http://127.0.0.1:8000` (ou qualquer porta fixa) nas chamadas `fetch` — isso reintroduz cross-origin sem necessidade. Use caminho relativo ou monte a URL a partir de `window.location.origin`, ex.: `` `${window.location.origin}/stanza/backend-php/public/login` ``.
+### 1.1 Hierarquia de `role` no código **[novo, 05/08]**
+
+`role` continua sendo uma coluna só, com um valor só por usuário (`'reader'`, `'author'` ou `'admin'`). A "herança" não é um recurso do banco — é uma convenção de como o PHP verifica permissão, sempre com checagens explícitas (`===`, `in_array`), nada de matemática de índice/ordinal:
+
+```php
+// Pode acessar o painel administrativo — só admin.
+if ($_SESSION['role'] === 'admin') { /* ... */ }
+
+// Pode publicar texto — author OU admin (admin "herda" a permissão de author
+// só porque a lista inclui os dois; não é automático, é decisão explícita
+// de incluir 'admin' nessa checagem).
+if (in_array($_SESSION['role'], ['author', 'admin'])) { /* ... */ }
+
+// Pode ler/navegar — todo mundo que está logado, não precisa checar role.
+```
+
+Pra apresentação de 14/08, só a primeira checagem (admin) é usada de verdade (no `includes/auth.php` do painel). A segunda (`author`/`admin` podem publicar) só importa quando a Arena/publicação de textos existir — guarde o padrão pra lá.
+
+**Divisão de pastas do `backend-basico/` [REVISADO 05/08]:**
+```
+backend-basico/
+├── config/
+│   └── database.php      → conexão PDO (host/dbname/usuário/senha direto no arquivo, sem .env)
+├── includes/
+│   └── auth.php          → guarda de sessão: exige login + role = 'admin', senão redireciona
+├── cadastro.php           → recebe POST do form de registro, valida, insere, redireciona
+├── login.php               → recebe POST do form de login, valida, seta sessão, redireciona
+├── logout.php              → destrói a sessão, redireciona
+└── admin/
+    └── index.php            → require de config/database.php + includes/auth.php, lista usuários/textos
+```
+- `frontend/` continua com as páginas do João (`login.php`, `register.php`, landing) — os `<form>` agora apontam `action` direto pros scripts do `backend-basico/`, sem JS de submissão (só validação HTML5 nativa via `required`, `type="email"`, etc., que é HTML puro, não framework).
+- Erros de validação voltam por query string (`header('Location: ../frontend/register.php?erro=email_duplicado'); exit;`), e a página de formulário lê `$_GET['erro']` pra mostrar a mensagem — mesmo padrão que `store.php`/`create.php` usam no exemplo do professor.
+- Como o repo já vive em `htdocs/stanza`, cada arquivo fica acessível direto pelo Apache: `http://localhost/stanza/backend-basico/cadastro.php`, sem `.htaccess` nem roteador.
 
 ---
 
 ## 2. Definição de "pronto" para cada exigência
 
 - **Landing page:** visitante não-logado abre `frontend/index.html` e vê hero + "como funciona" + CTA pra cadastro/login, seguindo a Tela 1 de `docs/descricao-telas.md`. Não precisa de banco.
-- **Autenticação:** usuário cria conta (`POST /register`), loga (`POST /login`), sessão persiste entre páginas, e há um jeito de sair (`POST /logout`). Senha nunca em texto puro (`password_hash`/`password_verify`).
-- **Parte administrativa:** usuário com `is_admin = true` acessa `GET /admin` e vê uma listagem simples de usuários e textos cadastrados. Quem não é admin (ou não está logado) toma 403/redirect.
-
-Tudo isso já satisfaz "PHP em ação" — não precisa de artefato separado.
+- **Autenticação:** usuário cria conta (`backend-basico/cadastro.php`), loga (`backend-basico/login.php`), sessão persiste entre páginas (reload normal de navegador, sem JS), e há um jeito de sair (`backend-basico/logout.php`). Senha nunca em texto puro (`password_hash`/`password_verify`).
+- **Parte administrativa:** usuário com `role = 'admin'` acessa `backend-basico/admin/index.php` e vê uma listagem simples de usuários e textos cadastrados. Quem não é admin (ou não está logado) é redirecionado pelo `includes/auth.php`.
 
 ---
 
 ## 3. Cronograma dia a dia
 
-### Dia 1 — Qua 05/08: Schema + Model User + Cadastro
-- Editar `db/schema.sql`: trocar `role ENUM('author', 'reader')` por `is_author BOOLEAN NOT NULL DEFAULT FALSE` e `is_admin BOOLEAN NOT NULL DEFAULT FALSE`.
-- Subir o XAMPP (Apache + MySQL) e abrir o phpMyAdmin (`http://localhost/phpmyadmin`). Apagar a base `stanza` se já existir (aba "Databases" → excluir) e recriar importando o `db/schema.sql` atualizado (aba "Import" ou colar o conteúdo na aba "SQL") — combine com o time antes, já que é schema compartilhado.
-- Criar `backend-php/src/Models/User.php` (Eloquent, `extends Model`, `$table = 'users'`, `$timestamps = false` já que a tabela usa `created_at` sem `updated_at`).
-- Criar `backend-php/src/Controllers/AuthController.php` com `register()`: valida `name`/`email`/`password` (mínimo: campos não vazios, e-mail com formato válido, e-mail único), grava com `password_hash($password, PASSWORD_DEFAULT)`. Não precisa setar `is_author`/`is_admin` no insert — os dois já nascem `FALSE` pelo `DEFAULT` da coluna. Responde JSON: `201` + `{"user": {...}}` no sucesso, `422` + `{"errors": {...}}` em validação, `409` + `{"error": "e-mail já cadastrado"}` em duplicidade.
-- Adicionar `POST /register` em `Routes/api.php`.
-- Testar com `curl -X POST -H "Content-Type: application/json" -d '{"name":"...","email":"...","password":"..."}'` antes de mexer no formulário HTML — mais fácil de depurar a resposta JSON isoladamente.
+### Dia 1 — Qua 05/08: Schema + conexão + Cadastro
+- `db/schema.sql` já está com `role ENUM('reader', 'author', 'admin') NOT NULL DEFAULT 'reader'` + `gender`/`birthdate` (`NOT NULL`) + `ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci` em toda tabela — confirme com quem editou por último que essa é a versão final antes de importar.
+- Subir o XAMPP e abrir o phpMyAdmin. Apagar a base `stanza` se já existir e recriar importando o `db/schema.sql` atualizado.
+- Criar `backend-basico/config/database.php`: `new PDO("mysql:host=localhost;dbname=stanza;charset=utf8mb4", "root", "")` dentro de `try/catch(PDOException)` com `die()` na falha — igual ao `config/database.php` do exemplo do professor.
+- Criar `backend-basico/cadastro.php`: `require '../backend-basico/config/database.php'` (ou caminho relativo equivalente a partir de onde o form aponta); ler `$_POST['name']`, `email`, `password`, `gender`, `birthdate`; validar campos vazios; checar e-mail duplicado com `SELECT` preparado; `INSERT` preparado com `password_hash($password, PASSWORD_DEFAULT)`; em sucesso `header('Location: ...frontend/login.php')`, em erro `header('Location: ...frontend/register.php?erro=...')`.
+- Testar com `curl -X POST -d "name=...&email=...&password=...&gender=...&birthdate=YYYY-MM-DD" http://localhost/stanza/backend-basico/cadastro.php -i` (o `-i` mostra o header `Location` do redirect) antes de mexer no formulário HTML.
 
-### Dia 2 — Qui 06/08: Login + Sessão + Middleware
-- `AuthController::login()`: busca por e-mail, `password_verify()`, se ok grava `$_SESSION['user_id']` e `$_SESSION['is_admin']` e responde `200` + `{"user": {...}}`; se falhar, `401` + `{"error": "credenciais inválidas"}`.
-- `AuthController::logout()`: `session_destroy()`, responde `200` + `{"ok": true}`.
-- `backend-php/src/Middleware/AuthMiddleware.php`: checa `$_SESSION['user_id']`, senão redireciona/403. Aplicar em rotas protegidas futuras (ex: `/admin`).
-- Adicionar `session_start()` no bootstrap (`src/bootstrap.php`, início de `createApp()` ou no `public/index.php`).
-- Rotas `POST /login`, `POST /logout`.
+### Dia 2 — Qui 06/08: Login + Sessão + guarda de acesso
+- `backend-basico/login.php`: busca por e-mail com `SELECT` preparado, `password_verify()`; se ok grava `$_SESSION['user_id']` e `$_SESSION['role']` e redireciona pra próxima tela; se falhar, redireciona de volta pro form com erro.
+- `backend-basico/includes/auth.php`, no padrão do professor:
+  ```php
+  <?php
+  if (session_status() === PHP_SESSION_NONE) { session_start(); }
+  if (empty($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+      header('Location: /stanza/frontend/login.php');
+      exit;
+  }
+  ```
+- `backend-basico/logout.php`: `session_start(); $_SESSION = []; session_destroy(); header('Location: ...'); exit;` — mesmo padrão do `admin/logout.php` do exemplo.
 
-### Dia 3 — Sex 07/08: Ligar os formulários existentes (JS + fetch)
-- Escopo maior do que só trocar `action`/`method`: os `<form>` de `frontend/register.php` e `frontend/login.php` passam a ter `id`, o JS escuta `submit`, faz `e.preventDefault()`, monta o `fetch(..., { method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({...}) })` e trata a resposta — no estilo do seu exemplo (`addEventListener`, `async/await`, `try/catch`, `input.setCustomValidity(...)` pra validação client-side).
-- No sucesso: `window.location.href` pra próxima tela (login → feed/placeholder, register → login). No erro: mostrar a mensagem que veio no JSON (adapte o `alert()` do seu exemplo pra algo no próprio formulário, se der tempo — não é bloqueante).
-- Em `frontend/register.php`: renomear `id="username" name="username"` para `id="name" name="name"`, pra bater com o campo `name` que o `AuthController::register()` espera no JSON.
-- Campos que o wireframe/design pede mas ficam de fora do MVP de 14/08 (cortados, não implementar agora):
-  - `gender`, `birthdate` no cadastro — não existem no schema, não vale mudar o schema de novo essa semana por isso.
-  - O seletor "Sou leitor / Sou escritor / Sou os dois" da Tela 2 (`docs/descricao-telas.md`) — o cadastro deixa `is_author = false` (padrão da coluna), sem perguntar nada. Diferente da versão anterior deste plano, o schema com `is_author`/`is_admin` já suporta "os dois" nativamente (basta marcar `is_author = true` num usuário que também é reader por padrão) — é só uma questão de tempo pra adicionar o checkbox no formulário, não uma limitação do modelo. Fica pra depois do dia 14 se sobrar tempo.
-- Testar o fluxo fim a fim no navegador: cadastro → redirecionamento → login → sessão ativa (confira no DevTools → Application → Cookies que o `PHPSESSID` foi setado).
-- **Fim de semana (08–09/08) é buffer, não obrigação.** Se estiver em dia, adiante o Dia 4; se atrasou, é aqui que você recupera.
+### Dia 3 — Sex 07/08: Ligar os formulários existentes
+- Em `frontend/register.php` e `frontend/login.php`: ajustar `action` do `<form>` pra apontar pro script certo em `backend-basico/`, `method="post"`. **Sem JS de submissão** — o navegador já faz o reload sozinho, como no exemplo do professor.
+- Renomear `id="username" name="username"` para `id="name" name="name"`; adicionar campos `gender`/`birthdate` (são `NOT NULL` no schema).
+- Se quiser mostrar mensagem de erro (e-mail duplicado, campo faltando): bloco `<?php if (isset($_GET['erro'])): ?>` no topo do form, mesmo padrão de exibição condicional do `admin/index.php` do professor (o dele nem precisa de `$_GET` porque forms se auto-submetem, mas o nosso caso — form e handler em arquivos separados — se resolve com redirect + query string, como o `store.php`/`create.php` do professor faz pra imagem inválida).
+- Campo cortado do MVP: seletor "Sou leitor/escritor/os dois" — cadastro deixa `role = 'reader'` (padrão da coluna).
+- Testar o fluxo fim a fim no navegador: cadastro → redireciona pro login → loga → sessão ativa (confira no DevTools → Application → Cookies que o `PHPSESSID` foi setado).
+- **Fim de semana (08–09/08) é buffer, não obrigação.**
 
 ### Dia 4 — Seg 10/08: Landing page
-- Criar `frontend/index.html` com a landing estática (Tela 1): header fixo, hero, "Como Funciona", prova social, rodapé — seguindo a paleta oficial do `CLAUDE.md`.
-- Botões "Entrar" / "Começar agora" apontando para `frontend/login.php` / `frontend/register.php`.
-- Se sobrar tempo no dia: mover para uma rota `GET /` no Slim renderizando um template PHP simples (upgrade opcional combinado na decisão da seção 1).
+- Criar `frontend/index.html` com a landing estática (Tela 1), seguindo a paleta do `CLAUDE.md`.
+- Botões "Entrar"/"Começar agora" apontando para `frontend/login.php`/`frontend/register.php`.
 
 ### Dia 5 — Ter 11/08: Painel administrativo
-- `backend-php/src/Controllers/AdminController.php`: `index()` busca todos os `User::all()` e textos (`Text::all()`, crie o model se ainda não existir) via Eloquent.
-- Reaproveitar `AuthMiddleware` + checagem extra `$_SESSION['is_admin'] === true` (pode virar um `AdminMiddleware.php` que empilha em cima do `AuthMiddleware`).
-- Recomendo manter essa tela **server-rendered** (o próprio `AdminController` devolve HTML com a tabela, sem passar por `fetch`) — é mais rápido de fazer que replicar o padrão JS do Dia 3 aqui, e não há necessidade de interatividade nessa tela por enquanto. Se sobrar tempo, dá pra converter pro mesmo estilo depois (sem exigir Chart.js ou nada do Portal do Autor — isso é escopo de meses futuros, não desta entrega).
-- Rota `GET /admin`.
-- Promover seu próprio usuário de teste: no phpMyAdmin, aba "Browse" da tabela `users`, editar a linha e marcar `is_admin = 1`.
+- Criar `backend-basico/admin/index.php`: `require_once '../config/database.php'; require_once '../includes/auth.php';` no topo (guarda entra antes de qualquer output, igual ao exemplo); depois `SELECT * FROM users` e `SELECT * FROM texts` com PDO, `foreach` imprimindo linhas de tabela HTML, `htmlspecialchars()` em todo dado do banco.
+- Promover seu próprio usuário de teste: phpMyAdmin, tabela `users`, marcar `role = 'admin'`.
 
 ### Dia 6 — Qua 12/08: Integração Apache/XAMPP fim a fim
-- Confirmar que o Apache do XAMPP está servindo `backend-php/public/` corretamente (o repo já vive em `htdocs/`, então é ajustar `.htaccess`/URL, não reinstalar nada).
-- Confirmar que o MySQL do XAMPP está de pé e que dá pra abrir o phpMyAdmin e ver as tabelas populadas.
+- Confirmar que `http://localhost/stanza/backend-basico/...` responde (arquivo PHP normal, sem roteador envolvido).
+- Confirmar MySQL de pé, phpMyAdmin mostrando as tabelas populadas.
 - Rodar o fluxo completo num navegador, do zero: landing → cadastro → login → admin (pra quem é admin) → logout.
-- Corrigir os bugs de integração que só aparecem fora do `curl` (cookies de sessão, paths relativos de CSS, etc).
+- Corrigir bugs de integração (cookies de sessão, paths relativos de CSS/links entre `frontend/` e `backend-basico/`).
 
 ### Dia 7 — Qui 13/08: Polimento + segurança básica + dados de demo
 - Conferir paleta de cores e tipografia (`CLAUDE.md`) nas 3 telas; checar mobile-first pelo menos visualmente.
-- Escapar output de dados vindos do banco ao renderizar (`htmlspecialchars()`) — evita XSS na tabela de admin e nas páginas logadas.
-- Confirmar que toda query passa pelo Eloquent (prepared statements automáticos) — não escrever SQL cru concatenando `$_POST` em lugar nenhum.
-- Criar `db/seed.sql`: `INSERT`s com 3–5 usuários (pelo menos 1 com `is_admin = 1`, pelo menos 1 com `is_author = 1`) e alguns textos de exemplo. Versionado (commit `raw:`), não é só rodar `INSERT` direto no phpMyAdmin e esquecer — precisa sobreviver a "importar num computador novo".
-- **Crítico, já que a apresentação pode ser em outra máquina:** identificar HOJE qual máquina vai apresentar. Se não for a sua, instalar lá (com folga, não no dia): XAMPP, Composer (`~/.local/bin/composer` como você fez aqui), Poetry — e importar `schema.sql` + `seed.sql` pra validar que sobe sem depender de nada desta máquina.
+- Confirmar que toda query usa `prepare()`/`execute()` com parâmetros.
+- Confirmar `htmlspecialchars()` em qualquer dado do banco impresso em HTML (principalmente `admin/index.php`).
+- Criar `db/seed.sql`: `INSERT`s com 3–5 usuários (pelo menos 1 com `role = 'admin'`, 1 com `role = 'author'`) e alguns textos de exemplo. Versionado (commit `raw:`).
+- **Crítico, já que a apresentação pode ser em outra máquina:** identificar HOJE qual máquina vai apresentar. Se não for a sua, instalar XAMPP lá com folga e importar `schema.sql` + `seed.sql`. Sem Composer, sem Poetry necessários pro `backend-basico/`.
 
 ### Dia 8 — Sex 14/08: Apresentação
-- Checklist antes da aula (seção 4 abaixo), rodado **na máquina que vai efetivamente apresentar**.
+- Checklist antes da aula (seção 4), rodado **na máquina que vai efetivamente apresentar**.
 - Sem código novo no dia — só validação.
 
 ---
 
 ## 4. Checklist pré-apresentação
 
-- [ ] Confirmado **qual máquina** vai apresentar, com XAMPP/Composer/Poetry já instalados lá (não no dia 14)
+- [ ] Confirmado **qual máquina** vai apresentar, com XAMPP já instalado lá (não no dia 14)
 - [ ] `/opt/lampp/lampp startapache` e `startmysql` rodando **nessa máquina**
 - [ ] `http://localhost/phpmyadmin` abre e mostra o banco `stanza`
-- [ ] `backend-php/.env` preenchido e presente (não commitado, mas existente na máquina que vai apresentar) — `DB_USER=root`, `DB_PASSWORD=` vazio, que é o padrão do MySQL do XAMPP
-- [ ] Banco `stanza` criado a partir do `db/schema.sql` atualizado (com `is_author`/`is_admin` em vez do `role` antigo) **+ `db/seed.sql` importado**
-- [ ] Pelo menos 1 usuário com `is_admin = 1` existe no banco (via seed ou promovido depois no phpMyAdmin)
-- [ ] Fluxo testado do zero em uma aba anônima do navegador: landing → cadastro → login → admin → logout
-- [ ] `composer install` e `poetry install` já rodados nessa máquina com antecedência (não deixar pro dia)
+- [ ] `backend-basico/config/database.php` presente na máquina, com credenciais locais do MySQL do XAMPP (`root` / senha vazia)
+- [ ] Banco `stanza` criado a partir do `db/schema.sql` atualizado (`role` ENUM reader/author/admin + `gender`/`birthdate` + `ENGINE=InnoDB`/charset) **+ `db/seed.sql` importado**
+- [ ] Pelo menos 1 usuário com `role = 'admin'` existe no banco
+- [ ] Fluxo testado do zero em uma aba anônima do navegador: landing → cadastro → login → admin → logout, tudo com reload de página normal (sem depender de JS pra funcionar)
+- [ ] Nenhum `composer install`/`poetry install` é necessário pro `backend-basico/`
 
 ---
 
 ## 5. O que cortar primeiro se faltar tempo
 
-Na ordem em que eu cortaria, do menos custoso ao mais crítico:
+1. Validação client-side além do `required`/`type` nativo do HTML — não tem JS de validação chique nesse plano, então já está no mínimo
+2. Polimento visual fino (paleta exata, mobile-first perfeito) — funcional já é suficiente pro professor
+3. Seletor de perfil leitor/escritor/os dois — já cortado do MVP (`gender`/`birthdate` não entram nessa lista: são `NOT NULL`, obrigatórios)
+4. **Nunca corte:** autenticação funcionando, a tela administrativa (2 das 3 exigências explícitas), e a preparação da máquina de apresentação (Dia 7)
 
-1. Upgrade da landing page de estática para view PHP (fica estática mesmo, sem problema)
-2. Validação client-side chique (máscaras, `setCustomValidity` bonito) — a validação que importa de verdade é a do back-end (Dia 1/2); no front, um `alert()` simples já resolve pro dia 14
-3. Polimento visual fino (paleta exata, mobile-first perfeito) — funcional já é suficiente pro professor
-4. Campos extras do cadastro (`gender`, `birthdate`, seletor de perfil leitor/escritor/os dois) — já cortados do MVP por decisão acima
-5. **Nunca corte:** autenticação funcionando, a tela administrativa (2 das 3 exigências explícitas), e a preparação da máquina de apresentação (Dia 7) — sem isso, o resto do trabalho não roda no dia 14
-
-Se o Dia 3 (integração dos formulários) atrasar, use o buffer do fim de semana antes de cortar qualquer coisa da lista acima.
+Se o Dia 3 atrasar, use o buffer do fim de semana antes de cortar qualquer coisa da lista acima.

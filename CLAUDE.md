@@ -31,7 +31,8 @@ Três subsistemas separados que se integram via APIs internas:
 | Camada | Tecnologia |
 |---|---|
 | Banco de dados | MySQL |
-| Backend | PHP, Slim Framework, Eloquent (illuminate/database), Guzzle (cliente HTTP p/ motor de ML), Firebase JWT |
+| Backend | PHP, Slim Framework, Eloquent (illuminate/database), Guzzle (cliente HTTP p/ motor de ML) |
+| Backend auth | Sessão PHP nativa (`session_start()`) — decisão vigente em `docs/plano-apresentacao-14-08.md`. Firebase JWT está instalado mas reservado pra quando existir um cliente desacoplado (app mobile, SPA consumindo a API de fora da mesma origem). |
 | Backend tooling | Composer (dependências), PHPUnit (testes) |
 | Frontend | HTML, CSS, JavaScript, Bootstrap |
 | ML Engine | Python, FastAPI (serviço HTTP), scikit-learn/pandas/numpy/nltk (TF-IDF + KNN), Poetry + Ruff + Taskipy + Pytest |
@@ -49,7 +50,11 @@ All project work is in English: code, comments, commit messages, branch names, i
 
 ## Comandos de Build / Execução
 
-Nenhum código existe ainda. Os comandos serão adicionados aqui quando a implementação começar (Meses 3–4 conforme o roadmap).
+Passo a passo completo em `CONTRIBUTING.md`. Resumo:
+
+- Back-end PHP, fase futura (`backend-php/`, congelado até o grupo ver OOP/Composer em aula): `composer install`, depois servir via Apache do XAMPP (`http://localhost/stanza/backend-php/public/`) ou `composer start` (servidor embutido em `localhost:8080`).
+- Back-end PHP, checkpoint 14/08 (`backend-basico/`, PHP procedural puro, sem Composer): servir direto pelo Apache do XAMPP, `http://localhost/stanza/backend-basico/*.php`.
+- Motor de ML (`ml-engine/`): `poetry install`, depois `poetry run task run` (FastAPI dev server).
 
 ## Apresentação de 14/08/2026 — Orientações do Professor
 
@@ -60,9 +65,9 @@ O professor pediu uma apresentação do andamento do site em 14/08/2026, com os 
 - Parte administrativa
 - PHP em ação (conteúdo recém-ensinado em aula)
 
-**Sobre o requisito de PHP:** superado pela decisão de arquitetura acima — o PHP não é mais um artefato isolado de demonstração, é o backend real e produtivo do StanzAI (`backend-php/`, Slim Framework). O requisito do professor ("PHP em ação") é atendido pelo próprio fluxo de dados da aplicação.
+**Sobre o requisito de PHP:** o back-end principal planejado é PHP (`backend-php/`, Slim Framework) — mas pra esse checkpoint específico, "PHP em ação" significa literalmente o conteúdo recém-ensinado em aula (ver `docs/php-conteudo/`), que é PHP procedural puro (PDO, `$_POST`, `include`/`require`), não OOP/Composer. Por isso as 3 entregas do dia 14/08 são construídas em `backend-basico/`, um caminho paralelo procedural — `backend-php/` fica congelado como a direção de longo prazo, retomado quando o curso cobrir OOP. Decisão e raciocínio completos em `docs/plano-apresentacao-14-08.md`.
 
-Priorizar nas próximas duas semanas: landing page, fluxo de autenticação e uma tela administrativa mínima, tudo já no stack principal em PHP (`backend-php/`).
+Cronograma detalhado, decisões de arquitetura e checklist em `docs/plano-apresentacao-14-08.md` — esse é o plano vigente para as três entregas (landing page, autenticação, tela administrativa), agora em `backend-basico/`.
 
 ## Paleta de Cores
 
