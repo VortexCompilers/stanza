@@ -117,9 +117,7 @@ backend-basico/
 
 ### Dia 3 — Sex 07/08: Ligar os formulários existentes
 - Em `frontend/register.php` e `frontend/login.php`: ajustar `action` do `<form>` pra apontar pro script certo em `backend-basico/`, `method="post"`. **Sem JS de submissão** — o navegador já faz o reload sozinho, como no exemplo do professor.
-- Renomear `id="username" name="username"` para `id="name" name="name"`; adicionar campos `gender`/`birthdate` (são `NOT NULL` no schema).
 - Se quiser mostrar mensagem de erro (e-mail duplicado, campo faltando): bloco `<?php if (isset($_GET['erro'])): ?>` no topo do form, mesmo padrão de exibição condicional do `admin/index.php` do professor (o dele nem precisa de `$_GET` porque forms se auto-submetem, mas o nosso caso — form e handler em arquivos separados — se resolve com redirect + query string, como o `store.php`/`create.php` do professor faz pra imagem inválida).
-- Campo cortado do MVP: seletor "Sou leitor/escritor/os dois" — cadastro deixa `role = 'reader'` (padrão da coluna).
 - Testar o fluxo fim a fim no navegador: cadastro → redireciona pro login → loga → sessão ativa (confira no DevTools → Application → Cookies que o `PHPSESSID` foi setado).
 - **Fim de semana (08–09/08) é buffer, não obrigação.**
 

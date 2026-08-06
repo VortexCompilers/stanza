@@ -14,7 +14,7 @@
 <h1>Registrar</h1>
 
 
-<form action=" ddd ">
+<form action="backend-basico/register.php">
   
     <label for="username">Nome</label>
    

@@ -14,7 +14,7 @@
 <h1>Conectar</h1>
 
 
-<form action=" ddd ">
+<form action="backend-basico/login.php">
   
     <label for="username">E-mail/Nome</label>
    

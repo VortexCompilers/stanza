@@ -10,12 +10,6 @@
 <body>
 
 
-
-
-
-
-
-
 <h1>Vistos recentemente</h1>
 
  <div class="carousel"> 
