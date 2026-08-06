@@ -14,10 +14,10 @@
 <h1>Conectar</h1>
 
 
-<form action="backend-basico/login.php">
-  
-    <label for="username">E-mail/Nome</label>
-   
+<form action="backend-basico/login.php" method="post">
+
+    <label for="usernameoremail">E-mail/Nome</label>
+
     <input type="text" id="usernameoremail" name="usernameoremail">
    
     <label for="password">Senha</label>
