@@ -18,7 +18,7 @@
   
     <label for="username">E-mail/Nome</label>
    
-    <input type="text" id="username" name="username">
+    <input type="text" id="usernameoremail" name="usernameoremail">
    
     <label for="password">Senha</label>
    
