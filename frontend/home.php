@@ -19,58 +19,75 @@
                 <div class="info">
                     <a href="LINNNNK">Title Example Like This One</a>
                     <h2>Book</h2>
+                  <div class="postfooter">  
                     <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
             </div>
+
+
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
+                </div>
+            </div>
+
+
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
+                </div>
+            </div>
+
+
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
+                </div>
+            </div>
+
+
+
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
+                </div>
+            </div>
+
+
+
+
 
         
-               <div class="post">
-                <div class="img"></div>
-                <div class="info">
-                    <a href="LINNNNK">Title Example Like This One</a>
-                    <h2>Book</h2>
-                    <h3>232 views</h3>
-                </div>
-            </div>
-            
-
-
-
-
-               <div class="post">
-                <div class="img"></div>
-                <div class="info">
-                    <a href="LINNNNK">Title Example Like This One</a>
-                    <h2>Book</h2>
-                    <h3>232 views</h3>
-                </div>
-            </div>
-
-
-
-
-
-               <div class="post">
-                <div class="img"></div>
-                <div class="info">
-                    <a href="LINNNNK">Title Example Like This One</a>
-                    <h2>Book</h2>
-                    <h3>232 views</h3>
-                </div>
-            </div>
-
-
-
-
-
-               <div class="post">
-                <div class="img"></div>
-                <div class="info">
-                    <a href="LINNNNK">Title Example Like This One</a>
-                    <h2>Book</h2>
-                    <h3>232 views</h3>
-                </div>
-            </div>
 
             
 </div>
@@ -79,11 +96,21 @@
 
 <h1>Explorar por</h1>
 
-<div class="card">
-    <h1>Livros</h1>
-    <a href="OUTRO LINK"> o </a>
-</div>
 
+<div class="Csection">
+    <div class="card">
+        <h1>Livros</h1>
+        <a href="OUTRO LINK"> o </a>
+    </div>
+    <div class="card" style="background-color:darkcyan;">
+        <h1>Poesia</h1>
+        <a href="OUTRO LINK"> o </a>
+    </div>
+    <div class="card" style="background-color:forestgreen;">
+        <h1>Conto</h1>
+        <a href="OUTRO LINK"> o </a>
+    </div>
+</div>
 
 
 
@@ -101,50 +128,75 @@
 
     <div class="carousel"> 
 
-                <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+           
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
 
-
-
-                  <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
 
 
-
-
-                  <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
 
 
-
-
-
-                <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
+
+
+
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
+                </div>
+            </div>
+
 
 
 
@@ -158,50 +210,73 @@
 
     <div class="carousel"> 
 
-                <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
 
 
-
-                  <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
 
 
-
-
-                  <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
 
 
-
-
-
-                <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
+
+
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
+                </div>
+            </div>
 
 
 
@@ -210,56 +285,50 @@
 
 
     
-<h1>Pubicados recentemente</h1>
+<h1>Publicados recentemente</h1>
 
     <div class="carousel"> 
 
-                <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+             
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
 
 
-
-                  <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
+            </div>
 
 
-
-
-                  <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
+            
+            <div class="post">
+                <div class="img"></div>
+                <div class="info">
+                    <a href="LINNNNK">Title Example Like This One</a>
+                    <h2>Book</h2>
+                  <div class="postfooter">  
+                    <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
-
-
-
-
-
-                <div class="post">
-                    <div class="img"></div>
-                    <div class="info">
-                        <a href="LINNNNK">Title Example Like This One</a>
-                        <h2>Book</h2>
-                        <h3>232 views</h3>
-                    </div>
-                </div>
-
-
+            </div>
 
     </div>
 </div>
@@ -289,58 +358,42 @@
                 <div class="info">
                     <a href="LINNNNK">Title Example Like This One</a>
                     <h2>Book</h2>
+                  <div class="postfooter">  
                     <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
             </div>
 
-        
-               <div class="post">
-                <div class="img"></div>
-                <div class="info">
-                    <a href="LINNNNK">Title Example Like This One</a>
-                    <h2>Book</h2>
-                    <h3>232 views</h3>
-                </div>
-            </div>
+
             
-
-
-
-
-               <div class="post">
+            <div class="post">
                 <div class="img"></div>
                 <div class="info">
                     <a href="LINNNNK">Title Example Like This One</a>
                     <h2>Book</h2>
+                  <div class="postfooter">  
                     <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
             </div>
 
 
-
-
-
-               <div class="post">
+            
+            <div class="post">
                 <div class="img"></div>
                 <div class="info">
                     <a href="LINNNNK">Title Example Like This One</a>
                     <h2>Book</h2>
+                  <div class="postfooter">  
                     <h3>232 views</h3>
+                    <button>&#9661</button>
+                  </div>
                 </div>
             </div>
 
 
-
-
-
-               <div class="post">
-                <div class="img"></div>
-                <div class="info">
-                    <a href="LINNNNK">Title Example Like This One</a>
-                    <h2>Book</h2>
-                    <h3>232 views</h3>
-                </div>
-            </div>
 
             
 </div>
