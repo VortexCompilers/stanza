@@ -31,6 +31,12 @@ CREATE TABLE texts (
     FOREIGN KEY (author_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+CREATE TABLE embeddings ( 
+	id int PRIMARY KEY, 
+	embeddings TEXT, 
+	FOREIGN KEY (id) REFERENCES texts(id) 
+)
+
 CREATE TABLE reading_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     reader_id INT NOT NULL,
