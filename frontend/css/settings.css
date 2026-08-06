@@ -1,0 +1,172 @@
+/* Settings */
+
+body{
+    background-color: rgba(255, 255, 255, 0.944)
+}
+
+
+
+
+h1{
+    font-size: 24px;
+    margin: 24px 0 0 12px ;
+    color: rgb(78, 75, 75);
+}
+
+.stsbox, .stsbox1{
+    width: 96%;
+    height: 60px;
+    padding: 6px;
+    margin:6px auto;
+
+    background-color: rgb(244, 247, 247);
+    border: 3px solid darkgray;
+    border-radius: 28px;
+}
+
+.stsbox h2 ,.stsbox1 h2{
+
+    font-size: 18px;
+    font-weight: 100;
+
+    margin: 0 0 12px 6px ;
+
+    color: rgb(85, 85, 85);
+
+
+}
+
+.stsbox1 h2{margin-bottom: 6px;}
+.stsbox1 label{
+    font-family: arial;
+    font-size: 18px;
+    margin-left: 8px;
+
+}
+
+
+
+/* Select Buttons (Theme/Language) */
+
+.rdbt label{
+    font-family: arial;
+    text-align: center;
+    font-size: 16px ;
+
+    background-color: aliceblue;
+    border: 3px solid darkgray;
+    border-radius: 14px;
+
+    padding: 4px 20px;    
+   margin: 4px;
+}
+
+.rdbt input[type="radio"]:checked + label{
+
+    background-color: rgb(14, 124, 221) ;
+    border-color:rgb(24, 72, 155);
+    color: aliceblue;
+   
+}
+.rdbt input {
+display: none;
+}
+
+
+/* (Range Button - ReadingFontSize) */ 
+ input[type="range"]{
+    appearance: none;
+    width: 80%;
+    height: 12px;
+    margin: 0;
+
+    background-color:rgb(210, 207, 207);
+    border: 3px solid gray;
+    border-radius: 10px;
+ }
+
+
+/* COLUMNS (INFO - BUTTON) */
+.stsinfo {
+    width:80%;
+}
+.stsbox1{display: flex;}
+.stsbox1 button{
+    width: 20%;
+    height: 64%;
+    align-self: center;
+    border: 3px solid darkgrey;
+    border-radius: 20px;
+    font-size: 20px;
+   margin-left: auto;
+}
+.stsbox1 button:hover{
+    background-color: rgb(180, 180, 180);
+    color: white;
+}
+
+
+
+
+/* Profile Picture Model */
+.stpic{
+background-color:green;
+width: 54px;
+height: 54px;
+border-radius: 100%;
+margin: auto 0;
+}
+
+
+
+
+.dlbt, .lvbt{
+    
+    margin: 30px auto;
+    width: 49%;
+    height: 54px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 3px solid gray;
+    border-radius: 20px;
+background-color: rgb(224, 221, 221);
+    display: inline-block;
+
+}
+
+.dlbt{
+    background-color: aliceblue;
+    border-color:rgb(148, 17, 17);
+    color: rgb(148, 17, 17);
+    
+}
+
+
+
+
+
+
+
+@media (min-width: 800px)
+{
+h1{
+    margin: 42px 0 0 24px ;
+}
+
+.stsbox, .stsbox1{
+    width: 70%;
+    height: 54px;
+padding: 10px;
+    margin:12px;
+}
+
+.dlbt, .lvbt{
+    width: 200px;
+    margin: 28px 12px ;
+}
+
+
+
+
+
+}
