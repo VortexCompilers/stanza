@@ -1,6 +1,7 @@
 
 body{
-    background-color: rgba(59, 127, 190, 0.944)
+    background-color: rgba(59, 127, 190, 0.944);
+ 
 }
 
 
@@ -32,8 +33,6 @@ body{
     font-size: 18px;
 
     background-color: rgb(49, 47, 63, 30%);
-
-
 }
 
 .mbbt1 a{
@@ -52,28 +51,158 @@ body{
    
 }
 
+
+
 /* Area de Escrita */
 
 label{
 display: block;
-margin: 6px 4px;
+margin: 6px 4px 0 4px;
 color: white;
-font-size: 24px;
+font-size: 20px;
 font-weight: bold;
 }
 
 textarea{
     display: block;
-    width: 324px;
+    width: 326px;
     height: 500px;
-    margin: 12px auto;    
+    margin: 10px auto;    
     padding: 12px;
     outline: none;
 
-    border: 4px solid rgb(224, 224, 224);
+    border: 2px solid rgb(224, 224, 224);
     border-radius: 10px;
     line-height:22px;
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
+
+}
+
+
+/*  Mudar Fonte  */
+.mbbt2{width: 100%; gap: 20px;}
+.mbbt2 label{
+display: inline;
+color: white;
+font-size: 18px;
+}
+.mbbt2 input{
+   color: aliceblue;
+    background-color: rgb(49, 47, 63, 30%);
+    border: 3px solid rgb(49, 47, 63, 30%);
+    border-radius: 10px;
+    width: 32px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Web Layout */
+
+.bar{
+display: none;
+opacity: 100%;
+/* mudar ao final*/
+
+
+position: fixed;
+padding: 12px;
+width: 18%;
+height: 100%;
+margin: 0;
+background-color: rgb(28, 29, 63);
+
+}
+
+.bar a{
+     
+        padding: 1px 6px;
+        align-content: center;
+        text-decoration: none;
+        text-align: center;
+        font-weight: bold;
+
+        border: 3px solid rgb(7, 12, 36);
+        border-radius: 10px;
+        background-color: rgba(0, 123, 255);
+
+        font-size: 20px;
+        color: black;
+}
+
+
+.img{
+
+    width: 124px;
+    height: 124px;
+    background-color: aquamarine;
+    margin: 8px 0;
+}
+
+.bar select{
+    display: block;
+      width: 60%;
+      margin: 2px 0 16px 0;
+      font-size: 14px;
+}
+h2{
+   margin: 0;
+    color: aliceblue;
+
+    font-family: arial;
+    font-weight: weight;
+    font-size: 18px;
+}
+
+
+
+
+.visibt{  display: flex;margin:2px 0; gap:10px;}
+.visibt label{
+    margin: 0;
+    padding: 2px 8px;
+    text-align: center;
+    background-color: aliceblue;
+    border: 1px solid darkgray;
+    border-radius: 2px;
+color: black;
+font-size: 14px;
+font-family: arial;
+font-weight: normal;
+}
+.visibt input[type="radio"]:checked + label{
+    background-color: rgba(0, 123, 255);
+    border-color:rgb(24, 52, 155);
+    color: aliceblue;
+}
+.visibt input[type="radio"]{
+    display: none;
+}
+
+
+
+@media (min-width: 800px){
+body, html {margin: 0; padding: 0;}
+.bar{display:block;}
+
+.bar:hover{
+opacity: 100%;
+}
+
+.mbbt1{display: none;}
+.mbbt2{display: none;}
+
+.mbbt1 label, .mbbt2 label {display: none;}
+
+textarea{font-size: 12px; line-height: 16px; }
 
 }
