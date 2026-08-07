@@ -26,7 +26,9 @@ CREATE TABLE texts (
     body TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     genre VARCHAR(100) NOT NULL,
-    read_count INT DEFAULT 0,
+    read_count INT DEFAULT 0, 
+	description VARCHAR(255) NOT NULL,
+	role ENUM('livro', 'poesia', 'poema') NOT NULL,
 
     FOREIGN KEY (author_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
