@@ -37,7 +37,7 @@ CREATE TABLE embeddings (
 	id int PRIMARY KEY, 
 	embeddings TEXT, 
 	FOREIGN KEY (id) REFERENCES texts(id) 
-)
+);
 
 CREATE TABLE reading_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,

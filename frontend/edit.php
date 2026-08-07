@@ -20,7 +20,7 @@
 
 
     <form action="  ALGUMA ACAO  ">
-    <p><label for="content">Escrever</label></p>
+    <label for="content">Escrever</label>
 
     <textarea id="content" name="content"></textarea>
 

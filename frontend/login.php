@@ -14,7 +14,7 @@
 <h1>Conectar</h1>
 
 
-<form action="backend-basico/login.php">
+<form action="/stanza/backend-basico/login.php" method="POST">
   
     <label for="username">E-mail/Nome</label>
    

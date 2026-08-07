@@ -14,7 +14,7 @@
 <h1>Registrar</h1>
 
 
-<form action="backend-basico/register.php">
+<form action="/stanza/backend-basico/register.php" method="POST">
   
     <label for="username">Nome</label>
    
