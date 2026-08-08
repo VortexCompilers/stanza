@@ -58,7 +58,9 @@
                     <option value="">Idioma</option>
                     <option value="enus">English</option>
                     <option value="ptbr">Português</option>
+                    <option value="es">Español</option>
                 </select>
+
 
 
 
@@ -71,16 +73,19 @@
             <label for="private">Privado</label>
 </div>
 
+            <p class="aviso-visibilidade">Todos os usuários poderão ver seu texto, mesmo incompleto</p>
 
 
 
 
 
 
+        <div class="botoes-form">
+            <button type="button">Cancelar</button>
+            <button type="submit">Entrar</button>
+        </div>
 
-        <button type="submit">Entrar</button>
-
-        </form> 
+        </form>
 
 </div>
 
