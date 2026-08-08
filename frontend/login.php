@@ -1,3 +1,15 @@
+<?php
+$erroMensagem = '';
+
+if (isset($_GET['erro'])) {
+    $mensagensDeErro = [
+        'campo_vazio' => 'Preencha todos os campos.',
+        'credenciais_invalidas' => 'E-mail/nome ou senha incorretos.',
+    ];
+
+    $erroMensagem = $mensagensDeErro[$_GET['erro']] ?? 'Ocorreu um erro. Tente novamente.';
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +24,12 @@
 <div class="wblock">
 
 <h1>Conectar</h1>
+
+<?php if (!empty($erroMensagem)): ?>
+    <div class="erro">
+        <?= htmlspecialchars($erroMensagem) ?>
+    </div>
+<?php endif; ?>
 
 
 <form action="/stanza/backend-basico/login.php" method="POST">

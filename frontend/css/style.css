@@ -12,6 +12,17 @@ background-color: var(--colorSec);
 
 
 
+.erro{
+background-color: #fde2e2;
+color: #b42318;
+border-radius: 6px;
+padding: 8px 12px;
+margin: 8px 0;
+font-family: arial;
+font-size: 14px;
+}
+
+
 /* LOGIN */
 .wblock{
 background-color: var(--colorPrim);

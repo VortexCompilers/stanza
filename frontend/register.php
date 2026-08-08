@@ -1,3 +1,15 @@
+<?php
+$erroMensagem = '';
+
+if (isset($_GET['erro'])) {
+    $mensagensDeErro = [
+        'campo_vazio' => 'Preencha todos os campos.',
+        'email_duplicado' => 'Este e-mail já está cadastrado.',
+    ];
+
+    $erroMensagem = $mensagensDeErro[$_GET['erro']] ?? 'Ocorreu um erro. Tente novamente.';
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +24,12 @@
 <div class="wblock">
 
 <h1>Registrar</h1>
+
+<?php if (!empty($erroMensagem)): ?>
+    <div class="erro">
+        <?= htmlspecialchars($erroMensagem) ?>
+    </div>
+<?php endif; ?>
 
 
 <form action="/stanza/backend-basico/register.php" method="POST">
