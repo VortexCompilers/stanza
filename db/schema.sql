@@ -1,12 +1,13 @@
--- Fonte de verdade do banco StanzAI.
--- O back-end (backend-basico/, backend-php/) roda contra este schema;
--- não há ORM/migrations definindo as tabelas.
---
--- `role` é uma hierarquia, não categorias isoladas: 'admin' inclui as
--- permissões de 'author', que inclui as de 'reader'. Isso é aplicado no
--- código (PHP), não no banco — ver docs/plano-apresentacao-14-08.md.
 CREATE DATABASE IF NOT EXISTS stanza;
 USE stanza;
+
+DROP TABLE IF EXISTS text_genres;
+DROP TABLE IF EXISTS reading_logs;
+DROP TABLE IF EXISTS embeddings;
+DROP TABLE IF EXISTS text_genres;
+DROP TABLE IF EXISTS texts;
+DROP TABLE IF EXISTS genres;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,8 +26,7 @@ CREATE TABLE texts (
     title VARCHAR(255) NOT NULL,
     body TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    genre VARCHAR(100) NOT NULL,
-    read_count INT DEFAULT 0, 
+    read_count INT DEFAULT 0,
 	description VARCHAR(255) NOT NULL,
 	role ENUM('livro', 'poesia', 'conto') NOT NULL,
     cover_image VARCHAR(255) DEFAULT NULL,
@@ -35,11 +35,11 @@ CREATE TABLE texts (
     FOREIGN KEY (author_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-CREATE TABLE embeddings ( 
-	id int PRIMARY KEY, 
-	embeddings TEXT, 
-	FOREIGN KEY (id) REFERENCES texts(id) 
-);
+CREATE TABLE embeddings (
+    id INT PRIMARY KEY,
+    embedding TEXT NOT NULL,
+    FOREIGN KEY (id) REFERENCES texts(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE reading_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -51,3 +51,32 @@ CREATE TABLE reading_logs (
     FOREIGN KEY (reader_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (text_id) REFERENCES texts(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+CREATE TABLE genres (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE text_genres (
+    text_id INT NOT NULL,
+    genre_id INT NOT NULL,
+    PRIMARY KEY (text_id, genre_id),
+    FOREIGN KEY (text_id) REFERENCES texts(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (genre_id) REFERENCES genres(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT IGNORE INTO genres (name) VALUES
+('Fantasia'),
+('Drama'),
+('Romance'),
+('Terror'),
+('Ficção Científica'),
+('Suspense'),
+('Aventura'),
+('Mistério'),
+('Poesia Lírica'),
+('Realismo Mágico'),
+('Comédia'),
+('Distopia');
