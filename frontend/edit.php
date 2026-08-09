@@ -18,7 +18,7 @@
 
     <div class="img"></div>
 
-
+    
     <h2>Categoria<h2>
         <!-- faça a categoria original vir marcada padrão-->
         <select id="category" name="category">
@@ -52,6 +52,15 @@
     </div>
 
 
+                       
+
+    <h2>Tamanho da fonte</h2>                       
+    <input type="number" id="fontsize" name="fontsize" min="1" max="40">
+
+
+
+      <button>Salvar</button>
+
 
 </div> 
 
@@ -62,6 +71,10 @@
 
 
 
+
+
+
+<!-- Mobile -->
 
 
  <div class="mbbt1">
@@ -76,15 +89,44 @@
     <label style="display:none;" for="content">Escrever</label>
     <textarea id="content" name="content"></textarea>
 
+    <h2> 12 palavras - 3134 caracteres</h2>
+
+
+
+
     <div class="mbbt2">
     
-    <label>12 palavras</label>
-    <label for="fontsize">Tamanho da fonte: </label>                                                
-    <input type="number" id="fontsize" name="fontsize" min="1" max="40">
+        <label>12 palavras</label>
+        
+        <label>226 caracteres</label>
+
+        <label for="fontsize">Tamanho da fonte: </label>                                                
+        <input type="number" id="fontsize" name="fontsize" min="1" max="40">
     </div>
-
-
     </form>
+
+
+
+
+
+
+<!-- Card Pop-Up -->
+
+
+<div class="blur">
+    
+<div class="popup"></div>
+
+</div>
+
+
+
+
+
+
+
+
+
 
 
 </body>

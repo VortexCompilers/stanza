@@ -14,8 +14,6 @@ margin: 0;
 
 
 
-
-
 /* Blocos de Post */
 
 .post{
@@ -28,6 +26,8 @@ width: 220px;
 
 display: flex;
  flex: 0 0 auto;
+
+
 }
 
 
@@ -105,7 +105,7 @@ h1{
 
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-behavior:auto;
+    scroll-behavior:smooth;
 }
 
 
@@ -174,12 +174,12 @@ text-decoration: none;
 
 
 @media (min-width: 800px)
-{   .post{width:230px;margin-bottom: 2px;}
-    .post .img{width: 40%;}
-    .post a{ font-size:18px; }
-    .post h2{font-size: 16px;font-weight: 300 ;margin: 2px 0 0 2px;}
-    .info{padding-left: 3px;}
-
+{   
+.post{width:230px;margin-bottom: 2px;}
+.post .img{width: 40%;}
+.post a{ font-size:18px; }
+.post h2{font-size: 16px;font-weight: 300 ;margin: 2px 0 0 2px;}
+.info{padding-left: 3px;}
 
 .Csection{
     display: flex;

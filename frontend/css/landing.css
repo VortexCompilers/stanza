@@ -1,0 +1,330 @@
+* {
+    box-sizing: border-box;
+}
+
+:root{
+    --colorPrim:rgb(229, 237, 254);
+    --colorSec:rgb(93, 121, 186);
+    --colorThr:rgb(11, 11, 50);
+    --colorcardgray:rgba(202, 189, 189, 0.15);
+
+}
+
+body{
+background-color:rgb(42, 74, 126);
+margin: 0;
+}
+
+html{margin: 0;}
+
+/* Landing Page */ 
+
+
+
+.up{
+    height: 320px;
+}
+
+
+.hero{
+    position: relative;
+   
+    width: 100%;
+    height: 100px;
+    padding: 12px;
+    
+}
+
+.hero h1, .hero h2{
+z-index: 200px;
+color: aliceblue;
+font-family: arial;
+margin: 8px 0;
+}
+.hero h1{font-weight: normal;font-size: 40px;}
+.hero span{
+    font-weight: bold;
+    font-style: italic;
+}
+
+.hero h2{
+    font-size: 18px; 
+    font-weight: 300;
+    font-style:italic ;
+    padding: 8px;
+   margin-top:36px ;
+}
+
+
+/* Mini Card */
+.minicard{
+    display: flex;
+    background-color: var(--colorcardgray);
+    width: 160px;
+    height: 90px;
+    border-radius: 8px;
+    padding: 3px;
+    margin: 6px;
+}
+.minicard .pic{
+background-color: var(--colorcardgray);
+border-radius: 10px;
+width: 40%;
+height: 96%;
+}
+
+.minicard .inf{
+width: 60%;
+height: 96%;
+}
+.minicard h1{
+    font-size: 18px;
+    color: var(--colorcardgray);
+    background-color:var(--colorcardgray);
+    height: 16px;
+    margin: 6px 6px 1px 6px;
+    border-radius: 4px;
+}
+
+.cards{ 
+display: flex;
+    width: 100%;
+    z-index: 100;
+    margin: 36px 0 0px 0;
+}
+
+
+
+
+
+/* Input Test */
+.testinput{
+    width: 100%;
+    padding: 12px;
+    align-content: center;
+}
+.testinput label{
+display: block;
+color: aliceblue;
+font-family: arial;
+font-size: 18px;
+margin: 2px 6px;
+}
+.testinput input{
+    width: 90%;
+    font-family: 'Times New Roman', Times, serif;
+    border:2px solid rgb(23, 23, 96);
+    
+}
+.testinput:has(input:focus) label{
+      transition: 200ms;
+    font-size: 0;
+}
+
+.testinput:has(input:focus) label::after{
+    content: "Escrevendo";
+    font-size: 18px;
+}
+
+
+
+
+
+
+/* Acesso Botões */
+.bts{
+     width: 100%;
+    height: 180px;
+    padding: 12px;
+    align-content: center;
+    background-color: var(--colorSec);
+}
+
+.bts button{
+    display: block;
+    justify-self: center;
+    margin: 10px 0;
+
+    background-color: rgb(23, 40, 96);
+    color:aliceblue;
+    font-size: 18px;
+    font-family: arial;
+    font-weight: bold;
+    border: none;
+border-radius: 16px;
+    padding: 11px 20px;
+}
+.bts a{
+    margin: 16px 0 ;
+    color: aliceblue;
+    display: block;
+    justify-self: center;
+    text-decoration: none;
+    font-family: arial;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+/* Explorar */
+
+.explore {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    background-color: var(--colorPrim);
+}
+
+.explore  h1{
+    margin: 6px 2px;
+ color: rgb(6, 10, 36);
+font-family: arial;
+font-size: 22px;
+}
+
+/* Blocos de Post */
+
+.post{
+background-color: rgba(235, 235, 235, 10%);
+border:solid 3px rgba(164, 163, 163, 0.2);
+border-radius: 10px;
+
+height: 130px;
+width: 220px;
+
+display: flex;
+ flex: 0 0 auto;
+
+
+}
+
+
+.post .img{
+    position: relative;
+
+    background-color: rgb(109, 165, 109);
+    width: 45%;
+    height: 92%;
+
+    margin: 4px;
+    
+    border-radius: 10px;
+
+}
+
+.post .info{
+
+    width: 55%;
+    height: 96%;
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.post a{
+    
+    font-weight: 500;
+    font-size: 14px; 
+    text-decoration: none;
+
+    color:rgb(27, 26, 26); 
+    word-break: break-word;
+    margin: 10px auto 0 auto;
+}
+.post h2{font-size: 12px; color: gray; }
+
+.carousel{
+    width: 100%;
+    margin:6px;
+    display: flex;
+    gap: 8px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior:smooth;
+}
+
+
+.procurar{
+  width: 100%;
+    height: 40px;
+    padding: 12px;
+
+    background-color: var(--colorSec);
+    font-family: arial;
+text-align: center;
+    color: aliceblue;
+}
+.procurar input{
+    color: black;
+}
+
+
+
+
+
+@media (min-width: 800px)
+{   .up{
+    display: flex;
+    padding: 42px 0;
+    width: 100%;
+    height: 300px;
+}
+    
+    .hero{
+        width: 50%;
+    }
+    .demos{width: 50%;}
+
+    .hero h1, .hero h2{
+        margin: 6px 32px;
+    }
+    .hero h1{font-size: 48px;margin:4px 32px;}
+
+    .minicard{ 
+    margin-left: 36px;
+    width: 240px;
+    height: 140px;
+    
+        }
+
+    .testinput{
+        margin: -25px 0 0 0 ;
+        width: 400px;
+    }
+
+    .bts{
+        height: 300px;
+    }
+    .bts button{
+        padding: 18px 32px;
+        border-radius: 25px;
+    }
+
+
+
+    .explore{
+        height: 280px;
+    }
+    .explore h1{
+        font-size: 28px;
+        margin: 8px 18px;
+    }
+
+    .carousel{
+        margin: 18px;
+    }
+
+    .post {
+height: 160px;
+width: 260px;
+    }
+}

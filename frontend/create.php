@@ -10,24 +10,12 @@
 <body>
 
 
-    <div class="cblock">
+
+
+
         <form action=" ddd ">
-        
-            <label for="title">Título</label>
-        
-            <input type="text" id="title" name="title">
-        
 
-
-            
-            <label for="desc">Descrição</label>
-        
-            <input type="text" id="desc" name="desc">
-        
-
-
-
-
+        <div class="imgblock">
 
             <label for="cape">Capa</label>
                 <input 
@@ -40,10 +28,43 @@
 
 
 
+    </div>
+
+
+        
+    <div class="cblock">
+        
+            <label for="title">Título</label>
+        
+            <input type="text" id="title" name="title">
+        
+
+
+            
+            <label for="desc">Descrição</label>
+            <textarea id="desc" name="desc"></textarea>
+        
+
+
+            <div class="mbimg">
+            <label for="cape">Capa</label>
+                <input 
+                type="file" 
+                id="image-picker" 
+                name="imageUpload" 
+
+                accept="image/png, image/jpeg, image/webp" 
+                />
+            </div>
 
 
 
 
+
+
+
+
+            <label for="category">Categoria</label>
                 <select id="category" name="category">
                     <option value="">Categoria</option>
                     <option value="book">Livro</option>
@@ -54,6 +75,8 @@
 
 
                     
+
+            <label for="language">Idioma</label>
                 <select id="language" name="langugage">
                     <option value="">Idioma</option>
                     <option value="enus">English</option>
@@ -71,9 +94,10 @@
 
             <input type="radio" name="visibility" id="private">
             <label for="private">Privado</label>
-</div>
+                
+        </div>
 
-            <p class="aviso-visibilidade">Todos os usuários poderão ver seu texto, mesmo incompleto</p>
+            <p class="aviso-visibilidade">&#9888 Todos os usuários poderão ver seu texto, mesmo incompleto</p>
 
 
 
@@ -81,13 +105,17 @@
 
 
         <div class="botoes-form">
-            <button type="button">Cancelar</button>
-            <button type="submit">Entrar</button>
+            <button type="button" style="background-color:white; padding:8px 12px;color:black;" >Cancelar</button>
+            <button type="submit" style="width=60%"  >Escrever</button>
         </div>
 
-        </form>
 
+
+
+        
 </div>
+
+        </form>
 
 
 
