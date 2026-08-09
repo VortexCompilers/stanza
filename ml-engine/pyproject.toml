@@ -1,5 +1,5 @@
 [project]
-name = "ml-engine"
+name = "embeddings-api"
 version = "0.1.0"
 description = ""
 authors = [
@@ -12,15 +12,14 @@ dependencies = [
     "pydantic (>=2.13.4,<3.0.0)",
     "pandas (>=2.2.0,<3.0.0)",
     "numpy (>=2.0.0,<3.0.0)",
-    "nltk (>=3.9.0,<4.0.0)",
-    "scikit-learn (>=1.5.0,<2.0.0)"
+    "mysql-connector-python (>=9.1.0,<10.0.0)",
+    "faiss-cpu (>=1.9.0,<2.0.0)",
+    "sentence-transformers (>=3.3.0,<4.0.0)",
+    "torch (>=2.13.0,<3.0.0)"
 ]
-
-
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
-
 [dependency-groups]
 dev = [
     "pytest (>=9.1.1,<10.0.0)",
@@ -28,27 +27,32 @@ dev = [
     "taskipy (>=1.14.1,<2.0.0)",
     "ruff (>=0.15.20,<0.16.0)"
 ]
-
+[tool.poetry]
+package-mode = false
 [tool.ruff]
 line-length = 79
-
 [tool.ruff.lint]
 preview = true
 select = ['I', 'F', 'E', 'W', 'PL', 'PT']
-
 [tool.ruff.format]
 preview = true
 quote-style = 'single'
-
 [tool.pytest]
 pythonpath = ['.']
-addopts = ['-p', 'no:warnings', '--cov=ml_engine', '--cov-context=test']
-
+addopts = ['-p', 'no:warnings', '--cov=app', '--cov-context=test']
 [tool.taskipy.tasks]
 lint = 'ruff check'
 pre_format = 'ruff check --fix'
 format = 'ruff format'
-run = 'fastapi dev ml_engine/app.py'
+run = 'fastapi dev app/main.py'
 pre_test = 'task lint'
 test = 'pytest -s -x -vv'
 post_test = 'coverage html --show-contexts'
+
+[[tool.poetry.source]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+[tool.poetry.dependencies]
+torch = {source = "pytorch-cpu"}

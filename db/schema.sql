@@ -37,7 +37,7 @@ CREATE TABLE texts (
 
 CREATE TABLE embeddings (
     id INT PRIMARY KEY,
-    embedding TEXT NOT NULL,
+    embedding BLOB NOT NULL,
     FOREIGN KEY (id) REFERENCES texts(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
