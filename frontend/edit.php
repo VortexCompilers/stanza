@@ -13,13 +13,29 @@
 
 <!-- Barra Web -->
 
+
 <div class="bar"> 
     <a href="home.php"> < </a>    
 
-    <div class="img"></div>
+    <h2>Título</h2>
+
+
+    <div class="img">
+    </div>
+    
+     <input 
+        type="file" 
+        id="image-picker" 
+        name="imageUpload" 
+
+        accept="image/png, image/jpeg, image/webp" 
+        />
+
+
 
     
-    <h2>Categoria<h2>
+    
+    <h2>Categoria</h2>
         <!-- faça a categoria original vir marcada padrão-->
         <select id="category" name="category">
             <option value="">Categoria</option>
@@ -29,7 +45,7 @@
         </select>
 
 
-    <h2>Idioma<h2>
+    <h2>Idioma</h2>
         <select id="language" name="langugage">
             <option value="">Idioma</option>
             <option value="enus">English</option>
@@ -52,15 +68,15 @@
     </div>
 
 
-                       
+                                    
+                    <div class="wbbt">
+                    <h2>Tamanho da fonte</h2>                       
+                    <input type="number" id="fontsize" name="fontsize" min="1" max="40">
 
-    <h2>Tamanho da fonte</h2>                       
-    <input type="number" id="fontsize" name="fontsize" min="1" max="40">
 
 
-
-      <button>Salvar</button>
-
+                    <button>Salvar</button>
+                </div>
 
 </div> 
 
@@ -89,8 +105,9 @@
     <label style="display:none;" for="content">Escrever</label>
     <textarea id="content" name="content"></textarea>
 
-    <h2> 12 palavras - 3134 caracteres</h2>
 
+
+    
 
 
 
@@ -104,21 +121,6 @@
         <input type="number" id="fontsize" name="fontsize" min="1" max="40">
     </div>
     </form>
-
-
-
-
-
-
-<!-- Card Pop-Up -->
-
-
-<div class="blur">
-    
-<div class="popup"></div>
-
-</div>
-
 
 
 
