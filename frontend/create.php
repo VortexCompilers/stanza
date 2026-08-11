@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="css/create.css">
+ <link rel="stylesheet" href="css/header.css">
+
+
 
     <title>Stanza</title>
 </head>
 <body>
 
+<?php include 'header.php'; ?>
 
 
 
+
+<main>
 
         <form action=" ddd ">
 
@@ -118,6 +124,8 @@
         </form>
 
 
+
+</main>
 
 
 

@@ -1,0 +1,60 @@
+body{margin: 0;}
+
+
+header{  
+position: fixed;
+height: 100px;
+width: 100%;
+padding: 0 16px;
+
+align-content: center;
+
+background-color: rgb(19, 19, 72);
+border-bottom: 3px solid rgb(151, 152, 189);
+z-index: 2000;
+
+}
+
+header img{
+width: 64px;
+height: 64px;
+}
+
+
+
+
+nav{
+position: fixed;
+height: 100%;
+width: 128px;
+padding: 12px;
+
+margin: 100px 0 0 0;
+
+background-color: rgb(19, 19, 72);
+z-index: 1000;
+}
+
+.createbt, .navbt{
+width: 90%;
+    height: 24px;
+    margin: 10px 0;
+    padding: 6px;
+
+    align-content: center;
+    font-size: 18px;
+
+    border-radius: 2px;
+    background-color: rgb(30, 51, 114);
+}
+
+.createbt{
+    border-radius: 10px;
+    background-color: rgb(23, 146, 187);
+}
+.createbt a, .navbt a{text-decoration: none; color: aliceblue;}
+
+main{
+
+    padding: 128px 0 0 164px;
+}
