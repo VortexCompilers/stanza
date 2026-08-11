@@ -7,6 +7,7 @@
 
     <title>Stanza</title>
 </head>
+
 <body style="background-color: rgba(25, 22, 109, 0.94);">
 
 
@@ -14,32 +15,43 @@
 
 
 <div class="bar"> 
-    <a href="home.php"> < </a>    
 
+        
+       <a href="home.php"><</a>
+       <button class="fecha" id="fecharBar">X</button>
 
-    <div class="fsec">
-            <div class="img">
-            </div>
+        <div class="fsec">
+                <div class="img">  </div>
 
-            <div class="rinfo">
+                <div class="rinfo">
 
-                <h2>Título</h2>
-                <h3>Categoria</h3>
+                    <h2>Título</h2>
+                    <h3>Categoria</h3>
 
-
-
-                <h3>2233 views</h3>
-            </div>
-
-    </div> 
-
-
-
-
-
+            
+                    <div class="dw">
+                    <h3>2233 views</h3>
+                    <button>&#9661</button>
+                      </div>
+                </div>
+        
 
 
 
+
+
+
+
+
+
+
+        </div> 
+
+        <div class="rdesc">
+
+            Descrição é o tipo de texto que fornece características sobre algo ou alguém. Assim, a descrição propicia à pessoa que a lê ou a que ouve imaginar com facilidade o que está sendo descrito - objetos, lugares, acontecimentos ou pessoas, por exemplo.
+
+        </div>
 
 
 </div> 
@@ -57,9 +69,9 @@
 
 
  <div class="mbbt1">
-    <button><</button>
+    <a href="home.php"  style="margin:0;"><</a>
    
-    <button style="margin-left:auto;">⋮</button>
+    <button id="abrirBar" style="margin-left:auto;">⋮</button>
 </div>
 
 
@@ -86,6 +98,37 @@
         <input type="number" id="fontsize" name="fontsize" min="1" max="40">
     </div>
     </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Botões Popup Mobile -->
+
+<script>
+    const bar = document.querySelector(".bar");
+     const abrir = document.querySelector("#abrirBar");
+    const fechar = document.querySelector("#fecharBar");
+
+    fechar.addEventListener("click", function() {
+        bar.style.display = "none";
+    });
+    
+    abrir.addEventListener("click", function() {
+        bar.style.display = "block";
+    });
+
+
+
+</script>
 
 
 

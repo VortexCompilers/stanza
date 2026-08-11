@@ -15,7 +15,10 @@
 
 
 <div class="bar"> 
-    <a href="home.php"> < </a>    
+    
+        
+       <a href="home.php"><</a>
+       <button class="fecha" id="fecharBar">X</button>
 
     <h2>Título</h2>
 
@@ -75,7 +78,7 @@
 
 
 
-                    <button>Salvar</button>
+                    <button class="svv">Salvar</button>
                 </div>
 
 </div> 
@@ -94,9 +97,10 @@
 
 
  <div class="mbbt1">
-    <button><</button>
-    <a href="DPS vc muda">Salvar</a>
-    <button>⋮</button>
+    <a href="home.php"  style="margin:0;"><</a>
+    <a href="DPS vc muda" style="margin-left:auto;" >Salvar</a>
+   
+    <button id="abrirBar" style="margin-left:auto;">⋮</button>
 </div>
 
 
@@ -129,6 +133,24 @@
 
 
 
+
+
+
+<!-- Botões Popup Mobile -->
+
+<script>
+    const bar = document.querySelector(".bar");
+     const abrir = document.querySelector("#abrirBar");
+    const fechar = document.querySelector("#fecharBar");
+
+    fechar.addEventListener("click", function() {
+        bar.style.display = "none";
+    });
+    
+    abrir.addEventListener("click", function() {
+        bar.style.display = "block";
+    });
+</script>
 
 
 </body>
