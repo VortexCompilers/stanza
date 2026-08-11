@@ -1,15 +1,32 @@
 <?php
 
-declare(strict_types=1);
+require_once 'backend-php/src/Services/MlClient.php';
 
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\App;
+header('Content-Type: application/json');
 
-return function (App $app): void {
-    $app->get('/health', function (Request $request, Response $response): Response {
-        $response->getBody()->write(json_encode(['status' => 'OK']));
+$acao = $_POST['acao'] ?? null;
 
-        return $response->withHeader('Content-Type', 'application/json');
-    });
-};
+try {
+    if ($acao === 'adicionar') {
+        $id = (int) $_POST['id'];
+        $texto = $_POST['texto'];
+
+        $resultado = mlAdicionar($id, $texto);
+        echo json_encode($resultado);
+
+    } elseif ($acao === 'buscar') {
+        $query = $_POST['query'];
+        $k = isset($_POST['k']) ? (int) $_POST['k'] : 5;
+
+        $resultado = mlBuscar($query, $k);
+        echo json_encode($resultado);
+
+    } else {
+        http_response_code(400);
+        echo json_encode(['erro' => 'Ação inválida']);
+    }
+
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['erro' => $e->getMessage()]);
+}

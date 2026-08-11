@@ -1,39 +1,43 @@
 <?php
 
-declare(strict_types=1);
-
-namespace App\Services;
-
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
-
-class MlClient
+function mlAdicionar(int $id, string $texto): array
 {
-    private Client $client;
+    return mlChamarApi('/add', [
+        'id' => $id,
+        'texto' => $texto,
+    ]);
+}
 
-    public function __construct(?string $baseUri = null)
-    {
-        $this->client = new Client([
-            'base_uri' => $baseUri ?? ($_ENV['ML_ENGINE_URL'] ?? 'http://localhost:8000'),
-            'timeout' => 5.0,
-        ]);
+function mlBuscar(string $query, int $k = 5): array
+{
+    return mlChamarApi('/search', [
+        'query' => $query,
+        'k' => $k,
+    ]);
+}
+
+function mlChamarApi(string $endpoint, array $dados): array
+{
+    $url = "http://127.0.0.1:8000" . $endpoint;
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($dados));
+
+    $resposta = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        throw new Exception('Erro ao chamar a API: ' . curl_error($ch));
     }
 
-    /**
-     * @return int[] recommended text IDs, empty when the ML engine is unreachable
-     */
-    public function recommend(int $textId): array
-    {
-        try {
-            $response = $this->client->post('/recomendar', [
-                'json' => ['text_id' => $textId],
-            ]);
-        } catch (GuzzleException) {
-            return [];
-        }
+    $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
 
-        $data = json_decode((string) $response->getBody(), true);
-
-        return $data['recommendations'] ?? [];
+    if ($statusCode !== 200) {
+        throw new Exception("API retornou status $statusCode: $resposta");
     }
+
+    return json_decode($resposta, true);
 }
