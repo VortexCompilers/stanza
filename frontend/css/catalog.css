@@ -1,0 +1,241 @@
+
+.filtersec{
+
+width: 100%;
+height: 52px;
+background-color: rgb(30, 51, 114);
+
+align-content: center;
+ margin: 0;
+
+}
+
+.filtersec input[type="search"]{
+    margin: 0 8px;
+    padding: 0 6px;
+    width: 54%;
+    height: 28px;
+    border: 2px solid rgb(0, 136, 255);
+    border-radius: 18px;
+}
+.filtersec a{
+ font-size: 12px;
+    font-family: arial;
+    color: aliceblue;
+   
+    background-color: rgba(0, 136, 255, 0.418);
+    padding:4px;
+    border-radius: 2px;
+}
+.filtersec a:hover{cursor:pointer;}
+.filtersec button{
+    font-size: 12px;
+    font-weight: bold;
+   margin: 6px;
+    height: 28px;
+    width: auto;
+
+    color: aliceblue;
+    background-color: rgb(0, 136, 255);
+    border: none;
+    
+
+}
+
+
+
+
+.filterpop{
+    z-index: 1000;
+    display: none;
+    width: 200px;
+    height: 240px;
+    padding: 4px;
+    position: absolute;
+
+    right: 2px;
+    top: 124px;
+
+    background-color: rgb(244, 247, 247);
+    border: 3px solid darkgray;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.filterpop h1{
+    font-size: 18px;
+    margin: 0;
+}
+
+.filterpop h2{
+    font-size: 18px;
+    font-weight: 100;
+    margin: 8px 2px 0px 2px ;
+    color: rgb(85, 85, 85);
+}
+
+.stsbox{
+    width: 100%;
+    min-height: 48px;
+    padding: 4px 6px;
+    margin: 0;
+
+    background-color: rgb(244, 247, 247);
+    border: 3px solid darkgray;
+    border-radius: 28px;
+    box-sizing: border-box;
+}
+
+.rdbt{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+    gap: 2px;
+}
+
+.rdbt label{
+    font-family: Arial;
+    text-align: center;
+    font-size: 12px;
+    background-color: aliceblue;
+    border: 3px solid darkgray;
+    border-radius: 14px;
+    padding: 4px 8px;
+}
+
+.rdbt input{
+    display: none;
+}
+
+.rdbt input[type="radio"]:checked + label{
+    background-color: rgb(14, 124, 221);
+    border-color: rgb(24, 72, 155);
+    color: aliceblue;
+}
+
+
+
+
+@media (min-width: 800px)
+{   
+
+    .filterpop{
+        top: 150px;
+        right: 16px;
+    }
+    .filterpop h2{
+        margin: 12px 0 2px 4px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Blocos de Post */
+
+
+section{
+  
+   display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.post{
+background-color: rgba(235, 235, 235, 10%);
+border:solid 3px rgba(164, 163, 163, 0.2);
+border-radius: 10px;
+
+
+height: 110px;
+width: 45%;
+
+display: flex;
+ flex: 0 0 auto;
+}
+
+
+.post .img{
+    position: relative;
+
+    background-color: rgb(109, 165, 109);
+    width: 45%;
+    max-width: 84px;
+    height: 92%;
+
+    margin: 4px;
+    
+    border-radius: 10px;
+
+}
+
+.post .info{
+
+    width: 55%;
+    height: 96%;
+
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.post a{
+    
+    font-weight: 500;
+    font-size: 14px; 
+    text-decoration: none;
+
+    color:rgb(27, 26, 26); 
+    word-break: break-word;
+    margin: 10px auto 0 auto;
+}
+.post h2, h3{font-size: 12px; color: gray; }
+.post h3{ margin-bottom: 0; }
+
+/* Botão Salvar */
+.postfooter{
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    width: 96%;
+ 
+}
+.post .info button{
+    width: 28px;
+    height: 28px;
+    margin:0 0 0 auto;
+    border: 2px solid gray;
+    border-radius:10px;
+    background-color: rgba(222, 225, 228, 0.4);
+}
+
+
+
+
+
+@media (min-width: 700px)
+{
+.post{
+height: 120px;
+width: 180px;
+}
+
+
+    
+
+
+
+}

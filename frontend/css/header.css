@@ -3,9 +3,10 @@ body{margin: 0;}
 
 header{  
 position: fixed;
-height: 100px;
+height: 72px;
 width: 100%;
 padding: 0 16px;
+
 
 align-content: center;
 
@@ -16,20 +17,21 @@ z-index: 2000;
 }
 
 header img{
-width: 64px;
-height: 64px;
+width: 48px;
+height: 48px;
 }
 
 
 
 
 nav{
+display: none;
 position: fixed;
 height: 100%;
 width: 128px;
 padding: 12px;
 
-margin: 100px 0 0 0;
+margin: 96px 0 0 0;
 
 background-color: rgb(19, 19, 72);
 z-index: 1000;
@@ -54,7 +56,24 @@ width: 90%;
 }
 .createbt a, .navbt a{text-decoration: none; color: aliceblue;}
 
-main{
+main{ padding: 72px 0 0 0}
 
-    padding: 128px 0 0 164px;
+
+
+
+@media (min-width: 800px)
+{   
+    header{height: 96px;}
+    header img{
+width: 64px;
+height: 64px;
+}
+
+
+    nav{display: block;}
+
+    
+/* Encaixe geral*/
+    main{
+    padding: 96px 0 0 152px;}
 }
