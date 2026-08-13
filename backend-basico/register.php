@@ -36,5 +36,12 @@ $stmt->execute([
     $username, $email, $birthdate, $gender, $password_hash,
 ]);
 
-header('Location: ../frontend/login.php');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$_SESSION['user_id'] = $pdo->lastInsertId();
+$_SESSION['role'] = 'reader';
+
+header('Location: ../frontend/home.php');
 exit;

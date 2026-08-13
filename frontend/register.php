@@ -1,5 +1,5 @@
 <?php
-$erroMensagem = '';
+$erroRegister = '';
 
 if (isset($_GET['erro'])) {
     $mensagensDeErro = [
@@ -7,72 +7,28 @@ if (isset($_GET['erro'])) {
         'email_duplicado' => 'Este e-mail já está cadastrado.',
     ];
 
-    $erroMensagem = $mensagensDeErro[$_GET['erro']] ?? 'Ocorreu um erro. Tente novamente.';
+    $erroRegister = $mensagensDeErro[$_GET['erro']] ?? 'Ocorreu um erro. Tente novamente.';
 }
+
+// Acesso direto a esta página: o pop-up já aparece aberto.
+$registerAberto = true;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/modal.css">
 
     <title>Stanza</title>
 </head>
-<body>
-
-<div class="wblock">
-
-<h1>Registrar</h1>
-
-<?php if (!empty($erroMensagem)): ?>
-    <div class="erro">
-        <?= htmlspecialchars($erroMensagem) ?>
-    </div>
-<?php endif; ?>
+<body class="modal-page">
 
 
-<form action="/stanza/backend-basico/register.php" method="POST">
-  
-    <label for="username">Nome</label>
-   
-    <input type="text" id="username" name="username">
-   
-
-
-
-        <select id="gender" name="gender">
-            <option value="">Gênero</option>
-            <option value="male">Masculino</option>
-            <option value="female">Feminino</option>
-            <option value="other">Outro</option>
-        </select>
-
-
-        <input type="date" id="birthdate" name="birthdate">
-
-
-
-    <label for="email">E-mail</label>
-   
-    <input type="text" id="email" name="email">
-
-
-
-
-    <label for="password">Senha</label>
-   
-    <input type="password" id="password" name="password">
-   
-   <button type="submit">Criar conta</button>
-
-</form> 
-
-<a href="eujatenhoconta">Já tenho conta</a>
-
-</div>
-
-
+<?php include __DIR__ . '/partials/modal-register.php'; ?>
 
 
 </body>

@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="css/landing.css">
+   <link rel="stylesheet" href="css/modal.css">
 
-   
+
     <title>Stanza</title>
 </head>
 <body>
@@ -46,7 +50,7 @@
 
         <div class="testinput">
             <label for="test">Lendo</label>
-            <input type="text" id="test" name="test">
+            <input type="text" id="test" name="test" placeholder="Escreva o primeiro verso...">
         </div>
   </div>
 
@@ -61,8 +65,8 @@
 
 
   <div class="bts">
-  <button>Criar conta</button>
-  <a href="login.php">Já tenho acesso</a>
+  <button type="button" data-abrir="modalRegister">Criar conta</button>
+  <a href="login.php" data-abrir="modalLogin">Já tenho acesso</a>
 </div>
 
 
@@ -110,11 +114,17 @@
 
 
 <div class="procurar">
-    <label for="test">Procurar</label>
-    <input type="text" id="test" name="test">
+    <label for="search">Procurar</label>
+    <input type="text" id="search" name="search" placeholder="Busque por título, autor ou tema">
 </div>
 
 
+
+
+<?php include __DIR__ . '/partials/modal-login.php'; ?>
+<?php include __DIR__ . '/partials/modal-register.php'; ?>
+
+<script src="js/modal.js"></script>
 
 
 

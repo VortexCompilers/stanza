@@ -2,329 +2,574 @@
     box-sizing: border-box;
 }
 
+/* ============================================================
+   Tokens — extraídos de catalog.css / header.css
+   Superfícies claras, faixas navy, um único acento azul.
+   ============================================================ */
 :root{
-    --colorPrim:rgb(229, 237, 254);
-    --colorSec:rgb(93, 121, 186);
-    --colorThr:rgb(11, 11, 50);
-    --colorcardgray:rgba(202, 189, 189, 0.15);
+    /* Compatibilidade com o resto do projeto */
+    --colorPrim: #E8EEFB;
+    --colorSec:  #0088FF;
+    --colorThr:  #131348;
+    --colorcardgray: rgba(164, 163, 163, 0.20);
 
+    /* Navy — header e barra de filtros */
+    --navy-900: #131348;   /* header */
+    --navy-700: #1E3372;   /* .filtersec, .navbt */
+    --navy-500: #18489B;   /* borda do radio marcado */
+
+    /* Acento — ações */
+    --blue-500: #0088FF;   /* botão Pesquisar, borda do campo de busca */
+    --blue-600: #0E7CDD;   /* radio marcado / hover */
+    --blue-300: #4DA6FF;   /* acento sobre fundo navy */
+    --cyan-500: #1792BB;   /* .createbt */
+
+    /* Superfícies */
+    --white:  #FFFFFF;
+    --paper:  #F4F7F7;     /* .filterpop, .stsbox */
+    --alice:  #F0F8FF;     /* texto sobre navy */
+
+    /* Texto e linhas */
+    --ink:    #1B1A1A;     /* títulos de post */
+    --muted:  #808080;     /* h2/h3 dos posts */
+    --line:   rgba(164, 163, 163, 0.28);
+    --line-strong: #C9CED6;
+
+    /* Capas (placeholder de catalog.css) */
+    --cover-green: #6DA56D;
+    --cover-blue:  #3E7FC1;
+    --cover-navy:  #2C3E7A;
+
+    --radius-card: 10px;
+    --radius-pill: 18px;
+
+    --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+    --font-sans: system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+html{
+    margin: 0;
+    -webkit-text-size-adjust: 100%;
 }
 
 body{
-background-color:rgb(42, 74, 126);
-margin: 0;
+    margin: 0;
+    background-color: var(--white);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
 }
 
-html{margin: 0;}
+::selection{
+    background-color: rgba(0, 136, 255, 0.20);
+}
 
-/* Landing Page */ 
+:focus-visible{
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+}
 
 
+/* ============================================================
+   Topo — hero
+   Faixa navy chapada, no mesmo tom do header do app.
+   ============================================================ */
 
 .up{
-    height: 320px;
+    height: auto;
+    padding: 32px 18px 36px 18px;
+    background-image: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-700) 100%);
 }
-
 
 .hero{
     position: relative;
-   
     width: 100%;
-    height: 100px;
-    padding: 12px;
-    
+    height: auto;
+    padding: 4px;
 }
 
 .hero h1, .hero h2{
-z-index: 200px;
-color: aliceblue;
-font-family: arial;
-margin: 8px 0;
+    color: var(--alice);
+    font-family: var(--font-display);
+    margin: 8px 0;
 }
-.hero h1{font-weight: normal;font-size: 40px;}
+
+.hero h1{
+    font-weight: 400;
+    font-size: clamp(36px, 11vw, 46px);
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+}
+
 .hero span{
-    font-weight: bold;
+    font-weight: 700;
     font-style: italic;
+    color: var(--blue-300);
 }
 
 .hero h2{
-    font-size: 18px; 
-    font-weight: 300;
-    font-style:italic ;
-    padding: 8px;
-   margin-top:36px ;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: rgba(240, 248, 255, 0.72);
+    max-width: 36ch;
+    padding: 0;
+    margin-top: 20px;
 }
 
 
-/* Mini Card */
+/* ============================================================
+   Mini cards — prévia de conteúdo
+   ============================================================ */
+
+.cards{
+    display: flex;
+    width: 100%;
+    margin: 30px 0 0 0;
+}
+
 .minicard{
     display: flex;
-    background-color: var(--colorcardgray);
     width: 160px;
     height: 90px;
-    border-radius: 8px;
-    padding: 3px;
+    padding: 6px;
     margin: 6px;
+    gap: 8px;
+
+    background-color: rgba(240, 248, 255, 0.07);
+    border: 1px solid rgba(240, 248, 255, 0.16);
+    border-radius: var(--radius-card);
 }
+
 .minicard .pic{
-background-color: var(--colorcardgray);
-border-radius: 10px;
-width: 40%;
-height: 96%;
+    width: 40%;
+    height: 100%;
+    border-radius: 6px;
+    background-color: var(--cover-green);
+}
+
+.minicard:nth-child(2) .pic{
+    background-color: var(--cover-blue);
 }
 
 .minicard .inf{
-width: 60%;
-height: 96%;
+    width: 60%;
+    height: 100%;
+    padding-top: 4px;
+    font-size: 0; /* neutraliza o espaço do <br> entre as linhas */
 }
+
+/* linhas do esqueleto de carregamento */
 .minicard h1{
-    font-size: 18px;
-    color: var(--colorcardgray);
-    background-color:var(--colorcardgray);
-    height: 16px;
-    margin: 6px 6px 1px 6px;
-    border-radius: 4px;
+    font-size: 0;
+    color: transparent;
+    height: 9px;
+    margin: 0 4px 8px 0;
+    border-radius: 3px;
+    background-color: rgba(240, 248, 255, 0.22);
 }
 
-.cards{ 
-display: flex;
-    width: 100%;
-    z-index: 100;
-    margin: 36px 0 0px 0;
-}
+.minicard h1:nth-of-type(2){ width: 72%; background-color: rgba(240, 248, 255, 0.16); }
+.minicard h1:nth-of-type(3){ width: 46%; margin-top: 14px; background-color: rgba(240, 248, 255, 0.16); }
 
 
+/* ============================================================
+   Campo de demonstração (Lendo / Escrevendo)
+   ============================================================ */
 
-
-
-/* Input Test */
 .testinput{
     width: 100%;
-    padding: 12px;
+    padding: 16px 10px 4px 10px;
     align-content: center;
 }
+
 .testinput label{
-display: block;
-color: aliceblue;
-font-family: arial;
-font-size: 18px;
-margin: 2px 6px;
+    display: inline-block;
+    margin: 0 0 8px 2px;
+
+    color: rgba(240, 248, 255, 0.85);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
+
+.testinput label::before{
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 7px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: var(--blue-300);
+}
+
 .testinput input{
-    width: 90%;
-    font-family: 'Times New Roman', Times, serif;
-    border:2px solid rgb(23, 23, 96);
-    
+    width: 100%;
+    padding: 9px 14px;
+
+    color: var(--alice);
+    font-family: var(--font-sans);
+    font-size: 15px;
+
+    background-color: rgba(240, 248, 255, 0.08);
+    border: 2px solid rgba(240, 248, 255, 0.20);
+    border-radius: var(--radius-pill);
+    transition: border-color 160ms ease, background-color 160ms ease;
 }
+
+.testinput input::placeholder{
+    color: rgba(240, 248, 255, 0.45);
+}
+
+.testinput input:focus{
+    outline: none;
+    background-color: rgba(240, 248, 255, 0.12);
+    border-color: var(--blue-500);
+}
+
+/* troca de rótulo original preservada */
 .testinput:has(input:focus) label{
-      transition: 200ms;
+    transition: 200ms;
     font-size: 0;
 }
 
 .testinput:has(input:focus) label::after{
     content: "Escrevendo";
-    font-size: 18px;
+    font-size: 13px;
 }
 
 
+/* ============================================================
+   Acesso — botões
+   ============================================================ */
 
-
-
-
-/* Acesso Botões */
 .bts{
-     width: 100%;
-    height: 180px;
-    padding: 12px;
+    width: 100%;
+    height: auto;
+    padding: 36px 20px 40px 20px;
     align-content: center;
-    background-color: var(--colorSec);
+    text-align: center;
+    background-color: var(--white);
 }
 
 .bts button{
     display: block;
     justify-self: center;
-    margin: 10px 0;
+    margin: 0 auto;
+    padding: 13px 34px;
 
-    background-color: rgb(23, 40, 96);
-    color:aliceblue;
-    font-size: 18px;
-    font-family: arial;
-    font-weight: bold;
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 700;
+
+    background-color: var(--blue-500);
     border: none;
-border-radius: 16px;
-    padding: 11px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 160ms ease;
 }
+
+.bts button:hover{
+    background-color: var(--blue-600);
+}
+
 .bts a{
-    margin: 16px 0 ;
-    color: aliceblue;
     display: block;
     justify-self: center;
+    margin: 18px auto 0 auto;
+
+    color: var(--navy-700);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 600;
     text-decoration: none;
-    font-family: arial;
-    font-size: 16px;
-    font-weight: bold;
+    text-underline-offset: 4px;
+}
+
+.bts a:hover{
+    color: var(--blue-600);
+    text-decoration: underline;
 }
 
 
+/* ============================================================
+   Explorar
+   ============================================================ */
 
-
-
-
-
-
-
-/* Explorar */
-
-.explore {
+.explore{
     width: 100%;
-    height: 200px;
-    padding: 10px;
-    background-color: var(--colorPrim);
+    height: auto;
+    padding: 24px 0 30px 0;
+    background-color: var(--paper);
+    border-top: 1px solid var(--line);
 }
 
-.explore  h1{
-    margin: 6px 2px;
- color: rgb(6, 10, 36);
-font-family: arial;
-font-size: 22px;
-}
+.explore h1{
+    margin: 0 18px 2px 18px;
 
-/* Blocos de Post */
-
-.post{
-background-color: rgba(235, 235, 235, 10%);
-border:solid 3px rgba(164, 163, 163, 0.2);
-border-radius: 10px;
-
-height: 130px;
-width: 220px;
-
-display: flex;
- flex: 0 0 auto;
-
-
+    color: var(--navy-900);
+    font-family: var(--font-display);
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 
-.post .img{
-    position: relative;
-
-    background-color: rgb(109, 165, 109);
-    width: 45%;
-    height: 92%;
-
-    margin: 4px;
-    
-    border-radius: 10px;
-
-}
-
-.post .info{
-
-    width: 55%;
-    height: 96%;
-
-    display: flex;
-    flex-direction: column;
-    
-}
-
-.post a{
-    
-    font-weight: 500;
-    font-size: 14px; 
-    text-decoration: none;
-
-    color:rgb(27, 26, 26); 
-    word-break: break-word;
-    margin: 10px auto 0 auto;
-}
-.post h2{font-size: 12px; color: gray; }
+/* Blocos de post */
 
 .carousel{
-    width: 100%;
-    margin:6px;
     display: flex;
-    gap: 8px;
+    gap: 10px;
+    width: 100%;
+    margin: 14px 0 0 0;
+    padding: 2px 18px 10px 18px;
 
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
 }
 
+.carousel::-webkit-scrollbar{
+    height: 6px;
+}
+
+.carousel::-webkit-scrollbar-thumb{
+    background-color: var(--line-strong);
+    border-radius: 999px;
+}
+
+.post{
+    display: flex;
+    flex: 0 0 auto;
+    height: 130px;
+    width: 220px;
+    padding: 4px;
+    gap: 8px;
+
+    background-color: var(--white);
+    border: 2px solid var(--line);
+    border-radius: var(--radius-card);
+    scroll-snap-align: start;
+    transition: border-color 160ms ease;
+}
+
+.post:hover{
+    border-color: var(--blue-500);
+}
+
+.post .img{
+    position: relative;
+    width: 45%;
+    height: 100%;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--cover-green);
+}
+
+.post:nth-child(2) .img{ background-color: var(--cover-blue); }
+.post:nth-child(3) .img{ background-color: var(--cover-navy); }
+
+.post .info{
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+    padding: 6px 4px;
+}
+
+.post a{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.post a:hover{
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.post h2{
+    margin: 6px 0 0 0;
+    color: var(--muted);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+/* ============================================================
+   Procurar — faixa final
+   ============================================================ */
 
 .procurar{
-  width: 100%;
-    height: 40px;
-    padding: 12px;
-
-    background-color: var(--colorSec);
-    font-family: arial;
-text-align: center;
-    color: aliceblue;
-}
-.procurar input{
-    color: black;
-}
-
-
-
-
-
-@media (min-width: 800px)
-{   .up{
-    display: flex;
-    padding: 42px 0;
     width: 100%;
-    height: 300px;
+    height: auto;
+    padding: 26px 20px 32px 20px;
+
+    background-color: var(--navy-700);
+    color: var(--alice);
+    font-family: var(--font-sans);
+    text-align: center;
 }
-    
+
+.procurar label{
+    display: block;
+    margin-bottom: 12px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.procurar input{
+    width: 100%;
+    max-width: 420px;
+    padding: 9px 16px;
+
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+
+    background-color: var(--white);
+    border: 2px solid var(--blue-500);
+    border-radius: var(--radius-pill);
+}
+
+.procurar input::placeholder{
+    color: var(--muted);
+}
+
+.procurar input:focus{
+    outline: none;
+    border-color: var(--blue-300);
+}
+
+
+/* ============================================================
+   Desktop
+   ============================================================ */
+
+@media (min-width: 800px){
+    .up{
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+        height: auto;
+        padding: 60px 48px 64px 48px;
+    }
+
     .hero{
         width: 50%;
+        max-width: 620px;
+        padding: 0;
     }
-    .demos{width: 50%;}
 
     .hero h1, .hero h2{
-        margin: 6px 32px;
+        margin: 6px 0;
     }
-    .hero h1{font-size: 48px;margin:4px 32px;}
 
-    .minicard{ 
-    margin-left: 36px;
-    width: 240px;
-    height: 140px;
-    
-        }
+    .hero h1{
+        font-size: clamp(44px, 4vw, 56px);
+        margin: 2px 0;
+    }
+
+    .hero h2{
+        font-size: 18px;
+        margin-top: 24px;
+    }
+
+    .demos{
+        width: 50%;
+    }
+
+    .cards{
+        margin-top: 0;
+    }
+
+    .minicard{
+        width: 240px;
+        height: 140px;
+        padding: 10px;
+        margin: 6px 8px;
+    }
+
+    .minicard h1{
+        height: 11px;
+        margin-bottom: 11px;
+    }
 
     .testinput{
-        margin: -25px 0 0 0 ;
-        width: 400px;
+        width: 100%;
+        max-width: 400px;
+        margin: 18px 0 0 8px;
+        padding: 0;
     }
 
     .bts{
-        height: 300px;
+        padding: 56px 20px 60px 20px;
     }
+
     .bts button{
-        padding: 18px 32px;
-        border-radius: 25px;
+        padding: 15px 40px;
+        font-size: 17px;
     }
-
-
 
     .explore{
-        height: 280px;
+        padding: 32px 0 40px 0;
     }
+
     .explore h1{
         font-size: 28px;
-        margin: 8px 18px;
+        margin: 0 48px 2px 48px;
     }
 
     .carousel{
-        margin: 18px;
+        margin: 18px 0 0 0;
+        padding: 2px 48px 12px 48px;
     }
 
-    .post {
-height: 160px;
-width: 260px;
+    .post{
+        height: 160px;
+        width: 260px;
+        padding: 6px;
+    }
+
+    .procurar{
+        padding: 40px 20px 48px 20px;
+    }
+
+    .procurar label{
+        font-size: 24px;
+    }
+}
+
+
+/* ============================================================
+   Acessibilidade — movimento reduzido
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
     }
 }
