@@ -17,6 +17,6 @@ htmlcov/
 
 CLAUDE.md
 
-/professor-exemplos-conteudo/
+exemplo-professor/
 
-/backend-php/
+.claude/
