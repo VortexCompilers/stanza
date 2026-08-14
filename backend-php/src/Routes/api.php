@@ -1,32 +1,69 @@
 <?php
 
-require_once 'backend-php/src/Services/MlClient.php';
+declare(strict_types=1);
 
-header('Content-Type: application/json');
+use App\Models\Text;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\App as SlimApp;
 
-$acao = $_POST['acao'] ?? null;
+require_once __DIR__ . '/../Services/MlClient.php';
 
-try {
-    if ($acao === 'adicionar') {
-        $id = (int) $_POST['id'];
-        $texto = $_POST['texto'];
+return function (SlimApp $app) {
+    $app->post('/texts', function (Request $request, Response $response) {
+        $dados = $request->getParsedBody();
 
-        $resultado = mlAdicionar($id, $texto);
-        echo json_encode($resultado);
+        $text = Text::create([
+            'author_id' => (int) $dados['author_id'],
+            'title' => $dados['title'],
+            'body' => $dados['body'],
+            'description' => $dados['description'],
+            'role' => $dados['role'],
+            'cover_image' => $dados['cover_image'] ?? null,
+            'visibility' => $dados['visibility'] ?? 'public',
+        ]);
 
-    } elseif ($acao === 'buscar') {
-        $query = $_POST['query'];
-        $k = isset($_POST['k']) ? (int) $_POST['k'] : 5;
+        try {
+            mlAdicionar($text->id, $text->body);
+        } catch (Exception $e) {
+            $response->getBody()->write(json_encode([
+                'erro' => 'Texto salvo, mas falhou ao indexar na API de ML: ' . $e->getMessage(),
+                'text' => $text,
+            ]));
+            return $response->withHeader('Content-Type', 'application/json')->withStatus(502);
+        }
 
-        $resultado = mlBuscar($query, $k);
-        echo json_encode($resultado);
+        $response->getBody()->write(json_encode(['text' => $text]));
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(201);
+    });
 
-    } else {
-        http_response_code(400);
-        echo json_encode(['erro' => 'Ação inválida']);
-    }
+    $app->post('/search', function (Request $request, Response $response) {
+        $dados = $request->getParsedBody();
+        $query = $dados['query'] ?? '';
+        $k = isset($dados['k']) ? (int) $dados['k'] : 5;
 
-} catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode(['erro' => $e->getMessage()]);
-}
+        try {
+            $resultadoMl = mlBuscar($query, $k);
+        } catch (Exception $e) {
+            $response->getBody()->write(json_encode(['erro' => $e->getMessage()]));
+            return $response->withHeader('Content-Type', 'application/json')->withStatus(502);
+        }
+
+        $ids = array_column($resultadoMl['results'] ?? [], 'id');
+        $scoresPorId = array_column($resultadoMl['results'] ?? [], 'score', 'id');
+
+        $textos = Text::whereIn('id', $ids)->get()->keyBy('id');
+
+        $resultados = [];
+        foreach ($ids as $id) {
+            if (isset($textos[$id])) {
+                $texto = $textos[$id]->toArray();
+                $texto['score'] = $scoresPorId[$id];
+                $resultados[] = $texto;
+            }
+        }
+
+        $response->getBody()->write(json_encode(['results' => $resultados]));
+        return $response->withHeader('Content-Type', 'application/json');
+    });
+};

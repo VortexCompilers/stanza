@@ -18,7 +18,8 @@ function mlBuscar(string $query, int $k = 5): array
 
 function mlChamarApi(string $endpoint, array $dados): array
 {
-    $url = "http://127.0.0.1:8000" . $endpoint;
+    $baseUrl = $_ENV['ML_ENGINE_URL'] ?? 'http://127.0.0.1:8000';
+    $url = $baseUrl . $endpoint;
 
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);

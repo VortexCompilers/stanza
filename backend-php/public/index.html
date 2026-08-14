@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>StanzAI · Painel de teste</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --panel-border: #262b36;
+    --text: #e8eaef;
+    --muted: #9aa3b2;
+    --accent: #7c5cff;
+    --accent-hover: #9179ff;
+    --ok: #3ddc97;
+    --err: #ff6b6b;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, #1c2030 0%, var(--bg) 60%);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+  }
+  header {
+    max-width: 880px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 6px;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+  }
+  header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  .status-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    display: inline-block; margin-right: 6px;
+    background: var(--muted);
+  }
+  .dot.up { background: var(--ok); }
+  .dot.down { background: var(--err); }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 760px) {
+    main { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .card h2 {
+    margin: 0 0 4px;
+    font-size: 17px;
+  }
+  .card .hint {
+    margin: 0 0 18px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin: 14px 0 6px;
+  }
+  label:first-of-type { margin-top: 0; }
+  input, textarea, select {
+    width: 100%;
+    background: #0d0f14;
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .15s;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 90px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  button {
+    margin-top: 18px;
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  button:hover { background: var(--accent-hover); }
+  button:disabled { background: #3a3d4a; cursor: wait; }
+
+  .result {
+    margin-top: 16px;
+    font-size: 13px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border-radius: 8px;
+    padding: 12px;
+    display: none;
+  }
+  .result.show { display: block; }
+  .result.ok { background: rgba(61, 220, 151, 0.08); border: 1px solid rgba(61, 220, 151, 0.3); color: #b8f5db; }
+  .result.err { background: rgba(255, 107, 107, 0.08); border: 1px solid rgba(255, 107, 107, 0.3); color: #ffc2c2; }
+
+  .search-card { grid-column: 1 / -1; }
+  .results-list { margin-top: 16px; display: grid; gap: 10px; }
+  .result-item {
+    background: #0d0f14;
+    border: 1px solid var(--panel-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .result-item .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .result-item .title { font-weight: 600; font-size: 14px; }
+  .result-item .score { font-size: 12px; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .result-item .body { margin-top: 6px; font-size: 13px; color: var(--muted); line-height: 1.4; }
+  .empty { color: var(--muted); font-size: 13px; margin-top: 16px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>StanzAI · Painel de teste</h1>
+  <p>Interface simples para testar os endpoints <code>/texts</code> (add) e <code>/search</code> da API PHP, que por sua vez conversa com a API Python (FastAPI) de embeddings.</p>
+  <div class="status-row">
+    <span><span id="dot-php" class="dot"></span>PHP (Slim)</span>
+    <span><span id="dot-ml" class="dot"></span>ML engine (FastAPI)</span>
+  </div>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Adicionar texto</h2>
+    <p class="hint">Salva na tabela <code>texts</code> e indexa o embedding na API Python.</p>
+
+    <label for="add-title">Título</label>
+    <input id="add-title" type="text" placeholder="Poema do vento">
+
+    <label for="add-body">Corpo do texto</label>
+    <textarea id="add-body" placeholder="O vento sussurra entre as folhas..."></textarea>
+
+    <div class="row2">
+      <div>
+        <label for="add-author">Author ID</label>
+        <input id="add-author" type="number" value="1" min="1">
+      </div>
+      <div>
+        <label for="add-role">Tipo</label>
+        <select id="add-role">
+          <option value="poesia">poesia</option>
+          <option value="livro">livro</option>
+          <option value="conto">conto</option>
+        </select>
+      </div>
+    </div>
+
+    <label for="add-desc">Descrição curta</label>
+    <input id="add-desc" type="text" placeholder="um poema curto sobre outono">
+
+    <button id="add-btn">Adicionar e indexar</button>
+    <div id="add-result" class="result"></div>
+  </section>
+
+  <section class="card">
+    <h2>Buscar por similaridade</h2>
+    <p class="hint">Gera o embedding da busca na API Python e traz os textos correspondentes do banco.</p>
+
+    <label for="search-query">Consulta</label>
+    <textarea id="search-query" placeholder="vento nas folhas do outono"></textarea>
+
+    <label for="search-k">Quantidade de resultados (k)</label>
+    <input id="search-k" type="number" value="5" min="1" max="50">
+
+    <button id="search-btn">Buscar</button>
+    <div id="search-result" class="result"></div>
+  </section>
+
+  <section class="card search-card">
+    <h2>Resultados</h2>
+    <div id="results-list" class="results-list"></div>
+    <p id="results-empty" class="empty">Nenhuma busca feita ainda.</p>
+  </section>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+
+async function checkHealth() {
+  // PHP: se a API responde qualquer coisa em /search com POST vazio, consideramos "up"
+  fetch('/search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: '', k: 1 }) })
+    .then(r => setDot('dot-php', r.status < 500))
+    .catch(() => setDot('dot-php', false));
+
+  fetch('http://127.0.0.1:8000/docs')
+    .then(r => setDot('dot-ml', r.ok))
+    .catch(() => setDot('dot-ml', false));
+}
+
+function setDot(id, up) {
+  const el = $(id);
+  el.classList.remove('up', 'down');
+  el.classList.add(up ? 'up' : 'down');
+}
+
+function showResult(el, ok, text) {
+  el.textContent = text;
+  el.className = 'result show ' + (ok ? 'ok' : 'err');
+}
+
+$('add-btn').addEventListener('click', async () => {
+  const btn = $('add-btn');
+  const el = $('add-result');
+  const payload = {
+    author_id: Number($('add-author').value) || 1,
+    title: $('add-title').value.trim(),
+    body: $('add-body').value.trim(),
+    description: $('add-desc').value.trim() || '(sem descrição)',
+    role: $('add-role').value,
+  };
+
+  if (!payload.title || !payload.body) {
+    showResult(el, false, 'Preencha título e corpo do texto.');
+    return;
+  }
+
+  btn.disabled = true;
+  el.className = 'result';
+  try {
+    const res = await fetch('/texts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    showResult(el, res.ok, JSON.stringify(data, null, 2));
+    if (res.ok) {
+      $('add-title').value = '';
+      $('add-body').value = '';
+      $('add-desc').value = '';
+    }
+  } catch (e) {
+    showResult(el, false, 'Falha de conexão: ' + e.message);
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+$('search-btn').addEventListener('click', async () => {
+  const btn = $('search-btn');
+  const el = $('search-result');
+  const query = $('search-query').value.trim();
+  const k = Number($('search-k').value) || 5;
+
+  if (!query) {
+    showResult(el, false, 'Digite algo para buscar.');
+    return;
+  }
+
+  btn.disabled = true;
+  el.className = 'result';
+  try {
+    const res = await fetch('/search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query, k }),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      showResult(el, false, JSON.stringify(data, null, 2));
+      renderResults([]);
+      return;
+    }
+
+    el.className = 'result';
+    renderResults(data.results || []);
+  } catch (e) {
+    showResult(el, false, 'Falha de conexão: ' + e.message);
+  } finally {
+    btn.disabled = false;
+  }
+});
+
+function renderResults(results) {
+  const list = $('results-list');
+  const empty = $('results-empty');
+  list.innerHTML = '';
+
+  if (!results.length) {
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
+
+  for (const item of results) {
+    const div = document.createElement('div');
+    div.className = 'result-item';
+    div.innerHTML = `
+      <div class="top">
+        <span class="title">${escapeHtml(item.title || ('#' + item.id))}</span>
+        <span class="score">score ${Number(item.score).toFixed(4)}</span>
+      </div>
+      <div class="body">${escapeHtml((item.body || '').slice(0, 220))}${(item.body || '').length > 220 ? '…' : ''}</div>
+    `;
+    list.appendChild(div);
+  }
+}
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+checkHealth();
+</script>
+</body>
+</html>

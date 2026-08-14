@@ -1,0 +1,8 @@
+.venv
+__pycache__
+*.pyc
+tests
+index_cache.faiss
+poetry.lock
+.pytest_cache
+htmlcov
