@@ -20,7 +20,7 @@
 <main>
 
 
-        <form action=" ddd ">
+        <form action="../backend/create.php">
 
         <div class="imgblock">
 
@@ -28,7 +28,7 @@
                 <input 
                 type="file" 
                 id="image-picker" 
-                name="imageUpload" 
+                name="cover_image" 
 
                 accept="image/png, image/jpeg, image/webp" 
                 />
@@ -58,7 +58,7 @@
                 <input 
                 type="file" 
                 id="image-picker" 
-                name="imageUpload" 
+                name="cover_image" 
 
                 accept="image/png, image/jpeg, image/webp" 
                 />
@@ -84,7 +84,7 @@
                     
 
             <label for="language">Idioma</label>
-                <select id="language" name="langugage">
+                <select id="language" name="language">
                     <option value="">Idioma</option>
                     <option value="enus">English</option>
                     <option value="ptbr">Português</option>
@@ -96,10 +96,10 @@
 
               <label for="visibility">Visibilidade</label>
                 <div class="visibt">
-            <input type="radio" name="visibility" id="public" checked>
+            <input type="radio" name="visibility" id="public" value="public" checked>
             <label for="public">Público</label>
 
-            <input type="radio" name="visibility" id="private">
+            <input type="radio" name="visibility" id="private" value="private">
             <label for="private">Privado</label>
                 
         </div>

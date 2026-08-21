@@ -43,5 +43,5 @@ if (session_status() === PHP_SESSION_NONE) {
 $_SESSION['user_id'] = $pdo->lastInsertId();
 $_SESSION['role'] = 'reader';
 
-header('Location: ../frontend/home.php');
+header('Location: /stanza/frontend/home.php');
 exit;

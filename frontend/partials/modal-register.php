@@ -10,7 +10,7 @@ $registerAberto = $registerAberto ?? false;
 ?>
 <div class="modal <?= $registerAberto ? 'is-open' : '' ?>" id="modalRegister" role="dialog" aria-modal="true" aria-labelledby="tituloRegister">
 
-    <form class="modal-card" action="/stanza/backend-basico/register.php" method="POST">
+    <form class="modal-card" action="/stanza/backend/register.php" method="POST">
 
         <div class="modal-head">
             <h1 id="tituloRegister">Criar conta</h1>

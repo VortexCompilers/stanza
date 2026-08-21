@@ -10,7 +10,7 @@ $loginAberto = $loginAberto ?? false;
 ?>
 <div class="modal <?= $loginAberto ? 'is-open' : '' ?>" id="modalLogin" role="dialog" aria-modal="true" aria-labelledby="tituloLogin">
 
-    <form class="modal-card" action="/stanza/backend-basico/login.php" method="POST">
+    <form class="modal-card" action="/stanza/backend/login.php" method="POST">
 
         <div class="modal-head">
             <h1 id="tituloLogin">Conectar</h1>

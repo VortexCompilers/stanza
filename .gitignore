@@ -20,3 +20,7 @@ CLAUDE.md
 exemplo-professor/
 
 .claude/
+
+# Capas enviadas pelos usuários
+frontend/img/uploads/*
+!frontend/img/uploads/.gitkeep
