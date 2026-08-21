@@ -12,7 +12,29 @@ margin: 0;
 
 
 
+/* Pesquisar Mobile */
 
+.search{
+    width: auto;
+    margin: 16px 10px;
+}
+
+input[type="search"]{
+    width: 84%;
+    height: 32px;
+    padding: 0 8px;
+    border: 2px solid rgb(0, 136, 255);
+    border-radius: 18px;
+}
+
+button[type="submit"]{
+        width: 10%;
+      height: 32px;
+      font-size: 14px;
+    background-color:  rgb(0, 136, 255);
+    border: 0px;
+    border-radius: 18px;
+}
 
 /* Blocos de Post */
 
@@ -98,6 +120,7 @@ h1{
 }
 
 .carousel{
+    max-width: 100%;
     margin: 2px 12px 24px 12px;
 
     display: flex;

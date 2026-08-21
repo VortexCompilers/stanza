@@ -19,6 +19,12 @@
 
 <main>
 
+<form action="searchh" class="search">
+     <input type="search" placeholder="Pesquisar.." name="search">
+       <button type="submit">&#x1F50D</button>
+    </form>
+
+
         <h1>Vistos recentemente</h1>
 
         <div class="carousel"> 

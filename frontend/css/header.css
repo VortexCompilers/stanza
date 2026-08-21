@@ -1,3 +1,4 @@
+
 body{margin: 0;}
 
 
@@ -28,8 +29,8 @@ nav{
 display: none;
 position: fixed;
 height: 100%;
-width: 128px;
-padding: 12px;
+width: 154px;
+
 
 margin: 96px 0 0 0;
 
@@ -38,9 +39,9 @@ z-index: 1000;
 }
 
 .createbt, .navbt{
-width: 90%;
+width: 80%;
     height: 24px;
-    margin: 10px 0;
+    margin: 10px 12px;
     padding: 6px;
 
     align-content: center;
@@ -56,24 +57,30 @@ width: 90%;
 }
 .createbt a, .navbt a{text-decoration: none; color: aliceblue;}
 
-main{ padding: 72px 0 0 0}
+main{ 
+    
+    padding: 72px 0 0 0;
+    width:100%;
+}
 
 
 
 
 @media (min-width: 800px)
 {   
-    header{height: 96px;}
-    header img{
-width: 64px;
-height: 64px;
-}
+            header{height: 96px;}
+            header img{
+        width: 64px;
+        height: 64px;
+        }
 
 
-    nav{display: block;}
+            nav{display: block;}
 
-    
-/* Encaixe geral*/
-    main{
-    padding: 96px 0 0 152px;}
+            
+        /* Encaixe geral*/
+            main{
+                box-sizing: border-box;
+                width: 100%;
+            padding: 96px 0 0 154px;}
 }

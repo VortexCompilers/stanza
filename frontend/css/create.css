@@ -16,6 +16,7 @@ background-color: var(--colorSec);
 
 form{
    padding: 2px;
+
 }
 
 
@@ -145,8 +146,8 @@ background-color: rgb(223, 230, 236);
 border: 2px solid rgb(168, 171, 174);
 border-radius: 10px;
 
-width: 280px;
-height:300px ;
+width: 34%;
+height:280px;
 
 margin: 0 0 0 400px;
 padding: 6px;
@@ -156,7 +157,7 @@ padding: 6px;
 @media (min-width: 800px){
     form{
         display: flex;
-        justify-content: end;
+        margin: 12px 0;
     }
 
     .mbimg{
