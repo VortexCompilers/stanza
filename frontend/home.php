@@ -21,7 +21,7 @@
 
 <form action="searchh" class="search">
      <input type="search" placeholder="Pesquisar.." name="search">
-       <button type="submit">&#x1F50D</button>
+       <button type="submit">Procurar</button>
     </form>
 
 
