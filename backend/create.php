@@ -12,9 +12,10 @@ if (empty($_SESSION['user_id'])) {
 }
 
 $author_id = $_SESSION['user_id'];
-$title = $_POST['title'];
-$description = $_POST['desc'];
-$category = $_POST['category'];
+$title = $_POST['title'] ?? '';
+$description = $_POST['desc'] ?? '';
+$category = $_POST['category'] ?? '';
+$body = ''; // o corpo é escrito na tela de edição, logo depois deste cadastro
 $cover_image = null; // capa é opcional (DEFAULT NULL no schema)
 
 // VALIDAR A COVER IMAGE
@@ -47,10 +48,14 @@ if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_
     $cover_image = $nomeArquivo; // só isso vai pro INSERT
 }
 
-$visibility = $_POST['visibility'];
-$language = $_POST['language'];
+$visibility = $_POST['visibility'] ?? '';
 
-if (empty($title) ||empty($description) || empty($category) || empty($visibility)) {
+$language = $_POST['language'] ?? '';
+if ($language === '') {
+    $language = null;
+}
+
+if (empty($title) || empty($description) || empty($category) || empty($visibility)) {
     header('Location: ../frontend/create.php?erro=campo_vazio');
     exit;
 }
@@ -65,5 +70,5 @@ try {
     exit;
 }
 
-header('Location: ../frontend/read.php?id=' . $pdo->lastInsertId());
+header('Location: ../frontend/edit.php?id=' . $pdo->lastInsertId());
 exit;

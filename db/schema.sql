@@ -28,7 +28,7 @@ CREATE TABLE texts (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     read_count INT DEFAULT 0,
 	description VARCHAR(255) NOT NULL,
-	category ENUM('livro', 'poesia', 'conto') NOT NULL,
+	category ENUM('book', 'poetry', 'story') NOT NULL,
     cover_image VARCHAR(255) DEFAULT NULL,
     visibility ENUM('public', 'private') NOT NULL DEFAULT 'public',
     language ENUM('enus', 'ptbr', 'es'),

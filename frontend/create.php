@@ -20,7 +20,7 @@
 <main>
 
 
-        <form action="../backend/create.php">
+        <form action="../backend/create.php" method="POST" enctype="multipart/form-data">
 
         <div class="imgblock">
 
