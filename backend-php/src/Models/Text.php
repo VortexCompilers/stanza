@@ -17,7 +17,7 @@ class Text extends Model
         'title',
         'body',
         'description',
-        'role',
+        'category',
         'cover_image',
         'visibility',
     ];

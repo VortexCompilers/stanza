@@ -18,7 +18,7 @@ return function (SlimApp $app) {
             'title' => $dados['title'],
             'body' => $dados['body'],
             'description' => $dados['description'],
-            'role' => $dados['role'],
+            'category' => $dados['category'],
             'cover_image' => $dados['cover_image'] ?? null,
             'visibility' => $dados['visibility'] ?? 'public',
         ]);

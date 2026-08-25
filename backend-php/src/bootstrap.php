@@ -31,6 +31,10 @@ function createApp(): SlimApp
     bootDatabase();
 
     $app = AppFactory::create();
+    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+    $app->setBasePath(
+        rtrim(str_replace('/index.php', '', $scriptName), '/')
+    );
     $app->addBodyParsingMiddleware();
     $app->addRoutingMiddleware();
     $app->addErrorMiddleware((bool) ($_ENV['APP_DEBUG'] ?? false), true, true);

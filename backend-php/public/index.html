@@ -179,11 +179,11 @@
         <input id="add-author" type="number" value="1" min="1">
       </div>
       <div>
-        <label for="add-role">Tipo</label>
-        <select id="add-role">
-          <option value="poesia">poesia</option>
-          <option value="livro">livro</option>
-          <option value="conto">conto</option>
+        <label for="add-category">Tipo</label>
+        <select id="add-category">
+          <option value="poetry">poesia</option>
+          <option value="book">livro</option>
+          <option value="story">conto</option>
         </select>
       </div>
     </div>
@@ -221,7 +221,7 @@ const $ = (id) => document.getElementById(id);
 
 async function checkHealth() {
   // PHP: se a API responde qualquer coisa em /search com POST vazio, consideramos "up"
-  fetch('/search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: '', k: 1 }) })
+  fetch('search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: '', k: 1 }) })
     .then(r => setDot('dot-php', r.status < 500))
     .catch(() => setDot('dot-php', false));
 
@@ -249,7 +249,7 @@ $('add-btn').addEventListener('click', async () => {
     title: $('add-title').value.trim(),
     body: $('add-body').value.trim(),
     description: $('add-desc').value.trim() || '(sem descrição)',
-    role: $('add-role').value,
+    category: $('add-category').value,
   };
 
   if (!payload.title || !payload.body) {
@@ -260,7 +260,7 @@ $('add-btn').addEventListener('click', async () => {
   btn.disabled = true;
   el.className = 'result';
   try {
-    const res = await fetch('/texts', {
+    const res = await fetch('texts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
@@ -293,7 +293,7 @@ $('search-btn').addEventListener('click', async () => {
   btn.disabled = true;
   el.className = 'result';
   try {
-    const res = await fetch('/search', {
+    const res = await fetch('search', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query, k }),
