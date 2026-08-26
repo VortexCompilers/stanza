@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../backend/read.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,7 +12,6 @@
 </head>
 
 <body style="background-color: rgba(25, 22, 109, 0.94);">
-
 
 <!-- Barra Web -->
 
@@ -25,12 +27,12 @@
 
                 <div class="rinfo">
 
-                    <h2>Título</h2>
-                    <h3>Categoria</h3>
+                    <h2><?= htmlspecialchars($text['title'])?></h2>
+                    <h3><?= htmlspecialchars($text['category'])?></h3>
 
             
                     <div class="dw">
-                    <h3>2233 views</h3>
+                    <h3><?= htmlspecialchars($text['read_count'])?></h3>
                     <button>&#9661</button>
                       </div>
                 </div>
@@ -49,7 +51,7 @@
 
         <div class="rdesc">
 
-            Descrição é o tipo de texto que fornece características sobre algo ou alguém. Assim, a descrição propicia à pessoa que a lê ou a que ouve imaginar com facilidade o que está sendo descrito - objetos, lugares, acontecimentos ou pessoas, por exemplo.
+            <?= htmlspecialchars($text['description'])?>
 
         </div>
 
@@ -80,7 +82,7 @@
 
     <form action="  ALGUMA ACAO  ">
     <label style="display:none;" for="content">Escrever</label>
-    <textarea id="content" name="content" readonly>Você nao pode mudar esse texto</textarea>
+    <textarea id="content" name="content" readonly><?= htmlspecialchars($text['body'])?></textarea>
 
 
 

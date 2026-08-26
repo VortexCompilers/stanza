@@ -98,7 +98,7 @@ Uma coisa dele que **vale copiar**: o `onclick="return confirm(...)"` no link de
 
 **A autenticação — uma das 4 exigências — já está essencialmente entregue.** Falta só o item 5.2 abaixo (tornar a sessão *visível*).
 
-### 2.2 Os três bugs que travam o CREATE
+### 2.2 Os três bugs que travam o CREATE (CORRIGIDOS!!!!!!!!!)
 
 O commit `a838d4a` ("backend: add CREATE logic") não foi testado ponta a ponta. Três defeitos impedem qualquer inserção:
 
