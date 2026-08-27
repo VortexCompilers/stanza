@@ -1,4 +1,4 @@
-<?php $id = (int) ($_GET['id'] ?? 0); ?>
+<?php require_once __DIR__ . '/../backend/edit.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -33,13 +33,18 @@
        <button type="button" class="fecha" id="fecharBar">X</button>
 
     <h2>Título</h2>
-    <input type="text" id="title" name="title">
+    <input type="text" id="title" name="title" value="<?= htmlspecialchars($text['title']) ?>">
 
     <h2>Descrição</h2>
-    <textarea id="description" name="description"></textarea>
+    <textarea id="description" name="description"><?= htmlspecialchars($text['description']) ?></textarea>
 
 
     <div class="img">
+        <?php if ($text['cover_image']): ?>
+            <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>"
+                 alt="Capa atual"
+                 style="width:100%; height:100%; object-fit:cover;">
+        <?php endif; ?>
     </div>
 
      <input
@@ -55,21 +60,19 @@
 
 
     <h2>Categoria</h2>
-        <!-- faça a categoria original vir marcada padrão-->
         <select id="category" name="category">
-            <option value="">Categoria</option>
-            <option value="book">Livro</option>
-            <option value="poetry">Poesia</option>
-            <option value="story">Conto</option>
+            <option value="book"   <?= $text['category'] === 'book'   ? 'selected' : '' ?>>Livro</option>
+            <option value="poetry" <?= $text['category'] === 'poetry' ? 'selected' : '' ?>>Poesia</option>
+            <option value="story"  <?= $text['category'] === 'story'  ? 'selected' : '' ?>>Conto</option>
         </select>
 
 
     <h2>Idioma</h2>
         <select id="language" name="language">
             <option value="">Idioma</option>
-            <option value="enus">English</option>
-            <option value="ptbr">Português</option>
-            <option value="es">Español</option>
+            <option value="enus" <?= $text['language'] === 'enus' ? 'selected' : '' ?>>English</option>
+            <option value="ptbr" <?= $text['language'] === 'ptbr' ? 'selected' : '' ?>>Português</option>
+            <option value="es"   <?= $text['language'] === 'es'   ? 'selected' : '' ?>>Español</option>
         </select>
 
 
@@ -79,10 +82,12 @@
 
     <div class="visibt">
 
-        <input type="radio" name="visibility" id="public" value="public">
+        <input type="radio" name="visibility" id="public" value="public"
+               <?= $text['visibility'] === 'public' ? 'checked' : '' ?>>
         <label for="public">Público</label>
 
-        <input type="radio" name="visibility" id="private" value="private">
+        <input type="radio" name="visibility" id="private" value="private"
+               <?= $text['visibility'] === 'private' ? 'checked' : '' ?>>
         <label for="private">Privado</label>
 
     </div>
@@ -126,7 +131,7 @@
 
 
     <label style="display:none;" for="body">Escrever</label>
-    <textarea id="body" name="body"></textarea>
+    <textarea id="body" name="body"><?= htmlspecialchars($text['body']) ?></textarea>
 
 
 
