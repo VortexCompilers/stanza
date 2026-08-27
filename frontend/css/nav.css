@@ -1,0 +1,51 @@
+
+nav{
+    
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 128px;
+    padding: 12px;
+    
+    margin: 96px 0 0 0;
+    
+    background-color: rgb(19, 19, 72);
+    z-index: 1000;
+    }
+    
+    .createbt, .navbt{
+    width: 90%;
+        height: 24px;
+        margin: 10px 0;
+        padding: 6px;
+    
+        align-content: center;
+        font-size: 18px;
+    
+        border-radius: 2px;
+        background-color: rgb(30, 51, 114);
+    }
+    
+    .createbt{
+        border-radius: 10px;
+        background-color: rgb(23, 146, 187);
+    }
+    .createbt a, .navbt a{text-decoration: none; color: aliceblue;}
+  
+
+
+    @media (min-width: 800px)
+    {   
+
+    nav{display: block;}
+
+            
+    /* Encaixe geral*/
+        main{
+            box-sizing: border-box;
+            width: 100%;
+        padding-left:152px;
+            
+        }
+
+    }

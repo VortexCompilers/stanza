@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="css/settings.css">
  <link rel="stylesheet" href="css/header.css">
+ <link rel="stylesheet" href="css/nav.css">
 
 
 
@@ -12,8 +13,8 @@
 </head>
 <body>
 
-
 <?php include 'header.php'; ?>
+<?php include 'nav.php'; ?>
 
 
 <main>

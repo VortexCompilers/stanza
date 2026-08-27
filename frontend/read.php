@@ -7,13 +7,22 @@ require_once __DIR__ . '/../backend/read.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="css/edit.css">
-
+   <link rel="stylesheet" href="css/header.css">
     <title>Stanza</title>
 </head>
 
 <body style="background-color: rgba(25, 22, 109, 0.94);">
 
+
+<?php include 'header.php'; ?>
+
+
+
 <!-- Barra Web -->
+
+
+
+<main>
 
 
 <div class="bar"> 
@@ -103,7 +112,7 @@ require_once __DIR__ . '/../backend/read.php';
 
 
 
-
+</main>
 
 
 

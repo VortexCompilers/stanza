@@ -5,16 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="css/edit.css">
-
+   <link rel="stylesheet" href="css/header.css">
     <title>Stanza</title>
 </head>
 <body>
+
+
+<?php include 'header.php'; ?>
+
+
+<main>
+
 <form id="edit-form" action="../backend/update.php" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="id" value="<?= $id ?>">
 
 
 
 <!-- Barra Web -->
+
+
 
 
 <div class="bar">
@@ -147,6 +156,9 @@
 <!-- Botões Popup Mobile -->
 
 </form>
+
+</main>
+
 
 <script>
     const bar = document.querySelector(".bar");
