@@ -60,7 +60,6 @@ body{
     -webkit-font-smoothing: antialiased;
 }
 
-main{padding: 0;}
 
 ::selection{
     background-color: rgba(0, 136, 255, 0.20);

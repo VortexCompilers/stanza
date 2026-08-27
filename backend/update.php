@@ -1,6 +1,5 @@
 <?php
 
-# VERIFICA SE O USUARIO QUE ESTÁ ACESSANDO TEM ACESSO A ESSE TEXTO
 require_once __DIR__ . '/config/database.php';
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -12,8 +11,6 @@ if (empty($_SESSION['user_id'])) {
     exit;
 }
 
-// o id vem do campo escondido do formulário (POST), não da query string.
-// uma fonte só: a linha que a gente confere é a mesma que a gente grava.
 $author_id = $_SESSION['user_id'];
 $id        = (int) ($_POST['id'] ?? 0);
 
@@ -31,15 +28,12 @@ if (!$text) {
     exit;
 }
 
-# ENVIAR ALTERAÇÕES
 
 $title       = $_POST['title'] ?? '';
 $description = $_POST['description'] ?? '';
 $category    = $_POST['category'] ?? '';
 $visibility  = $_POST['visibility'] ?? '';
 
-// campo ausente preserva o corpo atual; campo presente e vazio é limpeza deliberada.
-// escrito assim pra continuar funcionando se o body virar um formulário separado.
 $body = $_POST['body'] ?? $text['body'];
 
 $language = $_POST['language'] ?? '';
@@ -47,14 +41,11 @@ if ($language === '') {
     $language = null;
 }
 
-// valida ANTES do upload: abortar depois do move_uploaded_file deixaria imagem órfã no disco
 if (empty($title) || empty($description) || empty($category) || empty($visibility)) {
     header('Location: ../frontend/edit.php?id=' . $id . '&erro=campo_vazio');
     exit;
 }
 
-// input type="file" não pode ser preenchido pelo navegador, então a capa atual é o ponto
-// de partida e só é sobrescrita se vier arquivo novo
 $cover_image = $text['cover_image'];
 
 if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_ERR_NO_FILE) {
@@ -64,7 +55,7 @@ if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_
         exit;
     }
 
-    // não confia no 'type' que o navegador mandou, verifica o conteúdo real do arquivo
+
     $tiposPermitidos = ['image/png' => 'png', 'image/jpeg' => 'jpg', 'image/webp' => 'webp'];
     $tipoReal = mime_content_type($_FILES['cover_image']['tmp_name']);
 
@@ -73,7 +64,7 @@ if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_
         exit;
     }
 
-    // não usa o 'name' original (pode ter path traversal, caracteres estranhos, colisão de nomes)
+   
     $nomeArquivo = bin2hex(random_bytes(8)) . '.' . $tiposPermitidos[$tipoReal];
     $destino = __DIR__ . '/../frontend/img/uploads/' . $nomeArquivo;
 
@@ -82,7 +73,7 @@ if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_
         exit;
     }
 
-    $cover_image = $nomeArquivo; // só isso vai pro UPDATE
+    $cover_image = $nomeArquivo; 
 }
 
 try {

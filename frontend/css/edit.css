@@ -149,6 +149,7 @@ font-family: arial;
         margin: 0 0 0 auto;
 }
 .bar a{display: none;}
+.bar .excluir{width: auto; height: auto; padding: 6px; font-size: 14px; color: aliceblue; background-color: rgb(155, 32, 32);}
 
 
 
@@ -258,10 +259,11 @@ body, html {margin: 0; padding: 0;}
     display: block;
     border-radius: 0;
     top: 0;
+    overflow: auto;
     left: -232px;
     transform: none;
     width: 220px;
-    height: 100%;
+    height: calc(100% - 126px);
     padding: 12px 18px 12px 12px;
     margin: 96px 0 0 0;
     transition: left 400ms;

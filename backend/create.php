@@ -15,10 +15,8 @@ $author_id = $_SESSION['user_id'];
 $title = $_POST['title'] ?? '';
 $description = $_POST['desc'] ?? '';
 $category = $_POST['category'] ?? '';
-$body = ''; // o corpo é escrito na tela de edição, logo depois deste cadastro
-$cover_image = null; // capa é opcional (DEFAULT NULL no schema)
-
-// VALIDAR A COVER IMAGE
+$body = ''; 
+$cover_image = null; 
 
 if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_ERR_NO_FILE) {
 
@@ -27,7 +25,6 @@ if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_
         exit;
     }
 
-    // não confia no 'type' que o navegador mandou — verifica o conteúdo real do arquivo
     $tiposPermitidos = ['image/png' => 'png', 'image/jpeg' => 'jpg', 'image/webp' => 'webp'];
     $tipoReal = mime_content_type($_FILES['cover_image']['tmp_name']);
 
@@ -36,7 +33,7 @@ if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_
         exit;
     }
 
-    // não usa o 'name' original (pode ter path traversal, caracteres estranhos, colisão de nomes)
+  
     $nomeArquivo = bin2hex(random_bytes(8)) . '.' . $tiposPermitidos[$tipoReal];
     $destino = __DIR__ . '/../frontend/img/uploads/' . $nomeArquivo;
 
@@ -45,7 +42,7 @@ if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_
         exit;
     }
 
-    $cover_image = $nomeArquivo; // só isso vai pro INSERT
+    $cover_image = $nomeArquivo; 
 }
 
 $visibility = $_POST['visibility'] ?? '';
