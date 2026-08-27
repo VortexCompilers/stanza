@@ -6,8 +6,7 @@
 }
 
 body{
-
-background-color: var(--colorSec);
+    background-color: rgb(30, 51, 114);
 }
 
 
@@ -19,17 +18,22 @@ form{
 
 }
 
+main h1{
+    margin: 18px 0 6px 24px;
+    font-family: arial;
+    color: aliceblue;
+}
 
 
 .cblock{
-background-color: rgb(223, 230, 236);
-border: 2px solid rgb(168, 171, 174);
+background-color: rgb(19, 19, 72);
+border: 2px solid rgb(168, 171, 174, 0.3);
 border-radius: 10px;
 
-width: 94%;
+width: 90%;
 
 margin: 0 auto;
-padding: 6px;
+padding: 12px;
 }
 
 
@@ -38,6 +42,7 @@ padding: 6px;
 
     font-family: arial;
     font-size: 20px;
+    color: aliceblue;
 
     margin:10px 2px 1px 4px;
 }
@@ -63,15 +68,15 @@ padding: 6px;
 .cblock select{
     font-weight: bold;
     display: inline;
-      width: 48%;
- height: 32px;
-      margin: 6px 0;
+    width: 48%;
+    height: 32px;
+    margin: 6px 0;
 }
 
-
 .cblock textarea{
-    height: auto;
+    min-height: 128px;
     width: 90%;
+    
 }
 
 
@@ -91,6 +96,7 @@ padding: 6px;
     background-color: aliceblue;
     border: 3px solid darkgray;
     border-radius: 4px;
+    color: black;
 
     padding: 2px 6px;
     width: 50%;
@@ -117,6 +123,7 @@ p{
     display: flex;
     justify-content: center;
     gap:20px
+    
 
 }
 .botoes-form button{
@@ -124,8 +131,8 @@ font-size: 22px;
 font-family: 'Times New Roman', Times, serif;
 color: aliceblue;
 
-background-color: var(--colorThr);
-border: 3px solid var(--colorThr);
+background-color: rgb(81, 131, 247);
+border: 3px solid   rgb(30, 51, 114);
 border-radius: 18px;
 padding: 8px 40px;
 }
@@ -142,15 +149,16 @@ padding: 8px 40px;
 .imgblock{
 display: none;
 
-background-color: rgb(223, 230, 236);
-border: 2px solid rgb(168, 171, 174);
+background-color: rgb(19, 19, 72);
+border: 2px solid rgb(168, 171, 174, 0.3);
 border-radius: 10px;
+color: aliceblue;
 
-width: 34%;
+width: 320px;
 height:280px;
 
 margin: 0 0 0 400px;
-padding: 6px;
+padding: 8px 12px;
     
 }
 
@@ -170,8 +178,9 @@ padding: 6px;
 
     .cblock{
         margin: 0 16px;
-        width: 40%;
+        width: 70%;
         height: auto;
+        padding: 8px 12px;
     }
     .cblock input{
         margin-bottom: 14px;
@@ -190,13 +199,15 @@ padding: 6px;
     }
     .visibt label{
         margin: 2px;
-        width: 30%;
+        width: 96px;
     }
 
 
     .botoes-form{
+        width: 50%;
         margin-top: 120px;
         display: block;
+        justify-self: end;
         text-align: end;
     }
 

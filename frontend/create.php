@@ -19,6 +19,8 @@
 
 <main>
 
+    <h1>Criar</h1>
+
 
         <form action="../backend/create.php" method="POST" enctype="multipart/form-data">
 
@@ -113,7 +115,7 @@
 
         <div class="botoes-form">
             <button type="button" style="background-color:white; padding:8px 12px;color:black;" >Cancelar</button>
-            <button type="submit" style="width=60%"  >Escrever</button>
+            <button type="submit" >Escrever</button>
         </div>
 
 
