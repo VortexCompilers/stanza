@@ -1,3 +1,4 @@
+<?php require_once __DIR__ .'/../backend/settings.php'?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -107,7 +108,7 @@
                     <div class="stsinfo"> 
                         <h2>Nome de usuário</h2>
 
-                            <label>userr1233</label> 
+                            <label><?= htmlspecialchars($user['name']) ?></label> 
 
                     </div>
             <button>Editar</button>
@@ -117,7 +118,7 @@
                     <div class="stsinfo"> 
                         <h2>E-mail</h2>
 
-                        <label>Emailexample@gmail.com</label> 
+                        <label><?= htmlspecialchars($user['email'])?></label> 
 
                     </div>
             <button>Editar</button>
@@ -128,7 +129,7 @@
                     <div class="stsinfo"> 
                         <h2>Senha</h2>
 
-                        <label>dfasdf</label> 
+                        <label>***</label> 
 
                     </div>
             <button>Editar</button>
@@ -140,8 +141,7 @@
         <button class="dlbt">Deletar conta</button>
 
 
-        <button class="lvbt">Sair -></button>
-
+        <a class="lvbt" href="../backend/logout.php">Sair</a>
 
 
 </main>

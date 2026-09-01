@@ -1,4 +1,7 @@
-<?php require_once __DIR__ . '/../backend/home.php'; ?>
+<?php 
+require_once __DIR__ . '/../backend/home.php';
+require_once __DIR__ .'/../backend/includes/auth.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

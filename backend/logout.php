@@ -5,5 +5,5 @@ $_SESSION = [];
 
 session_destroy();
 
-header('Location: ../frontend/login.php');
+header('Location: ../frontend/landing.php');
 exit;
