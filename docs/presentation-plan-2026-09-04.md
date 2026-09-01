@@ -31,6 +31,27 @@ Today is **Monday, 2026-08-31**. The presentation is **Friday, 2026-09-04**.
 two requirements. The two new ones are cheap in code and expensive in attention — do not leave them
 for Friday.
 
+### 0.1 Progress log
+
+Running notes on decisions and state as the week moves — newest first. Keep this updated instead of
+rewriting the day-by-day sections every time something changes.
+
+- **31/08, evening — seed loaded; catalog work started; home confirmed next.**
+  `db/seed.sql` is committed (`5551cd2`) and has been loaded into the real database. Catalog
+  dynamic work is underway, and it took the `backend/<page>.php` + `frontend/<page>.php` split
+  already used by `read.php`/`edit.php` rather than the inline query §4.2 originally sketched —
+  `backend/catalog.php` now exists. Two things to know before finishing it:
+  - **The catalog's frontend markup is confirmed unfinished** — a separate problem from "not wired
+    to the database" in §1.2. The dynamic query has nowhere correct to render into yet. Finish the
+    markup before wiring the `foreach` to it.
+  - `backend/catalog.php` as it stands has two bugs worth catching now rather than at demo time:
+    `SELECT * FROM texts TOP 5` uses SQL Server syntax — MySQL has no `TOP`, this needs `LIMIT 5`
+    (and check whether 5 is even the right cap for a full catalog listing, vs. `home.php`'s
+    top-N). It also calls `->fetch()` instead of `->fetchAll()`, which returns one row where a
+    catalog needs the whole list — see §4.2 for the corrected shape.
+  - **Decision confirmed: `home.php` will also be fed with real data**, right after the catalog,
+    following the same split pattern.
+
 ---
 
 ## 1. Honest audit — what actually exists
@@ -58,8 +79,8 @@ old plan is still open.
 | Missing | Impact |
 |---|---|
 | `backend/api/` | **Requirement 4 has zero lines written.** |
-| Dynamic `catalog.php` | 273 lines of static HTML with fake cards. `delete.php` redirects here with `?msg=texto_apagado` and **the card never disappears**, because the cards are hardcoded. This breaks step 6 of the script. |
-| Dynamic `home.php` | 421 lines, ~15 fake cards, all linking to `href="LINNNNK"`. |
+| Dynamic `catalog.php` | **In progress** as of 31/08 evening — see §0.1. The 273 lines of static HTML with fake cards are still there; `backend/catalog.php` exists but the query has bugs, and **the frontend markup itself is unfinished**, not just undynamic. `delete.php` redirects here with `?msg=texto_apagado` and **the card never disappears** until this is done. Breaks step 6 of the script until it lands. |
+| Dynamic `home.php` | 421 lines, ~15 fake cards, all linking to `href="LINNNNK"`. **Confirmed decided** (§0.1) to follow right after the catalog. |
 | Session-aware `header.php` | 4 lines — just the logo. Nothing on screen ever proves a session persists across pages. |
 | `db/seed.sql` | No data. The catalog looks like a dead site. |
 | Root `index.php` | The demo has to start at a URL with `/frontend/landing.php` in it. |
@@ -242,12 +263,15 @@ php -r "echo password_hash('123456', PASSWORD_DEFAULT), PHP_EOL;"
 Paste the result into the seed. Writing this now is much faster than typing ten texts into the form
 on Friday, and the catalog needs to look like a live site.
 
-**4.2 — `frontend/catalog.php` dynamic (server-side), markup in English.** Replace the ~15 repeated
-`.post` blocks with one query and one `foreach`:
+**4.2 — Finish `backend/catalog.php`, then wire `frontend/catalog.php` to it, markup in English.**
+As of §0.1, this is already split the way `read.php`/`edit.php` are — a `backend/catalog.php` doing
+the query, `require_once`'d from the top of `frontend/catalog.php` before any HTML. The existing
+`backend/catalog.php` needs two fixes: `TOP 5` is not MySQL syntax, and `->fetch()` returns one row
+where the catalog needs all of them.
 
 ```php
 <?php
-require_once __DIR__ . '/../backend/config/database.php';
+require_once __DIR__ . '/config/database.php';
 
 $stmt = $pdo->prepare(
     "SELECT id, title, category, cover_image, read_count
@@ -257,8 +281,12 @@ $stmt = $pdo->prepare(
 );
 $stmt->execute();
 $texts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
 ```
+
+**Then, separately, finish the frontend markup itself** — this is the part §0.1 flags as
+unfinished, and it is not the same task as adding the `foreach`. The ~15 repeated `.post` blocks in
+`frontend/catalog.php` need to become one real card template before a loop can render into it. Only
+once that template exists does the `foreach` over `$texts` make sense:
 
 Each card becomes `<a href="read.php?id=<?= (int) $text['id'] ?>">`, the cover comes from
 `img/uploads/<?= htmlspecialchars($text['cover_image']) ?>` with a placeholder in the `else` branch
@@ -284,9 +312,11 @@ catalog. This is the loop the old plan promised and never got to prove.
 
 ### Tuesday 01/09 — make the rest visible
 
-**4.5 — `frontend/home.php` dynamic, markup in English.** Same query shape as the catalog, with
-`ORDER BY read_count DESC LIMIT 8`. This is the 421-line file with 78 Portuguese labels and 15
-`href="LINNNNK"` cards — rewriting it settles both problems at once.
+**4.5 — `backend/home.php` + `frontend/home.php` dynamic, markup in English.** Confirmed in §0.1:
+this follows right after the catalog and uses the same split. Same query shape as
+`backend/catalog.php`, with `ORDER BY read_count DESC LIMIT 8` instead of the full public list.
+This is the 421-line file with 78 Portuguese labels and 15 `href="LINNNNK"` cards — rewriting it
+settles both problems at once, the same way the catalog's rewrite is settling its own.
 
 **4.6 — `frontend/header.php` with session.** Four lines today. This is the single change that makes
 **Requirement 2 visible**: without it, nothing on screen proves the session persists across pages.
@@ -558,14 +588,16 @@ Do not start any of this until §5 is fully met:
 ## 9. Checklist
 
 **Monday 31/08**
-- [ ] `db/seed.sql` with a demo user and ~10 texts
-- [ ] XAMPP started, seed loaded
+- [x] `db/seed.sql` with a demo user and ~10 texts — committed `5551cd2`
+- [x] XAMPP started, seed loaded
+- [ ] `backend/catalog.php` fixed (`TOP 5` → `LIMIT`, `fetch()` → `fetchAll()`)
+- [ ] `frontend/catalog.php` markup finished — this is the current blocker, see §0.1
 - [ ] `catalog.php` listing from the database, markup in English
 - [ ] Server-side catalog committed separately as the fallback
 - [ ] Delete a text and watch the card disappear
 
 **Tuesday 01/09**
-- [ ] `home.php` dynamic, markup in English
+- [ ] `backend/home.php` + `frontend/home.php` dynamic, markup in English (confirmed §0.1)
 - [ ] `header.php` showing the logged-in user and a log-out link
 - [ ] `$_SESSION['user_name']` added to `backend/login.php` and `backend/register.php` (it does not exist today)
 - [ ] Root `index.php` redirecting to the landing page

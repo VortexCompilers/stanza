@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/../backend/home.php'; ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -135,103 +136,48 @@
 
 
         <div class="Bsection">
-        <p>STANZAI <span style="color: rgb(29, 114, 241); font-weight: normal;">Tops</span></p>
+        <p>STANZA <span style="color: rgb(29, 114, 241); font-weight: normal;">Tops</span></p>
 
 
 
             
         <h1>Mais vistos</h1>
 
-            <div class="carousel"> 
+            <div class="carousel">
 
-                  
+                <?php foreach ($most_viewed as $text): ?>
                     <div class="post">
-                        <div class="img"></div>
+                        <div class="img">
+                            <?php if ($text['cover_image']): ?>
+                                <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
+                            <?php endif; ?>
+                        </div>
                         <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
+                            <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                            <h2><?= htmlspecialchars($text['category']) ?></h2>
+                            <div class="postfooter">
+                                <h3><?= (int) $text['read_count'] ?> views</h3>
+                                <button>&#9661</button>
+                            </div>
                         </div>
                     </div>
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-
+                <?php endforeach; ?>
 
             </div>
 
 
 
 
-            
         <h1>Mais favoritados</h1>
 
-            <div class="carousel"> 
+            <div class="carousel">
 
                     <div class="post">
                         <div class="img"></div>
                         <div class="info">
                             <a href="LINNNNK">Title Example Like This One</a>
                             <h2>Book</h2>
-                          <div class="postfooter">  
+                          <div class="postfooter">
                             <h3>232 views</h3>
                             <button>&#9661</button>
                           </div>
@@ -239,13 +185,13 @@
                     </div>
 
 
-                    
+
                     <div class="post">
                         <div class="img"></div>
                         <div class="info">
                             <a href="LINNNNK">Title Example Like This One</a>
                             <h2>Book</h2>
-                          <div class="postfooter">  
+                          <div class="postfooter">
                             <h3>232 views</h3>
                             <button>&#9661</button>
                           </div>
@@ -253,98 +199,45 @@
                     </div>
 
 
-                    
+
                     <div class="post">
                         <div class="img"></div>
                         <div class="info">
                             <a href="LINNNNK">Title Example Like This One</a>
                             <h2>Book</h2>
-                          <div class="postfooter">  
+                          <div class="postfooter">
                             <h3>232 views</h3>
                             <button>&#9661</button>
                           </div>
                         </div>
                     </div>
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
 
             </div>
 
 
 
-            
+
         <h1>Publicados recentemente</h1>
 
-            <div class="carousel"> 
+            <div class="carousel">
 
-                    
+                <?php foreach ($recents as $text): ?>
                     <div class="post">
-                        <div class="img"></div>
+                        <div class="img">
+                            <?php if ($text['cover_image']): ?>
+                                <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
+                            <?php endif; ?>
+                        </div>
                         <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
+                            <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                            <h2><?= htmlspecialchars($text['category']) ?></h2>
+                            <div class="postfooter">
+                                <h3><?= (int) $text['read_count'] ?> views</h3>
+                                <button>&#9661</button>
+                            </div>
                         </div>
                     </div>
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
+                <?php endforeach; ?>
 
             </div>
         </div>

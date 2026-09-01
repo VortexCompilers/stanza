@@ -147,19 +147,19 @@ padding: 8px 40px;
 
 
 .imgblock{
-display: none;
+display: block;
 
 background-color: rgb(19, 19, 72);
 border: 2px solid rgb(168, 171, 174, 0.3);
 border-radius: 10px;
 color: aliceblue;
 
-width: 320px;
+width: 90%;
 height:280px;
 
-margin: 0 0 0 400px;
+margin: 0 auto 12px auto;
 padding: 8px 12px;
-    
+
 }
 
 @media (min-width: 800px){
@@ -168,11 +168,9 @@ padding: 8px 12px;
         margin: 12px 0;
     }
 
-    .mbimg{
-        display: none;
-    }
     .imgblock{
         display: block;
+        width: 320px;
         margin: 0 16px;
     }
 

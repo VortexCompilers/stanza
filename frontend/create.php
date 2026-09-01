@@ -53,20 +53,6 @@
             
             <label for="desc">Descrição</label>
             <textarea id="desc" name="desc"></textarea>
-        
-
-
-            <div class="mbimg">
-            <label for="cape">Capa</label>
-                <input 
-                type="file" 
-                id="image-picker" 
-                name="cover_image" 
-
-                accept="image/png, image/jpeg, image/webp" 
-                />
-            </div>
-
 
 
 
