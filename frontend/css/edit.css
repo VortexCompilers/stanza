@@ -12,13 +12,16 @@ form{
 /* Buttons (Mobile Header) */
 
 .mbbt1{
-    display: inline-flex;
+    display: flex;
     align-items: center;
     
+    margin: 2px auto;
+
     gap: 20px;
 
     height: 40px;
-    width: 100%;
+    width: 90%;
+    
 
 }
 
@@ -60,7 +63,7 @@ form{
 textarea{
 
     display: block;
-    width: 90%;
+    width: 84%;
     min-height: 70vh;
     margin: 10px auto;    
     padding: 12px;
@@ -148,8 +151,19 @@ font-family: arial;
 
 
 }
+
+.bar .fecha{
+    margin-bottom: 12px;
+}
 .bar a{display: none; margin: 0 0 6px 0;}
-.bar .excluir{width: auto; height: auto; padding: 6px; font-size: 14px; color: aliceblue; background-color: rgb(155, 32, 32);}
+.bar .excluir{
+    width: auto; 
+    height: auto; 
+    padding: 6px; 
+    font-size: 14px; 
+    color: aliceblue; 
+    background-color: rgb(155, 32, 32);
+}
 
 
 
@@ -176,9 +190,21 @@ font-family: arial;
 }
 input[type="file"]{
     color: aliceblue;
-   margin-bottom: 32px;
+   margin-bottom: 18px;
    font-size: 9px;
 }
+
+
+.bar textarea{
+    width: 84%;
+    min-height: 120px;
+    border-radius: 1px;
+    border: 0;
+
+    padding: 4px;
+
+}
+
 
 
 .bar select{
@@ -282,8 +308,22 @@ h2{
     height: 124px;
 }
 
-.bar h2{  font-size: 18px;}
-.bar a{display: block; width: 12px; margin-bottom: 36px;}
+.bar textarea{
+    width: 154px;
+    min-height: 100px;
+    border-radius: 1px;
+    border: 0;
+
+    padding: 4px;
+
+}
+
+.bar h2{ 
+     font-size: 18px;
+    margin: 16px 0 0 0;
+    }
+
+     .bar a{display: block; width: 12px; margin-bottom: 36px;}
 
 .bar select{
     font-size: 14px;
@@ -301,7 +341,7 @@ textarea{
 
     font-size: 18px;
     padding: 28px 36px;
-    width: 500px;
+    width: 480px;
     height: 74vh;
 
 }
@@ -312,6 +352,25 @@ textarea{
     width: 30px;
     height: 30px;
 }
+
+.bar .excluir{
+    width: 24px; 
+    height: 24px;  
+    font-size: 24px;
+    font-weight: bold;
+
+       display:flex;
+    justify-content: center;
+    align-items: center;
+
+
+    color: aliceblue; 
+    background-color: rgb(155, 32, 32);
+}
+
+
+
+
 .bar .fecha{display: none;}
 
 

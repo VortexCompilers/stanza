@@ -32,13 +32,6 @@
        <a href="read.php?id=<?= $id ?>">&lt;</a>
        <button type="button" class="fecha" id="fecharBar">X</button>
 
-    <h2>Título</h2>
-    <input type="text" id="title" name="title" value="<?= htmlspecialchars($text['title']) ?>">
-
-    <h2>Descrição</h2>
-    <textarea id="description" name="description"><?= htmlspecialchars($text['description']) ?></textarea>
-
-
     <div class="img">
         <?php if ($text['cover_image']): ?>
             <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>"
@@ -54,6 +47,17 @@
 
         accept="image/png, image/jpeg, image/webp"
         />
+
+
+
+
+
+    <h2>Título</h2>
+    <input type="text" id="title" name="title" value="<?= htmlspecialchars($text['title']) ?>">
+
+    <h2>Descrição</h2>
+    <textarea id="description" name="description"><?= htmlspecialchars($text['description']) ?></textarea>
+
 
 
 
@@ -101,11 +105,13 @@
 
 
                     <button type="submit" class="svv">Salvar</button>
+              
+              
                 </div>
 
                 <a class="excluir"
                    href="../backend/delete.php?id=<?= $id ?>"
-                   onclick="return confirm('Apagar este texto? Esta ação não pode ser desfeita.');">Excluir</a>
+                   onclick="return confirm('Apagar este texto? Esta ação não pode ser desfeita.');">🗑</a>
 
 </div>
 
