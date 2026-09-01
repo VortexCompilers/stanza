@@ -58,18 +58,18 @@ form{
 /* Area de Escrita */
 
 textarea{
-    
+
     display: block;
-    width: 326px;
-    height: 500px;
+    width: 90%;
+    min-height: 70vh;
     margin: 10px auto;    
     padding: 12px;
     outline: none;
 
     border: 2px solid rgb(224, 224, 224);
     border-radius: 10px;
-    line-height:32px;
-    font-size: 18px;
+    line-height:28px;
+    font-size: 20px;
     font-family: 'Times New Roman', Times, serif;
 
 }
@@ -134,21 +134,21 @@ font-family: arial;
       
         text-decoration: none;
         text-align: center;
-        font-weight: bold;
 
-        border: 3px solid rgb(7, 12, 36);
+
+        border: 2px solid aliceblue;
         border-radius: 10px;
-        background-color: rgba(0, 123, 255);
+        background-color: rgba(0, 123, 255, 0.2);
 
-        font-size: 24px;
-        color: black;
+        font-size: 22px;
+        color: aliceblue;
 
         width: 30px;
         height: 30px;
 
-        margin: 0 0 0 auto;
+
 }
-.bar a{display: none;}
+.bar a{display: none; margin: 0 0 6px 0;}
 .bar .excluir{width: auto; height: auto; padding: 6px; font-size: 14px; color: aliceblue; background-color: rgb(155, 32, 32);}
 
 
@@ -296,7 +296,15 @@ h2{
 
 .mbbt1 label, .mbbt2 label {display: none;}
 
-textarea{font-size: 18px; line-height: 16px; }
+textarea{
+    align-self: center;
+
+    font-size: 18px;
+    padding: 28px 36px;
+    width: 500px;
+    height: 74vh;
+
+}
 
 
 .bar a{
