@@ -5,6 +5,8 @@
  *   $erroRegister    —   error message to show in the pop-up (if any)
  *   $registerAberto  — true to open the pop-up, false to keep it closed
  */
+require_once __DIR__ . '/../lang/load.php';
+
 $erroRegister = $erroRegister ?? '';
 $registerAberto = $registerAberto ?? false;
 ?>
@@ -13,8 +15,8 @@ $registerAberto = $registerAberto ?? false;
     <form class="modal-card" action="/stanza/backend/register.php" method="POST">
 
         <div class="modal-head">
-            <h1 id="tituloRegister">Criar conta</h1>
-            <a class="modal-close" href="landing.php" data-fechar aria-label="Fechar">&times;</a>
+            <h1 id="tituloRegister"><?= translator('auth_register_title') ?></h1>
+            <a class="modal-close" href="landing.php" data-fechar aria-label="<?= translator('action_close') ?>">&times;</a>
         </div>
 
 
@@ -22,54 +24,54 @@ $registerAberto = $registerAberto ?? false;
 
             <?php if (!empty($erroRegister)): ?>
                 <div class="erro">
-                    <?= htmlspecialchars($erroRegister) ?>
+                    <?= $erroRegister // already HTML-safe: comes from translator() ?>
                 </div>
             <?php endif; ?>
 
-            <h2 class="modal-section">Seus dados</h2>
+            <h2 class="modal-section"><?= translator('auth_register_section_details') ?></h2>
 
             <div class="field">
-                <label for="registerName">Nome</label>
+                <label for="registerName"><?= translator('auth_field_name') ?></label>
                 <input type="text" id="registerName" name="username" autocomplete="nickname">
             </div>
 
             <div class="field-row">
                 <div class="field">
-                    <label for="registerGender">Gênero</label>
+                    <label for="registerGender"><?= translator('auth_field_gender') ?></label>
                     <select id="registerGender" name="gender">
-                        <option value="">Selecione</option>
-                        <option value="male">Masculino</option>
-                        <option value="female">Feminino</option>
-                        <option value="other">Outro</option>
+                        <option value=""><?= translator('gender_select') ?></option>
+                        <option value="male"><?= translator('gender_male') ?></option>
+                        <option value="female"><?= translator('gender_female') ?></option>
+                        <option value="other"><?= translator('gender_other') ?></option>
                     </select>
                 </div>
 
                 <div class="field">
-                    <label for="registerBirthdate">Data de nascimento</label>
+                    <label for="registerBirthdate"><?= translator('auth_field_birthdate') ?></label>
                     <input type="date" id="registerBirthdate" name="birthdate">
                 </div>
             </div>
 
-            <h2 class="modal-section">Acesso</h2>
+            <h2 class="modal-section"><?= translator('auth_register_section_access') ?></h2>
 
             <div class="field">
-                <label for="registerEmail">E-mail</label>
+                <label for="registerEmail"><?= translator('auth_field_email') ?></label>
                 <input type="text" id="registerEmail" name="email" autocomplete="email">
             </div>
 
             <div class="field">
-                <label for="registerPassword">Senha</label>
+                <label for="registerPassword"><?= translator('auth_field_password') ?></label>
                 <input type="password" id="registerPassword" name="password" autocomplete="new-password">
             </div>
 
-            <a class="modal-link" href="login.php" data-trocar="modalLogin">Já tenho conta</a>
+            <a class="modal-link" href="login.php" data-trocar="modalLogin"><?= translator('auth_link_have_account') ?></a>
 
         </div>
 
 
         <div class="modal-foot">
-            <a class="btn-ghost" href="landing.php" data-fechar>Cancelar</a>
-            <button class="btn-primary" type="submit">Concluir cadastro</button>
+            <a class="btn-ghost" href="landing.php" data-fechar><?= translator('action_cancel') ?></a>
+            <button class="btn-primary" type="submit"><?= translator('auth_submit_register') ?></button>
         </div>
 
     </form>

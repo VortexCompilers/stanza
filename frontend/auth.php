@@ -1,5 +1,6 @@
+<?php require_once __DIR__ . '/lang/load.php'; ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,24 +12,24 @@
 
 <div class="wblock">
 
-<h1>Autenticar</h1>
+<h1><?= translator('verify_title') ?></h1>
 
 
 <form action=" ddd ">
-  
-    <label>Insira o código enviado para email@gmail.com</label>
-   
+
+    <label><?= sprintf(translator('verify_code_label'), 'email@gmail.com') ?></label>
+
     <input type="number" id="code" name="code">
 
 
-    <label class="labelCheck"><input type="checkbox" name="terms" value="yes">Eu concordo com os termos e condições</label>
+    <label class="labelCheck"><input type="checkbox" name="terms" value="yes"><?= translator('verify_terms') ?></label>
 
 
-   <button type="submit">Confirmar</button>
+   <button type="submit"><?= translator('verify_submit') ?></button>
 
-</form> 
+</form>
 
-<a href="reeeeenviar">Reenviar código</a>
+<a href="reeeeenviar"><?= translator('verify_resend') ?></a>
 
 
 

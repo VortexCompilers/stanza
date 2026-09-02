@@ -1,6 +1,9 @@
-<?php require_once __DIR__ .'/../backend/settings.php'?>
+<?php
+require_once __DIR__ . '/lang/load.php';
+require_once __DIR__ . '/../backend/settings.php';
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,17 +25,17 @@
 
 
 
-        <h1>Geral</h1>
+        <h1><?= translator('settings_general') ?></h1>
                 <div class="stsbox">
             
-                        <h2>Tema</h2>
+                        <h2><?= translator('settings_theme') ?></h2>
 
                                 <div class="rdbt">
                                 <input type="radio" name="theme" id="light" checked>
-                                <label for="light">Claro</label>
+                                <label for="light"><?= translator('settings_theme_light') ?></label>
 
                                 <input type="radio" name="theme" id="dark">
-                                <label for="dark">Escuro</label>
+                                <label for="dark"><?= translator('settings_theme_dark') ?></label>
                                     </div>
 
                             </div>
@@ -43,7 +46,7 @@
 
 
                 <div class="stsbox">
-                <h2>Tamanho de fonte padrão</h2>
+                <h2><?= translator('settings_default_font_size') ?></h2>
 
                     
                     <input type="range" name="fontsize" id="fontsie" min="1" max="50" value="12">
@@ -59,18 +62,13 @@
 
                 <div class="stsbox">
 
-                        <h2>Idioma</h2>
+                        <h2><?= translator('settings_language') ?></h2>
 
                         <div class="rdbt">
-                            <input type="radio" name="languagew" id="ptbr" checked>
-                            <label for="ptbr">PT-BR</label>
-
-                            <input type="radio" name="languagew" id="enus">
-                            <label for="enus">EN-US</label>
-                            
-                            <input type="radio" name="languagew" id="eses">
-                            <label for="eses">ES-419</label>
-                                </div>
+                            <a href="set-language.php?lang=enus"<?= $lang === 'enus' ? ' aria-current="true"' : '' ?>>EN-US</a>
+                            <a href="set-language.php?lang=es"<?= $lang === 'es' ? ' aria-current="true"' : '' ?>>ES-419</a>
+                            <a href="set-language.php?lang=ptbr"<?= $lang === 'ptbr' ? ' aria-current="true"' : '' ?>>PT-BR</a>
+                        </div>
 
                         </div>
 
@@ -83,7 +81,7 @@
 
 
 
-        <h1>Perfil</h1>
+        <h1><?= translator('settings_profile') ?></h1>
 
 
 
@@ -91,11 +89,11 @@
 
             <div class="stsbox1" style="gap:10px;"> 
                     <!--  Different -->
-                        <h2 style="margin: auto 6px;" >Foto de Perfil</h2>
+                        <h2 style="margin: auto 6px;" ><?= translator('settings_profile_picture') ?></h2>
 
                         <div class="stpic"></div>
 
-            <button>Editar</button>
+            <button><?= translator('action_edit') ?></button>
             </div>
 
 
@@ -105,43 +103,43 @@
 
 
             <div class="stsbox1">
-                    <div class="stsinfo"> 
-                        <h2>Nome de usuário</h2>
+                    <div class="stsinfo">
+                        <h2><?= translator('settings_username') ?></h2>
 
-                            <label><?= htmlspecialchars($user['name']) ?></label> 
+                            <label><?= htmlspecialchars($user['name']) ?></label>
 
                     </div>
-            <button>Editar</button>
+            <button><?= translator('action_edit') ?></button>
             </div>
 
             <div class="stsbox1">
-                    <div class="stsinfo"> 
-                        <h2>E-mail</h2>
+                    <div class="stsinfo">
+                        <h2><?= translator('settings_email') ?></h2>
 
-                        <label><?= htmlspecialchars($user['email'])?></label> 
+                        <label><?= htmlspecialchars($user['email'])?></label>
 
                     </div>
-            <button>Editar</button>
+            <button><?= translator('action_edit') ?></button>
             </div>
 
-            
+
             <div class="stsbox1">
-                    <div class="stsinfo"> 
-                        <h2>Senha</h2>
+                    <div class="stsinfo">
+                        <h2><?= translator('settings_password') ?></h2>
 
-                        <label>***</label> 
+                        <label>***</label>
 
                     </div>
-            <button>Editar</button>
+            <button><?= translator('action_edit') ?></button>
             </div>
 
 
 
 
-        <button class="dlbt">Deletar conta</button>
+        <button class="dlbt"><?= translator('settings_delete_account') ?></button>
 
 
-        <a class="lvbt" href="../backend/logout.php">Sair</a>
+        <a class="lvbt" href="../backend/logout.php"><?= translator('settings_logout') ?></a>
 
 
 </main>

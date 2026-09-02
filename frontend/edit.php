@@ -1,6 +1,9 @@
-<?php require_once __DIR__ . '/../backend/edit.php'; ?>
+<?php
+require_once __DIR__ . '/lang/load.php';
+require_once __DIR__ . '/../backend/edit.php';
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +38,7 @@
     <div class="img">
         <?php if ($text['cover_image']): ?>
             <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>"
-                 alt="Capa atual"
+                 alt="<?= translator('editor_current_cover_alt') ?>"
                  style="width:100%; height:100%; object-fit:cover;">
         <?php endif; ?>
     </div>
@@ -52,10 +55,10 @@
 
 
 
-    <h2>Título</h2>
+    <h2><?= translator('editor_title') ?></h2>
     <input type="text" id="title" name="title" value="<?= htmlspecialchars($text['title']) ?>">
 
-    <h2>Descrição</h2>
+    <h2><?= translator('editor_description') ?></h2>
     <textarea id="description" name="description"><?= htmlspecialchars($text['description']) ?></textarea>
 
 
@@ -63,17 +66,18 @@
 
 
 
-    <h2>Categoria</h2>
+    <h2><?= translator('editor_category') ?></h2>
         <select id="category" name="category">
-            <option value="book"   <?= $text['category'] === 'book'   ? 'selected' : '' ?>>Livro</option>
-            <option value="poetry" <?= $text['category'] === 'poetry' ? 'selected' : '' ?>>Poesia</option>
-            <option value="story"  <?= $text['category'] === 'story'  ? 'selected' : '' ?>>Conto</option>
+            <option value="book"   <?= $text['category'] === 'book'   ? 'selected' : '' ?>><?= translator('category_book') ?></option>
+            <option value="poetry" <?= $text['category'] === 'poetry' ? 'selected' : '' ?>><?= translator('category_poetry') ?></option>
+            <option value="story"  <?= $text['category'] === 'story'  ? 'selected' : '' ?>><?= translator('category_story') ?></option>
         </select>
 
 
-    <h2>Idioma</h2>
+    <!-- Content language: each option stays in its own language, not translated -->
+    <h2><?= translator('editor_language') ?></h2>
         <select id="language" name="language">
-            <option value="">Idioma</option>
+            <option value=""><?= translator('editor_language_placeholder') ?></option>
             <option value="enus" <?= $text['language'] === 'enus' ? 'selected' : '' ?>>English</option>
             <option value="ptbr" <?= $text['language'] === 'ptbr' ? 'selected' : '' ?>>Português</option>
             <option value="es"   <?= $text['language'] === 'es'   ? 'selected' : '' ?>>Español</option>
@@ -82,36 +86,36 @@
 
 
 
-    <h2>Visibilidade</h2>
+    <h2><?= translator('editor_visibility') ?></h2>
 
     <div class="visibt">
 
         <input type="radio" name="visibility" id="public" value="public"
                <?= $text['visibility'] === 'public' ? 'checked' : '' ?>>
-        <label for="public">Público</label>
+        <label for="public"><?= translator('visibility_public') ?></label>
 
         <input type="radio" name="visibility" id="private" value="private"
                <?= $text['visibility'] === 'private' ? 'checked' : '' ?>>
-        <label for="private">Privado</label>
+        <label for="private"><?= translator('visibility_private') ?></label>
 
     </div>
 
 
 
                     <div class="wbbt">
-                    <h2>Tamanho da fonte</h2>
+                    <h2><?= translator('editor_font_size') ?></h2>
                     <input type="number" id="fontsize" name="fontsize" min="1" max="40">
 
 
 
-                    <button type="submit" class="svv">Salvar</button>
-              
-              
+                    <button type="submit" class="svv"><?= translator('action_save') ?></button>
+
+
                 </div>
 
                 <a class="excluir"
                    href="../backend/delete.php?id=<?= $id ?>"
-                   onclick="return confirm('Apagar este texto? Esta ação não pode ser desfeita.');">🗑</a>
+                   onclick="return confirm('<?= translator('editor_confirm_delete') ?>');">🗑</a>
 
 </div>
 
@@ -129,14 +133,14 @@
 
  <div class="mbbt1">
     <a href="read.php?id=<?= $id ?>" style="margin:0;">&lt;</a>
-    <a href="DPS vc muda" style="margin-left:auto;" >Salvar</a>
+    <a href="DPS vc muda" style="margin-left:auto;" ><?= translator('action_save') ?></a>
 
     <button type="button" id="abrirBar" style="margin-left:auto;">⋮</button>
 </div>
 
 
 
-    <label style="display:none;" for="body">Escrever</label>
+    <label style="display:none;" for="body"><?= translator('editor_body_label') ?></label>
     <textarea id="body" name="body"><?= htmlspecialchars($text['body']) ?></textarea>
 
 
@@ -147,11 +151,11 @@
 
     <div class="mbbt2">
 
-        <label>12 palavras</label>
+        <label>12 <?= translator('editor_words') ?></label>
 
-        <label>226 caracteres</label>
+        <label>226 <?= translator('editor_characters') ?></label>
 
-        <label for="fontsize">Tamanho da fonte: </label>
+        <label for="fontsize"><?= translator('editor_font_size_inline') ?> </label>
         <input type="number" id="fontsize" name="fontsize" min="1" max="40">
     </div>
 

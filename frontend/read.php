@@ -1,8 +1,9 @@
 <?php
+require_once __DIR__ . '/lang/load.php';
 require_once __DIR__ . '/../backend/read.php';
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,7 +91,7 @@ require_once __DIR__ . '/../backend/read.php';
 
 
     <form action="  ALGUMA ACAO  ">
-    <label style="display:none;" for="content">Escrever</label>
+    <label style="display:none;" for="content"><?= translator('editor_body_label') ?></label>
     <textarea id="content" name="content" readonly><?= htmlspecialchars($text['body'])?></textarea>
 
 
@@ -100,12 +101,12 @@ require_once __DIR__ . '/../backend/read.php';
 
 
     <div class="mbbt2">
-    
-        <label>12 palavras</label>
-        
-        <label>226 caracteres</label>
 
-        <label for="fontsize">Tamanho da fonte: </label>                                                
+        <label>12 <?= translator('editor_words') ?></label>
+
+        <label>226 <?= translator('editor_characters') ?></label>
+
+        <label for="fontsize"><?= translator('editor_font_size_inline') ?> </label>
         <input type="number" id="fontsize" name="fontsize" min="1" max="40">
     </div>
     </form>

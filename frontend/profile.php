@@ -1,5 +1,6 @@
+<?php require_once __DIR__ . '/lang/load.php'; ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +28,7 @@
 
                     <div class="userinfo">
                         <h1> O Fulano de Tal</h1>
-                        <h2>Ingressou em Setembro de 2001</h2>
+                        <h2><?= sprintf(translator('profile_joined'), 'September 2001') ?></h2>
                   </div>
 
               </div>
@@ -36,17 +37,17 @@
             <div class="botinf">
                 <div class="nbinfo">
                   <span>544</span>
-                  <p>visualizações</p>
+                  <p><?= translator('profile_views') ?></p>
                 </div>
-                
+
                 <div class="nbinfo">
-                <span>23</span> 
-                  <p>textos escritos</p>
+                <span>23</span>
+                  <p><?= translator('profile_texts_written') ?></p>
                 </div>
-                
+
                 <div class="nbinfo">
-                  <span>45</span> 
-                  <p>textos salvos</p>
+                  <span>45</span>
+                  <p><?= translator('profile_texts_saved') ?></p>
                 </div>
 
 

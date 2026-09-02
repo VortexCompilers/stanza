@@ -1,9 +1,9 @@
-<?php 
+<?php
+require_once __DIR__ . '/lang/load.php';
 require_once __DIR__ . '/../backend/home.php';
-require_once __DIR__ .'/../backend/includes/auth.php';
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +25,12 @@ require_once __DIR__ .'/../backend/includes/auth.php';
 <main>
 
 <form action="searchh" class="search">
-     <input type="search" placeholder="Pesquisar.." name="search">
-       <button type="submit">Procurar</button>
+     <input type="search" placeholder="<?= translator('home_search_placeholder') ?>" name="search">
+       <button type="submit"><?= translator('action_search') ?></button>
     </form>
 
 
-        <h1>Vistos recentemente</h1>
+        <h1><?= translator('home_recently_viewed') ?></h1>
 
         <div class="carousel"> 
 
@@ -114,20 +114,20 @@ require_once __DIR__ .'/../backend/includes/auth.php';
 
 
 
-        <h1>Explorar por</h1>
+        <h1><?= translator('home_explore_by') ?></h1>
 
 
         <div class="Csection">
             <div class="card">
-                <h1>Livros</h1>
+                <h1><?= translator('home_card_books') ?></h1>
                 <a href="OUTRO LINK"> o </a>
             </div>
             <div class="card" style="background-color:darkcyan;">
-                <h1>Poesia</h1>
+                <h1><?= translator('home_card_poetry') ?></h1>
                 <a href="OUTRO LINK"> o </a>
             </div>
             <div class="card" style="background-color:forestgreen;">
-                <h1>Conto</h1>
+                <h1><?= translator('home_card_stories') ?></h1>
                 <a href="OUTRO LINK"> o </a>
             </div>
         </div>
@@ -139,12 +139,12 @@ require_once __DIR__ .'/../backend/includes/auth.php';
 
 
         <div class="Bsection">
-        <p>STANZA <span style="color: rgb(29, 114, 241); font-weight: normal;">Tops</span></p>
+        <p>STANZA <span style="color: rgb(29, 114, 241); font-weight: normal;"><?= translator('home_tops') ?></span></p>
 
 
 
-            
-        <h1>Mais vistos</h1>
+
+        <h1><?= translator('home_most_viewed') ?></h1>
 
             <div class="carousel">
 
@@ -159,7 +159,7 @@ require_once __DIR__ .'/../backend/includes/auth.php';
                             <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
-                                <h3><?= (int) $text['read_count'] ?> views</h3>
+                                <h3><?= (int) $text['read_count'] ?> <?= translator('views') ?></h3>
                                 <button>&#9661</button>
                             </div>
                         </div>
@@ -171,7 +171,7 @@ require_once __DIR__ .'/../backend/includes/auth.php';
 
 
 
-        <h1>Mais favoritados</h1>
+        <h1><?= translator('home_most_favorited') ?></h1>
 
             <div class="carousel">
 
@@ -220,7 +220,7 @@ require_once __DIR__ .'/../backend/includes/auth.php';
 
 
 
-        <h1>Publicados recentemente</h1>
+        <h1><?= translator('home_recently_published') ?></h1>
 
             <div class="carousel">
 
@@ -235,7 +235,7 @@ require_once __DIR__ .'/../backend/includes/auth.php';
                             <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
-                                <h3><?= (int) $text['read_count'] ?> views</h3>
+                                <h3><?= (int) $text['read_count'] ?> <?= translator('views') ?></h3>
                                 <button>&#9661</button>
                             </div>
                         </div>
@@ -261,7 +261,7 @@ require_once __DIR__ .'/../backend/includes/auth.php';
 
 
 
-        <h1>Textos salvos</h1>
+        <h1><?= translator('home_saved_texts') ?></h1>
 
         <div class="carousel"> 
 

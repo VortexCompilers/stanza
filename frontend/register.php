@@ -1,20 +1,24 @@
 <?php
+require_once __DIR__ . '/lang/load.php';
+
 $erroRegister = '';
 
 if (isset($_GET['erro'])) {
-    $mensagensDeErro = [
-        'campo_vazio' => 'Preencha todos os campos.',
-        'email_duplicado' => 'Este e-mail já está cadastrado.',
+    // Maps the ?erro= codes backend/register.php redirects with to dictionary
+    // keys defined in lang/enus.php.
+    $errorKeys = [
+        'campo_vazio'     => 'error_empty_fields',
+        'email_duplicado' => 'error_email_taken',
     ];
 
-    $erroRegister = $mensagensDeErro[$_GET['erro']] ?? 'Ocorreu um erro. Tente novamente.';
+    $erroRegister = translator($errorKeys[$_GET['erro']] ?? 'error_generic');
 }
 
 // Direct access to this page: the pop-up is already open.
 $registerAberto = true;
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

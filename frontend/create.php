@@ -1,5 +1,6 @@
+<?php require_once __DIR__ . '/lang/load.php'; ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +21,14 @@
 
 <main>
 
-    <h1>Criar</h1>
+    <h1><?= translator('editor_create_title') ?></h1>
 
 
         <form action="../backend/create.php" method="POST" enctype="multipart/form-data">
 
         <div class="imgblock">
 
-            <label for="cape">Capa</label>
+            <label for="cape"><?= translator('editor_cover') ?></label>
                 <input 
                 type="file" 
                 id="image-picker" 
@@ -44,14 +45,14 @@
         
     <div class="cblock">
         
-            <label for="title">Título</label>
-        
+            <label for="title"><?= translator('editor_title') ?></label>
+
             <input type="text" id="title" name="title">
-        
 
 
-            
-            <label for="desc">Descrição</label>
+
+
+            <label for="desc"><?= translator('editor_description') ?></label>
             <textarea id="desc" name="desc"></textarea>
 
 
@@ -60,21 +61,22 @@
 
 
 
-            <label for="category">Categoria</label>
+            <label for="category"><?= translator('editor_category') ?></label>
                 <select id="category" name="category">
-                    <option value="">Categoria</option>
-                    <option value="book">Livro</option>
-                    <option value="poetry">Poesia</option>
-                    <option value="story">Conto</option>
+                    <option value=""><?= translator('category_placeholder') ?></option>
+                    <option value="book"><?= translator('category_book') ?></option>
+                    <option value="poetry"><?= translator('category_poetry') ?></option>
+                    <option value="story"><?= translator('category_story') ?></option>
                 </select>
 
 
 
                     
 
-            <label for="language">Idioma</label>
+            <!-- Content language: each option stays in its own language, not translated -->
+            <label for="language"><?= translator('editor_language') ?></label>
                 <select id="language" name="language">
-                    <option value="">Idioma</option>
+                    <option value=""><?= translator('editor_language_placeholder') ?></option>
                     <option value="enus">English</option>
                     <option value="ptbr">Português</option>
                     <option value="es">Español</option>
@@ -83,17 +85,17 @@
 
 
 
-              <label for="visibility">Visibilidade</label>
+              <label for="visibility"><?= translator('editor_visibility') ?></label>
                 <div class="visibt">
             <input type="radio" name="visibility" id="public" value="public" checked>
-            <label for="public">Público</label>
+            <label for="public"><?= translator('visibility_public') ?></label>
 
             <input type="radio" name="visibility" id="private" value="private">
-            <label for="private">Privado</label>
-                
+            <label for="private"><?= translator('visibility_private') ?></label>
+
         </div>
 
-            <p class="aviso-visibilidade">&#9888 Todos os usuários poderão ver seu texto, mesmo incompleto</p>
+            <p class="aviso-visibilidade">&#9888 <?= translator('editor_visibility_warning') ?></p>
 
 
 
@@ -101,8 +103,8 @@
 
 
         <div class="botoes-form">
-            <button type="button" style="background-color:white; padding:8px 12px;color:black;" >Cancelar</button>
-            <button type="submit" >Escrever</button>
+            <button type="button" style="background-color:white; padding:8px 12px;color:black;" ><?= translator('action_cancel') ?></button>
+            <button type="submit" ><?= translator('editor_submit_create') ?></button>
         </div>
 
 

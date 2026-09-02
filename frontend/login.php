@@ -1,20 +1,24 @@
 <?php
+require_once __DIR__ . '/lang/load.php';
+
 $erroLogin = '';
 
 if (isset($_GET['erro'])) {
-    $mensagensDeErro = [
-        'campo_vazio' => 'Preencha todos os campos.',
-        'credenciais_invalidas' => 'E-mail/nome ou senha incorretos.',
+    // Maps the ?erro= codes backend/login.php redirects with to dictionary
+    // keys defined in lang/enus.php.
+    $errorKeys = [
+        'campo_vazio'           => 'error_empty_fields',
+        'credenciais_invalidas' => 'error_invalid_credentials',
     ];
 
-    $erroLogin = $mensagensDeErro[$_GET['erro']] ?? 'Ocorreu um erro. Tente novamente.';
+    $erroLogin = translator($errorKeys[$_GET['erro']] ?? 'error_generic');
 }
 
 // Direct access to this page: the pop-up is already open.
 $loginAberto = true;
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

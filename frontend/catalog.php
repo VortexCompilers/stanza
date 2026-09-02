@@ -1,5 +1,6 @@
+<?php require_once __DIR__ . '/lang/load.php'; ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,51 +25,51 @@
 <div class="filtersec">
 
 <form action="/search" method="get">
-    <input type="search" name="catal" placeholder="Pesquisar..." aria-label="Search">
-   
-    
+    <input type="search" name="catal" placeholder="<?= translator('catalog_search_placeholder') ?>" aria-label="<?= translator('action_search') ?>">
 
-       <a id="abrirPop">▼ Filtrar</a>
 
-    <button type="submit">Pesquisar</button>
+
+       <a id="abrirPop">▼ <?= translator('action_filter') ?></a>
+
+    <button type="submit"><?= translator('action_search') ?></button>
 
   </form>
 
 
 
           <div class="filterpop">
-          <h1>Filtrar</h1>
+          <h1><?= translator('catalog_filter_title') ?></h1>
 
 
-          <h2>Ordenar por</h2>
-                <div class="stsbox">  
+          <h2><?= translator('catalog_sort_by') ?></h2>
+                <div class="stsbox">
                   <div class="rdbt">
                         <input type="radio" name="order" id="recent" checked>
-                        <label for="recent">Recentes</label>
+                        <label for="recent"><?= translator('catalog_sort_recent') ?></label>
 
                         <input type="radio" name="order" id="save">
-                        <label for="save">Mais salvos</label>
-                        
+                        <label for="save"><?= translator('catalog_sort_most_saved') ?></label>
+
                         <input type="radio" name="order" id="view">
-                        <label for="view">Mais vistos</label>
+                        <label for="view"><?= translator('catalog_sort_most_viewed') ?></label>
                   </div>
-        
+
               </div>
 
 
-          <h2>Categoria</h2>
-                <div class="stsbox">  
+          <h2><?= translator('catalog_category_label') ?></h2>
+                <div class="stsbox">
                   <div class="rdbt">
                         <input type="radio" name="category" id="book" checked>
-                        <label for="book">Livro</label>
+                        <label for="book"><?= translator('category_book') ?></label>
 
                         <input type="radio" name="category" id="poem">
-                        <label for="poem">Poema</label>
-                        
+                        <label for="poem"><?= translator('category_poetry') ?></label>
+
                         <input type="radio" name="category" id="tale">
-                        <label for="tale">Conto</label>
+                        <label for="tale"><?= translator('category_story') ?></label>
                   </div>
-        
+
               </div>
 
           </div>

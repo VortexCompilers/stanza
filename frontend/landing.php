@@ -1,5 +1,6 @@
+<?php require_once __DIR__ . '/lang/load.php'; ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,10 +23,10 @@
 <div class="up">
 
     <div class="hero">
-      <h1><span>Crie</span> textos</h1>
-      <h1><span>Imagine</span> mais</h1>
-      
-      <h2>Escreva histórias, compartilhe ideias, dê o próximo passo</h2>
+      <h1><span><?= translator('landing_hero_line1_accent') ?></span> <?= translator('landing_hero_line1_rest') ?></h1>
+      <h1><span><?= translator('landing_hero_line2_accent') ?></span> <?= translator('landing_hero_line2_rest') ?></h1>
+
+      <h2><?= translator('landing_hero_subtitle') ?></h2>
     </div>
 
 
@@ -52,8 +53,8 @@
 
 
         <div class="testinput">
-            <label for="test">Lendo</label>
-            <input type="text" id="test" name="test" placeholder="Escreva o primeiro verso...">
+            <label for="test"><?= translator('landing_demo_label') ?></label>
+            <input type="text" id="test" name="test" placeholder="<?= translator('landing_demo_placeholder') ?>">
         </div>
   </div>
 
@@ -68,13 +69,13 @@
 
 
   <div class="bts">
-  <button type="button" data-abrir="modalRegister">Criar conta</button>
-  <a href="login.php" data-abrir="modalLogin">Já tenho acesso</a>
+  <button type="button" data-abrir="modalRegister"><?= translator('landing_cta_register') ?></button>
+  <a href="login.php" data-abrir="modalLogin"><?= translator('landing_cta_login') ?></a>
 </div>
 
 
 <div class="explore">
-<h1>Explore, busque</h1>
+<h1><?= translator('landing_explore_title') ?></h1>
 
 
 
@@ -117,8 +118,8 @@
 
 
 <div class="procurar">
-    <label for="search">Procurar</label>
-    <input type="text" id="search" name="search" placeholder="Busque por título, autor ou tema">
+    <label for="search"><?= translator('landing_search_label') ?></label>
+    <input type="text" id="search" name="search" placeholder="<?= translator('landing_search_placeholder') ?>">
 </div>
 
 
