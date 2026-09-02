@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>StanzAI · Painel de teste</title>
+<title>StanzAI · Test Screen</title>
 <style>
   :root {
     --bg: #0f1115;
@@ -220,7 +220,7 @@
 const $ = (id) => document.getElementById(id);
 
 async function checkHealth() {
-  // PHP: se a API responde qualquer coisa em /search com POST vazio, consideramos "up"
+  // PHP: if the API returns something in /search with empty POST, it goes with an "up"
   fetch('search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: '', k: 1 }) })
     .then(r => setDot('dot-php', r.status < 500))
     .catch(() => setDot('dot-php', false));

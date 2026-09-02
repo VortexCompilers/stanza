@@ -58,7 +58,7 @@ form{
 
 
 
-/* Area de Escrita */
+/* Write Area*/
 
 textarea{
 
@@ -78,7 +78,7 @@ textarea{
 }
 
 
-/*  Mudar Fonte  */
+/*  Change Font  */
 .mbbt2{
     display: flex;
     width: fit-content;
@@ -111,7 +111,7 @@ font-family: arial;
 
 
 
-/* Bar Mobile */
+/* Mobile Bar */
 
 .bar {
     display: none;
@@ -278,7 +278,8 @@ font-weight: normal;
 
 
 body, html {margin: 0; padding: 0;}
-/* Bar Web */
+
+/* Web Bar */
 .wbbt{display: block;}
 
 .bar {
@@ -445,7 +446,7 @@ textarea{
     border:3px solid rgb(28, 29, 40) ;
 
 
-    /* texto */
+    /* text */
     padding: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;

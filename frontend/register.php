@@ -10,7 +10,7 @@ if (isset($_GET['erro'])) {
     $erroRegister = $mensagensDeErro[$_GET['erro']] ?? 'Ocorreu um erro. Tente novamente.';
 }
 
-// Acesso direto a esta página: o pop-up já aparece aberto.
+// Direct access to this page: the pop-up is already open.
 $registerAberto = true;
 ?>
 <!DOCTYPE html>

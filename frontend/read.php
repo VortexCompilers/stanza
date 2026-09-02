@@ -18,7 +18,7 @@ require_once __DIR__ . '/../backend/read.php';
 
 
 
-<!-- Barra Web -->
+<!-- Web Bar -->
 
 
 
@@ -122,7 +122,7 @@ require_once __DIR__ . '/../backend/read.php';
 
 
 
-<!-- Botões Popup Mobile -->
+<!-- Pop-up Mobile Buttons -->
 
 <script>
     const bar = document.querySelector(".bar");

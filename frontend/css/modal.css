@@ -1,9 +1,9 @@
 /* ============================================================
-   Pop-ups (login / cadastro)
-   Mesma paleta da landing: navy do header, acento #0088FF,
-   superfícies claras e bordas hairline. Arquivo autossuficiente:
-   os tokens estão aqui para que login.php e register.php
-   funcionem sozinhos, sem depender de landing.css.
+   Pop-ups (login / cadaster)
+   Landing same tones: navy header, accent #0088FF,
+   Lightfull surfaces, navy belts, a unique blue accent.
+   Self-sufficiente file:
+   The tokens are here to make login.php and register.php work alone, without depending on landing.css.
    ============================================================ */
 :root{
     --navy-900: #131348;
@@ -31,9 +31,10 @@
     --font-sans: system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
-/* Página que existe só para exibir o pop-up (acesso direto a
-   login.php / register.php, ou retorno do back-end com ?erro=) */
-body.modal-page{
+/* Page that exists only to display the modal (direct access to
+   login.php / register.php, or return from back-end with ?erro=) */
+
+   body.modal-page{
     margin: 0;
     min-height: 100vh;
     background-color: var(--navy-700);
@@ -46,7 +47,7 @@ body.no-scroll{
 
 
 /* ------------------------------------------------------------
-   Sobreposição
+   Overlap
    ------------------------------------------------------------ */
 
 .modal{
@@ -67,7 +68,7 @@ body.no-scroll{
 
 
 /* ------------------------------------------------------------
-   Cartão — o <form> é o próprio cartão
+   Card — the <form> is the card itself
    ------------------------------------------------------------ */
 
 .modal-card{
@@ -143,7 +144,7 @@ body.no-scroll{
 
 
 /* ------------------------------------------------------------
-   Seções e campos
+   Sections and fields
    ------------------------------------------------------------ */
 
 .modal-section{
@@ -243,7 +244,7 @@ body.no-scroll{
 
 
 /* ------------------------------------------------------------
-   Rodapé
+   Footer
    ------------------------------------------------------------ */
 
 .modal-foot{
@@ -296,7 +297,7 @@ body.no-scroll{
 
 
 /* ------------------------------------------------------------
-   Telas estreitas
+   Narrow screen 
    ------------------------------------------------------------ */
 
 @media (max-width: 560px){

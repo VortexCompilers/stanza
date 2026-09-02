@@ -3,39 +3,39 @@
 }
 
 /* ============================================================
-   Tokens — extraídos de catalog.css / header.css
-   Superfícies claras, faixas navy, um único acento azul.
+   Tokens — extracteds from catalog.css / header.css
+   Lightfull surfaces, navy belts, a unique blue accent.
    ============================================================ */
 :root{
-    /* Compatibilidade com o resto do projeto */
+    /* Compatibility with the rest of the project */
     --colorPrim: #E8EEFB;
     --colorSec:  #0088FF;
     --colorThr:  #131348;
     --colorcardgray: rgba(164, 163, 163, 0.20);
 
-    /* Navy — header e barra de filtros */
+    /* Navy — header and filter bar */
     --navy-900: #131348;   /* header */
     --navy-700: #1E3372;   /* .filtersec, .navbt */
-    --navy-500: #18489B;   /* borda do radio marcado */
+    --navy-500: #18489B;   /* marked radio bar */
 
-    /* Acento — ações */
-    --blue-500: #0088FF;   /* botão Pesquisar, borda do campo de busca */
-    --blue-600: #0E7CDD;   /* radio marcado / hover */
-    --blue-300: #4DA6FF;   /* acento sobre fundo navy */
+    /* Accent — actions */
+    --blue-500: #0088FF;   /* search button, search field border */
+    --blue-600: #0E7CDD;   /* marked radio / hover */
+    --blue-300: #4DA6FF;   /* accent about navy background */
     --cyan-500: #1792BB;   /* .createbt */
 
-    /* Superfícies */
+    /* Surfaces */
     --white:  #FFFFFF;
     --paper:  #F4F7F7;     /* .filterpop, .stsbox */
-    --alice:  #F0F8FF;     /* texto sobre navy */
+    --alice:  #F0F8FF;     /* text about navy */
 
-    /* Texto e linhas */
-    --ink:    #1B1A1A;     /* títulos de post */
-    --muted:  #808080;     /* h2/h3 dos posts */
+    /* Text and lines */
+    --ink:    #1B1A1A;     /* post titles */
+    --muted:  #808080;     /* h2/h3 of posts */
     --line:   rgba(164, 163, 163, 0.28);
     --line-strong: #C9CED6;
 
-    /* Capas (placeholder de catalog.css) */
+    /* Caps (placeholder of catalog.css) */
     --cover-green: #6DA56D;
     --cover-blue:  #3E7FC1;
     --cover-navy:  #2C3E7A;
@@ -72,8 +72,8 @@ body{
 
 
 /* ============================================================
-   Topo — hero
-   Faixa navy chapada, no mesmo tom do header do app.
+   Top — hero
+   navy plateau belt, same tone as the app header.
    ============================================================ */
 
 .up{
@@ -122,7 +122,7 @@ body{
 
 
 /* ============================================================
-   Mini cards — prévia de conteúdo
+   Mini cards — content preview
    ============================================================ */
 
 .cards{
@@ -159,10 +159,10 @@ body{
     width: 60%;
     height: 100%;
     padding-top: 4px;
-    font-size: 0; /* neutraliza o espaço do <br> entre as linhas */
+    font-size: 0; /* levels the space of <br> between lines */
 }
 
-/* linhas do esqueleto de carregamento */
+/* Skeleton loading lines */
 .minicard h1{
     font-size: 0;
     color: transparent;
@@ -177,7 +177,7 @@ body{
 
 
 /* ============================================================
-   Campo de demonstração (Lendo / Escrevendo)
+   Demonstration field (reading / writing)
    ============================================================ */
 
 .testinput{
@@ -233,7 +233,7 @@ body{
     border-color: var(--blue-500);
 }
 
-/* troca de rótulo original preservada */
+/* original label exchange preserved*/
 .testinput:has(input:focus) label{
     transition: 200ms;
     font-size: 0;
@@ -246,7 +246,7 @@ body{
 
 
 /* ============================================================
-   Acesso — botões
+   Access — buttons
    ============================================================ */
 
 .bts{
@@ -300,7 +300,7 @@ body{
 
 
 /* ============================================================
-   Explorar
+   Explore
    ============================================================ */
 
 .explore{
@@ -322,7 +322,7 @@ body{
 }
 
 
-/* Blocos de post */
+/* Post blocks */
 
 .carousel{
     display: flex;
@@ -417,7 +417,7 @@ body{
 
 
 /* ============================================================
-   Procurar — faixa final
+   Search — final strip
    ============================================================ */
 
 .procurar{
@@ -564,7 +564,7 @@ body{
 
 
 /* ============================================================
-   Acessibilidade — movimento reduzido
+   Accessibility — reduced motion
    ============================================================ */
 
 @media (prefers-reduced-motion: reduce){

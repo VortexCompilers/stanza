@@ -12,7 +12,7 @@ from app.database import salvar_embedding
 
 router = APIRouter()
 
-# MODELAO
+# MODEL
 model = SentenceTransformer(MODEL_NAME)
 
 
@@ -38,7 +38,7 @@ def search(req: SearchRequest, request: Request):
     resultados = [
         SearchResultItem(id=int(i), score=float(d))
         for i, d in zip(ids[0], distances[0])
-        if i != -1  # FAISS retorna -1 quando não há resultado suficiente
+        if i != -1  # FAISS returns -1 when there are no more results, so we filter those out
     ]
 
     return SearchResponse(results=resultados)

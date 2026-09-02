@@ -1,12 +1,12 @@
-/* Abre e fecha os pop-ups de acesso (login / cadastro).
+/* Open and close the login / register pop-ups.
 
-   Atributos usados no HTML:
-     data-abrir="idDoModal"   — abre o pop-up
-     data-fechar              — fecha o pop-up em que o elemento está
-     data-trocar="idDoModal"  — fecha o atual e abre outro
+   HTML used attributes:
+     data-abrir="idDoModal"   — open the pop-up
+     data-fechar              — close the pop-up in which the element is
+     data-trocar="idDoModal"  — close the current and open another
 
-   Os gatilhos são links de verdade (href), então continuam
-   funcionando como navegação caso este script não carregue. */
+   The triggers are actual links (hrefs), so they continue
+to function as navigation if this script fails to load.*/
 
 document.addEventListener("click", function (evento) {
 
@@ -32,7 +32,7 @@ document.addEventListener("click", function (evento) {
         return;
     }
 
-    // clique no fundo escuro, fora do cartão
+    // dark back click, off the card
     if (evento.target.classList.contains("modal")) {
         fecharModal(evento.target);
     }

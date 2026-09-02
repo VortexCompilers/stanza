@@ -8,14 +8,14 @@ from app.routes import search
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):  
-    print("tentano carregar o indice socorro") 
+    print("trying to load index...") 
     app.state.index = carregar_indice()
-    print("deu certo :)")
+    print("index loaded successfully")
 
 
     yield
 
-    #salva o index antes de encerrar a aplicação
+    #save the index before shutting down the application
     save_index(app.state.index)
 
 

@@ -1,9 +1,9 @@
 <?php
 /**
- * Pop-up de login.
- * Variáveis opcionais definidas por quem inclui o arquivo:
- *   $erroLogin    — mensagem de erro a exibir
- *   $loginAberto  — true para já abrir o pop-up (páginas avulsas)
+ * Login pop-up.
+ * Optionals variables writed by who include this file:
+ *   $erroLogin    —   error message to show in the pop-up (if any)
+ *   $loginAberto  — true to open the pop-up, false to keep it closed
  */
 $erroLogin = $erroLogin ?? '';
 $loginAberto = $loginAberto ?? false;

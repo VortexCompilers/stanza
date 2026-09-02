@@ -22,7 +22,7 @@ def carregar_todos_embeddings():
     cursor.close()
     connection.close()
 
-    if not rows: # se a lista estiver vazia, devolve arrays vazios, int64 por consistência
+    if not rows: # if the list is empty, returns empty arrays, int64 by consistency
         return np.array([], dtype=np.int64), np.empty((0, EMBEDDING_DIM), dtype=np.float32)
 
     ids = np.array([row[0] for row in rows], dtype=np.int64)

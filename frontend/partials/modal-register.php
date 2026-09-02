@@ -1,9 +1,9 @@
 <?php
 /**
- * Pop-up de cadastro.
- * Variáveis opcionais definidas por quem inclui o arquivo:
- *   $erroRegister    — mensagem de erro a exibir
- *   $registerAberto  — true para já abrir o pop-up (páginas avulsas)
+ * Register pop-up.
+ * Optionals variables writed by who include this file:
+ *   $erroRegister    —   error message to show in the pop-up (if any)
+ *   $registerAberto  — true to open the pop-up, false to keep it closed
  */
 $erroRegister = $erroRegister ?? '';
 $registerAberto = $registerAberto ?? false;

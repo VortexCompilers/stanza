@@ -5,29 +5,16 @@ import numpy as np
 from app.config import EMBEDDING_DIM, FAISS_INDEX_PATH
 from app.database import carregar_todos_embeddings
 
-def criar_indice_vazio():
-    """Cria um índice FAISS"""
-    base = faiss.IndexFlatL2(EMBEDDING_DIM)
-    return faiss.IndexIDMap(base)
-
-
-import os
-import faiss
-import numpy as np
-
-from app.config import EMBEDDING_DIM, FAISS_INDEX_PATH
-from app.database import carregar_todos_embeddings
-
 
 def criar_indice_vazio():
-    """Cria um índice FAISS novo, vazio, pronto para receber vetores com IDs."""
+    """create an empty FAISS index"""
     base = faiss.IndexFlatL2(EMBEDDING_DIM)
     return faiss.IndexIDMap(base)
 
 
 def carregar_indice():
     """
-    Tenta carregar o índice. Se não existir, constrói a partir do bd.
+    Try to load the index. If it doesn't exist, build it from the data bank.
     """
     if os.path.exists(FAISS_INDEX_PATH):
         return faiss.read_index(FAISS_INDEX_PATH)
@@ -42,5 +29,5 @@ def carregar_indice():
 
 
 def save_index(index):
-    """Salva o índice no disco."""
+    """Save the index to disk."""
     faiss.write_index(index, FAISS_INDEX_PATH)

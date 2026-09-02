@@ -21,7 +21,7 @@
 
 
 
-<!-- Barra Web -->
+<!-- Web bar -->
 
 
 
@@ -164,7 +164,7 @@
 
 
 
-<!-- Botões Popup Mobile -->
+<!-- Pop-up Mobile Buttons -->
 
 </form>
 
