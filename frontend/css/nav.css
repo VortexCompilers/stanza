@@ -15,19 +15,22 @@ nav{
     
     .createbt, .navbt{
     width: 90%;
-        height: 24px;
+        height: 18px;
         margin: 10px 0;
         padding: 6px;
     
         align-content: center;
-        font-size: 18px;
+        font-size: 16px;
     
-        border-radius: 2px;
+        border-radius: 8px;
         background-color: rgb(30, 51, 114);
     }
-    
+    .navbt a {margin-left: 2px;}
+
     .createbt{
-        border-radius: 10px;
+        font-weight: bold;
+        height: 20px;
+        border-radius: 4px;
         background-color: rgb(23, 146, 187);
     }
     .createbt a, .navbt a{text-decoration: none; color: aliceblue;}

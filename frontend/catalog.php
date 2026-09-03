@@ -28,12 +28,11 @@
     <input type="search" name="catal" placeholder="<?= translator('catalog_search_placeholder') ?>" aria-label="<?= translator('action_search') ?>">
 
 
+    
 
        <a id="abrirPop">▼ <?= translator('action_filter') ?></a>
 
     <button type="submit"><?= translator('action_search') ?></button>
-
-  </form>
 
 
 
@@ -74,6 +73,8 @@
 
           </div>
 
+
+  </form>
 
 
 </div>
