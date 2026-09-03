@@ -181,6 +181,7 @@ $strings = [
     // Shared units
     // ------------------------------------------------------------
     'views'                  => 'visualizaciones',
+    'favorites'              => 'favoritos',
 
     // ------------------------------------------------------------
     // Feedback messages.

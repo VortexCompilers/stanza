@@ -175,45 +175,23 @@ require_once __DIR__ . '/../backend/home.php';
 
             <div class="carousel">
 
+                <?php foreach ($most_favorited as $text): ?>
                     <div class="post">
-                        <div class="img"></div>
+                        <div class="img">
+                            <?php if ($text['cover_image']): ?>
+                                <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
+                            <?php endif; ?>
+                        </div>
                         <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
+                            <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                            <h2><?= htmlspecialchars($text['category']) ?></h2>
+                            <div class="postfooter">
+                                <h3><?= (int) $text['favorites'] ?> <?= translator('favorites') ?></h3>
+                                <button>&#9661</button>
+                            </div>
                         </div>
                     </div>
-
-
-
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
+                <?php endforeach; ?>
 
             </div>
 

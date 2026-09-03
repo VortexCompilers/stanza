@@ -32,6 +32,7 @@ CREATE TABLE texts (
     cover_image VARCHAR(255) DEFAULT NULL,
     visibility ENUM('public', 'private') NOT NULL DEFAULT 'public',
     language ENUM('enus', 'ptbr', 'es'),
+    favorites INT DEFAULT 0,
 
     FOREIGN KEY (author_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
