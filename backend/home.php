@@ -1,4 +1,15 @@
 <?php
+/*
+DECLARAÇÃO DE USO DE INTELIGÊNCIA ARTIFICIAL
+
+Tool: Claude Code
+Stage: Development
+Purpose: Writing the PDO queries that feed the home carousels (most viewed,
+         most favourited and recently published), with their ORDER BY and
+         the visibility = 'public' filter.
+Validation: Queries reviewed and run against the seeded database, checking
+            the ranking and the public-only filter.
+*/
 
 require_once __DIR__ . '/config/database.php';
 

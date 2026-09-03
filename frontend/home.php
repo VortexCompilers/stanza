@@ -1,4 +1,15 @@
 <?php
+/*
+DECLARAÇÃO DE USO DE INTELIGÊNCIA ARTIFICIAL
+
+Tool: Claude Code
+Stage: Development
+Purpose: Turning the "Most favourited" carousel from static mockup markup
+         into a PHP loop over the query results, mirroring the "Most viewed"
+         block and escaping output with htmlspecialchars().
+Validation: Rendered in the browser against the seeded data and the output
+            compared with the rows returned by the query.
+*/
 require_once __DIR__ . '/lang/load.php';
 require_once __DIR__ . '/../backend/home.php';
 ?>
