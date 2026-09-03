@@ -139,7 +139,7 @@ require_once __DIR__ . '/../backend/settings.php';
         <button class="dlbt"><?= translator('settings_delete_account') ?></button>
 
 
-        <a class="lvbt" href="../backend/logout.php"><?= translator('settings_logout') ?></a>
+        <button class="lvbt"><a href="../backend/logout.php"><?= translator('settings_logout') ?></a></button>
 
 
 </main>

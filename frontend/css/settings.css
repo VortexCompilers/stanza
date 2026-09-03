@@ -48,11 +48,14 @@ h1{
 
 /* Select Buttons (Theme/Language) */
 
-.rdbt label{
+.rdbt label, .rdbt a{
     font-family: arial;
     text-align: center;
+    text-decoration: none;
     font-size: 16px ;
 
+
+    color: black;
     background-color: aliceblue;
     border: 3px solid darkgray;
     border-radius: 14px;
@@ -61,13 +64,16 @@ h1{
    margin: 4px;
 }
 
-.rdbt input[type="radio"]:checked + label{
+.rdbt input[type="radio"]:checked + label, 
+.rdbt a[aria-current="true"] {
 
     background-color: rgb(14, 124, 221) ;
     border-color:rgb(24, 72, 155);
     color: aliceblue;
    
 }
+
+
 .rdbt input {
 display: none;
 }
@@ -133,6 +139,9 @@ background-color: rgb(224, 221, 221);
     display: inline-block;
 
 }
+
+.lvbt a{text-decoration: none;
+    color: black;}
 
 .dlbt{
     background-color: aliceblue;
