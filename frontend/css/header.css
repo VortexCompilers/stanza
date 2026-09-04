@@ -4,10 +4,10 @@ body{margin: 0;}
 
 header{  
 position: fixed;
+display: flex;
 height: 72px;
 width: 100%;
 padding: 0 16px;
-
 
 align-content: center;
 
@@ -20,7 +20,28 @@ z-index: 2000;
 header img{
 width: 48px;
 height: 48px;
+margin: auto 0;
 }
+
+header .bup{
+ display: flex;
+
+ gap: 12px;
+margin: auto 0 auto auto;
+ height: 32px;
+
+}
+
+header a{
+    color: black;
+    background-color: aliceblue;
+    text-decoration: none;
+    padding: 8px;
+    margin: auto 0;
+    border-radius: 54px;
+
+}
+
 
 main{
     padding-top: 72px;
