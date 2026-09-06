@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/../backend-php/src/Services/MlClient.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -17,6 +18,10 @@ $description = $_POST['desc'] ?? '';
 $category = $_POST['category'] ?? '';
 $body = ''; 
 $cover_image = null; 
+$embedding_text = implode('. ', array_filter([
+    $title,
+    $description
+]));
 
 if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_ERR_NO_FILE) {
 
@@ -61,11 +66,14 @@ try {
     $sql = 'INSERT INTO texts (author_id, title, body, description, category, cover_image, visibility, language) VALUES (?,?,?,?,?,?,?,?)';
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$author_id, $title, $body, $description, $category, $cover_image, $visibility, $language]);
-} catch (PDOException $e) {
+    $id = (int) $pdo->lastInsertId();
+    } catch (PDOException $e) {
     error_log($e->getMessage()); 
     header('Location: ../frontend/create.php?erro=erro_interno');
     exit;
 }
 
-header('Location: ../frontend/edit.php?id=' . $pdo->lastInsertId());
+if ($visibility === "public") { mlAdicionar( $id, $embedding_text );}
+
+header('Location: ../frontend/edit.php?id=' . $id);
 exit;

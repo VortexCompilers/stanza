@@ -3,6 +3,7 @@ import numpy as np
 
 from sentence_transformers import SentenceTransformer
 
+from app.faiss_index import index_update_embedding
 from app.config import MODEL_NAME
 from app.models import (
     AddRequest, AddResponse,
@@ -15,15 +16,15 @@ router = APIRouter()
 # MODEL
 model = SentenceTransformer(MODEL_NAME)
 
-
 @router.post("/add", response_model=AddResponse)
 def add_item(item: AddRequest, request: Request):
     index = request.app.state.index
 
     embedding = model.encode([item.texto]).astype(np.float32)
-    index.add_with_ids(embedding, np.array([item.id], dtype=np.int64))
-
+    
     salvar_embedding(item.id, embedding[0].tobytes())
+
+    index_update_embedding(index, item.id, embedding)
 
     return AddResponse(status="ok", id=item.id)
 
@@ -32,8 +33,14 @@ def add_item(item: AddRequest, request: Request):
 def search(req: SearchRequest, request: Request):
     index = request.app.state.index
 
+    print("QUERY:", req.query)
+    print("K RECEBIDO:", req.k)
+    print("VETORES NO FAISS:", index.ntotal)
+
     embedding = model.encode([req.query]).astype(np.float32)
     distances, ids = index.search(embedding, req.k)
+
+    print("IDS RETORNADOS:", ids)
 
     resultados = [
         SearchResultItem(id=int(i), score=float(d))

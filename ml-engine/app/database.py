@@ -2,14 +2,24 @@ import numpy as np
 from app.config import EMBEDDING_DIM, get_connection
 
 def salvar_embedding(embedding_id, embedding_bytes):
+
+    print("=== SALVANDO EMBEDDING ===")
+    print("ID:", embedding_id)
+    print("BYTES:", len(embedding_bytes))
+
     connection = get_connection()
     cursor = connection.cursor()
+
     cursor.execute(
         "INSERT INTO embeddings (id, embedding) VALUES (%s, %s) "
         "ON DUPLICATE KEY UPDATE embedding = VALUES(embedding)",
         (embedding_id, embedding_bytes)
     )
+
     connection.commit()
+
+    print("EMBEDDING SALVO NO BANCO")
+
     cursor.close()
     connection.close()
 

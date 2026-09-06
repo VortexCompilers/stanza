@@ -1,0 +1,2 @@
+from faiss_index import index_reconstruct
+index_reconstruct()

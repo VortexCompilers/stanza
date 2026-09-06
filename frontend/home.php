@@ -35,7 +35,7 @@ require_once __DIR__ . '/../backend/home.php';
 
 <main>
 
-<form action="searchh" class="search">
+<form action="search.php" class="search">
      <input type="search" placeholder="<?= translator('home_search_placeholder') ?>" name="search">
        <button type="submit"><?= translator('action_search') ?></button>
     </form>

@@ -8,7 +8,7 @@ function mlAdicionar(int $id, string $texto): array
     ]);
 }
 
-function mlBuscar(string $query, int $k = 5): array
+function mlBuscar(string $query, int $k = 20): array
 {
     return mlChamarApi('/search', [
         'query' => $query,
@@ -28,14 +28,16 @@ function mlChamarApi(string $endpoint, array $dados): array
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($dados));
 
     $resposta = curl_exec($ch);
-
+    echo '<pre>';
+    var_dump($resposta);
+    echo '</pre>';
+    
     if (curl_errno($ch)) {
         throw new Exception('Erro ao chamar a API: ' . curl_error($ch));
     }
 
     $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
+   
     if ($statusCode !== 200) {
         throw new Exception("API retornou status $statusCode: $resposta");
     }
