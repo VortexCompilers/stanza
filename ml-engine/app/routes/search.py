@@ -31,16 +31,11 @@ def add_item(item: AddRequest, request: Request):
 
 @router.post("/search", response_model=SearchResponse)
 def search(req: SearchRequest, request: Request):
+    
     index = request.app.state.index
-
-    print("QUERY:", req.query)
-    print("K RECEBIDO:", req.k)
-    print("VETORES NO FAISS:", index.ntotal)
 
     embedding = model.encode([req.query]).astype(np.float32)
     distances, ids = index.search(embedding, req.k)
-
-    print("IDS RETORNADOS:", ids)
 
     resultados = [
         SearchResultItem(id=int(i), score=float(d))

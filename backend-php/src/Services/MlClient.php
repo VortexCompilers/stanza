@@ -10,10 +10,12 @@ function mlAdicionar(int $id, string $texto): array
 
 function mlBuscar(string $query, int $k = 20): array
 {
-    return mlChamarApi('/search', [
+    $resposta = mlChamarApi('/search', [
         'query' => $query,
         'k' => $k,
     ]);
+
+    return $resposta['results'] ?? [];
 }
 
 function mlChamarApi(string $endpoint, array $dados): array
@@ -28,9 +30,6 @@ function mlChamarApi(string $endpoint, array $dados): array
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($dados));
 
     $resposta = curl_exec($ch);
-    echo '<pre>';
-    var_dump($resposta);
-    echo '</pre>';
     
     if (curl_errno($ch)) {
         throw new Exception('Erro ao chamar a API: ' . curl_error($ch));

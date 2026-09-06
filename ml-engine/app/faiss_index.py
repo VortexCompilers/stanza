@@ -29,16 +29,10 @@ def carregar_indice():
 
 def index_reconstruct():
     """Reconstruct the FAISS index from the database. """
-    
-    print("=== RECONSTRUINDO FAISS ===")
 
     index = criar_indice_vazio()
 
     ids, embeddings = carregar_todos_embeddings()
-
-    print("IDS NO BANCO:", ids)
-    print("QUANTIDADE NO BANCO:", len(ids))
-    print("SHAPE EMBEDDINGS:", embeddings.shape)
 
     if len(ids) > 0:
         index.add_with_ids(
@@ -46,11 +40,7 @@ def index_reconstruct():
             np.array(ids, dtype=np.int64)
         )
 
-    print("VETORES ADICIONADOS AO FAISS:", index.ntotal)
-
     save_index(index)
-
-    print("ÍNDICE SALVO:", FAISS_INDEX_PATH)
 
     return index
 
@@ -61,19 +51,17 @@ def index_update_embedding(index, embedding_id, embedding):
 
     if index is None:
         index = carregar_indice()
-    print("=== ATUALIZANDO EMBEDDING NO FAISS ===")
+
     # Remove the old embedding if it exists.
     index.remove_ids(
         np.array([embedding_id], dtype=np.int64)
     )
-    print("socorro2")
 
     # Add the new embedding.
     index.add_with_ids(
         embedding,
         np.array([embedding_id], dtype=np.int64)
     )
-    print("socorro3")
 
     save_index(index)
 
