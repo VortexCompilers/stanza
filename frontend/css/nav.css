@@ -10,7 +10,7 @@ nav{
     margin: 96px 0 0 0;
     
     background-color: rgb(19, 19, 72);
-    z-index: 1000;
+    z-index: 3;
     }
     
     .createbt, .navbt{
