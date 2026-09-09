@@ -95,3 +95,7 @@ O motor de ML não acessa o banco diretamente — ele só recebe um `text_id` do
 sudo /opt/lampp/lampp start
 
 sudo /opt/lampp/lampp stop
+
+# ngrok
+
+abrir o link uma vez na máquina da apresentação antes de começar

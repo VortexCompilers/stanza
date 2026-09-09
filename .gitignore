@@ -21,3 +21,6 @@ exemplo-professor/
 
 .claude/
 
+
+# Static token for the catalog API (see api_token.example.php)
+backend/config/api_token.php
