@@ -145,15 +145,6 @@ require_once __DIR__ . '/../backend/read.php';
 
 
 
-
-<!--
-    StanzAI chat bubble, hosted on Chatvolt. The agent is a catalog guide: it
-    reads the live catalog through backend/api/catalog.php and only talks about
-    texts that are actually published on the platform.
-
-    The version is pinned on purpose, so an upstream release cannot change the
-    widget between now and the presentation.
--->
 <script type="module">
     import Chatbox from 'https://cdn.jsdelivr.net/npm/@chatvolt/embeds@4.3.16/dist/chatbox/index.js';
 

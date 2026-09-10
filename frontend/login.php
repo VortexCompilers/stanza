@@ -4,8 +4,6 @@ require_once __DIR__ . '/lang/load.php';
 $erroLogin = '';
 
 if (isset($_GET['erro'])) {
-    // Maps the ?erro= codes backend/login.php redirects with to dictionary
-    // keys defined in lang/enus.php.
     $errorKeys = [
         'campo_vazio'           => 'error_empty_fields',
         'credenciais_invalidas' => 'error_invalid_credentials',
@@ -14,7 +12,6 @@ if (isset($_GET['erro'])) {
     $erroLogin = translator($errorKeys[$_GET['erro']] ?? 'error_generic');
 }
 
-// Direct access to this page: the pop-up is already open.
 $loginAberto = true;
 ?>
 <!DOCTYPE html>

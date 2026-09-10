@@ -1,21 +1,13 @@
 <?php
 /*
-DECLARAÇÃO DE USO DE INTELIGÊNCIA ARTIFICIAL
+DECLARATION OF ARTIFICIAL INTELLIGENCE USE
 
 Tool: Claude Code
 Stage: Development
-Purpose: Writing the session guard and the three PDO queries that feed the
-         profile page -- the account row (name and creation date), the header
-         counters aggregated with COUNT() and SUM() over the user's texts, and
-         the list of texts the user has written. Every query is filtered by the
-         session user id bound as a parameter, so one profile never reads
-         another account's rows.
-Validation: Queries run against the seeded database with the XAMPP mysql client
-            and the page opened while logged in, checking that the counters
-            match the rows the user owns, that the grid lists the same texts the
-            catalog shows for that author, and that opening profile.php while
-            logged out redirects to the login page.
+Purpose: Correction, review, and refinement of the code
+Validation: All changes tested by the dev
 */
+
 
 require_once __DIR__ . '/config/database.php';
 

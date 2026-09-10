@@ -4,8 +4,7 @@ require_once __DIR__ . '/lang/load.php';
 $erroRegister = '';
 
 if (isset($_GET['erro'])) {
-    // Maps the ?erro= codes backend/register.php redirects with to dictionary
-    // keys defined in lang/enus.php.
+
     $errorKeys = [
         'campo_vazio'     => 'error_empty_fields',
         'email_duplicado' => 'error_email_taken',
@@ -14,7 +13,6 @@ if (isset($_GET['erro'])) {
     $erroRegister = translator($errorKeys[$_GET['erro']] ?? 'error_generic');
 }
 
-// Direct access to this page: the pop-up is already open.
 $registerAberto = true;
 ?>
 <!DOCTYPE html>

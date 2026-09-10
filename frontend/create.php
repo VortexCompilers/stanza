@@ -104,7 +104,7 @@
 
 
         <div class="botoes-form">
-            <button type="button" style="background-color:white; padding:8px 12px;color:black;" ><?= translator('action_cancel') ?></button>
+            <button type="button" style="background-color:white; padding:8px 12px;color:black;" ><?= translator('action_cancel') ?> </button>
             <button type="submit" ><?= translator('editor_submit_create') ?></button>
         </div>
 

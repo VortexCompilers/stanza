@@ -1,4 +1,13 @@
 <?php
+/*
+DECLARATION OF ARTIFICIAL INTELLIGENCE USE
+
+Tool: Claude Code
+Stage: Development
+Purpose: Correction, review, and refinement of the code
+Validation: All changes tested by the dev
+*/
+
 
 require_once __DIR__ . '/config/database.php';
 require_once __DIR__ . '/../backend-php/src/Services/MlClient.php';
