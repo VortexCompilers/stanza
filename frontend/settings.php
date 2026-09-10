@@ -23,7 +23,7 @@ require_once __DIR__ . '/../backend/settings.php';
 
 <main>
 
-
+        <div class="settingsec">
 
         <h1><?= translator('settings_general') ?></h1>
                 <div class="stsbox">
@@ -76,10 +76,10 @@ require_once __DIR__ . '/../backend/settings.php';
 
 
 
+</div>
 
 
-
-
+    <div class="settingsec">
 
         <h1><?= translator('settings_profile') ?></h1>
 
@@ -132,14 +132,13 @@ require_once __DIR__ . '/../backend/settings.php';
                     </div>
             <button><?= translator('action_edit') ?></button>
             </div>
+</div>
 
 
-
-
-        <button class="dlbt"><?= translator('settings_delete_account') ?></button>
-
-
-        <button class="lvbt"><a href="../backend/logout.php"><?= translator('settings_logout') ?></a></button>
+        <div class="footbuttons">
+            <button class="dlbt"><?= translator('settings_delete_account') ?></button>
+            <button class="lvbt"><a href="../backend/logout.php"><?= translator('settings_logout') ?></a></button>
+        </div>
 
 
 </main>

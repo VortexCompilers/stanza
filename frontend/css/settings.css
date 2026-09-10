@@ -1,7 +1,7 @@
 /* Settings */
 
 body{
-    background-color: rgba(255, 255, 255, 0.944)
+   background: linear-gradient(180deg,rgba(235, 243, 255, 1) 0%, rgba(247, 255, 254, 1) 46%, rgba(235, 239, 255, 1) 100%);
 }
 
 
@@ -9,27 +9,28 @@ body{
 
 h1{
     font-size: 24px;
+    font-style: italic;
     margin: 24px 0 0 12px ;
-    color: rgb(78, 75, 75);
+    color: rgb(24, 72, 155);
 }
 
 .stsbox, .stsbox1{
     width: 96%;
-    height: 60px;
+    height: 72px;
     padding: 6px;
     margin:6px auto;
 
-    background-color: rgb(244, 247, 247);
-    border: 3px solid darkgray;
-    border-radius: 28px;
+    background-color: rgba(172, 205, 205, 0.135);
+    border: 3px solid rgb(24, 72, 155, 0.25);;
+    border-radius: 8px;
 }
 
 .stsbox h2 ,.stsbox1 h2{
-
-    font-size: 18px;
+    font-style: italic;
+    font-size: 22px;
     font-weight: 100;
 
-    margin: 0 0 12px 6px ;
+    margin: 0 0 12px 8px ;
 
     color: rgb(85, 85, 85);
 
@@ -39,8 +40,8 @@ h1{
 .stsbox1 h2{margin-bottom: 6px;}
 .stsbox1 label{
     font-family: arial;
-    font-size: 18px;
-    margin-left: 8px;
+    font-size: 20px;
+    margin-left: 10px;
 
 }
 
@@ -82,7 +83,7 @@ display: none;
 /* (Range Button - ReadingFontSize) */ 
  input[type="range"]{
     appearance: none;
-    width: 80%;
+    width: 90%;
     height: 12px;
     margin: 0;
 
@@ -99,16 +100,16 @@ display: none;
 .stsbox1{display: flex;}
 .stsbox1 button{
     width: 20%;
-    height: 64%;
+    height: 72%;
     align-self: center;
-    border: 3px solid darkgrey;
+    background-color: aliceblue;
+    border: 3px solid darkgray;
     border-radius: 20px;
-    font-size: 20px;
+    font-size: 24px;
    margin-left: auto;
 }
 .stsbox1 button:hover{
-    background-color: rgb(180, 180, 180);
-    color: white;
+    background-color: rgb(230, 226, 226);
 }
 
 
@@ -126,22 +127,29 @@ margin: auto 0;
 
 
 
+/* Bottom Buttons*/
+.footbuttons{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 .dlbt, .lvbt{
     
-    margin: 30px auto;
-    width: 49%;
+    margin: 30px 12px;
+    width: 42%;
     height: 54px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight:bold;
     border: 3px solid gray;
-    border-radius: 20px;
+    border-radius: 24px;
 background-color: rgb(224, 221, 221);
-    display: inline-block;
+
 
 }
 
 .lvbt a{text-decoration: none;
-    color: black;}
+    color: rgb(83, 63, 63);}
 
 .dlbt{
     background-color: aliceblue;
@@ -158,20 +166,54 @@ background-color: rgb(224, 221, 221);
 
 @media (min-width: 800px)
 {
-h1{
-    margin: 42px 0 0 24px ;
+.settingsec{ 
+    margin: 6px 12px;
+    border-left: 4px solid lightgray;
+    border-radius: 6px;
 }
 
+h1{
+    margin: 16px 0 0 18px ;
+}
+.stsbox h2, .stsbox1 h2{
+    font-size: 18px
+}
+.stsbox h2{margin: 0 0 12px 0;}
+.stsbox1 h2{margin: 0 0 4px 0;}
+
+
 .stsbox, .stsbox1{
-    width: 70%;
-    height: 54px;
-padding: 10px;
+    width: 64%;
+    height: 60px;
+padding: 8px 12px;
     margin:12px;
 }
 
+
+
+.stsbox1 label{
+    font-size: 16px;
+    margin: 0 2px;
+}
+
+.stsbox1 button{
+    font-size: 18px;
+    border-radius: 4px;
+    min-width: 64px;
+    width: 10%;
+}
+
+.footbuttons{
+  justify-content: left;
+  width: 32%;
+  margin: 0 12px;
+}
 .dlbt, .lvbt{
-    width: 200px;
-    margin: 28px 12px ;
+    font-size: 18px;
+    min-width: 160px;
+    width: 100%;
+    height: 48px;
+    margin: 28px 8px;
 }
 
 
