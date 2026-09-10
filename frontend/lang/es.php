@@ -46,6 +46,7 @@ $strings = [
     'landing_hero_subtitle'      => 'Escribe historias, comparte ideas, da el siguiente paso',
     'landing_demo_label'         => 'Leyendo',
     'landing_demo_placeholder'   => 'Escribe el primer verso...',
+    'landing_demo_label_focus'   => 'Escribiendo',
     'landing_cta_register'       => 'Crear cuenta',
     'landing_cta_login'          => 'Ya tengo acceso',
     'landing_explore_title'      => 'Explora, busca',

@@ -9,7 +9,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 if (empty($username) || empty($gender) || empty($birthdate) || empty($email) || empty($password)) {
-    header('Location: ../frontend/register.php?erro=campo_vazio');
+    header('Location: ../frontend/landing.php?erro=campo_vazio&modal=register');
     exit;
 }
 
@@ -22,7 +22,7 @@ $email
 ]);
 
 if ($stmt->fetch()) {
-    header('Location: ../frontend/register.php?erro=email_duplicado');
+    header('Location: ../frontend/landing.php?erro=email_duplicado&modal=register');
     exit;
 }
 

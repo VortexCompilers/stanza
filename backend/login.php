@@ -6,8 +6,7 @@ $username_or_email = $_POST['usernameoremail'] ?? '';
 $password = $_POST['password'] ?? '';
 
 if (empty($username_or_email) || empty($password)) {
-    header('Location: ../frontend/login.php?erro=campo_vazio');
-    exit;
+    header('Location: ../frontend/landing.php?erro=campo_vazio&modal=login');
 }
 
 if (filter_var($username_or_email, FILTER_VALIDATE_EMAIL)) {
@@ -20,7 +19,7 @@ $stmt->execute([$username_or_email]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$user || !password_verify($password, $user['password_hash'])) {
-    header('Location: ../frontend/login.php?erro=credenciais_invalidas');
+    header('Location: ../frontend/landing.php?erro=credenciais_invalidas&modal=login');
     exit;
 }
 

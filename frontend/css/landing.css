@@ -133,6 +133,7 @@ body{
 
 .minicard{
     display: flex;
+    flex: 0 0 auto;
     width: 160px;
     height: 90px;
     padding: 6px;
@@ -144,9 +145,13 @@ body{
     border-radius: var(--radius-card);
 }
 
+.minicard:nth-child(1){ margin-top: -2px; }
+.minicard:nth-child(2){ margin-top: 18px; }
+
 .minicard .pic{
-    width: 40%;
+    flex: 0 0 40%;
     height: 100%;
+    overflow: hidden;
     border-radius: 6px;
     background-color: var(--cover-green);
 }
@@ -155,25 +160,51 @@ body{
     background-color: var(--cover-blue);
 }
 
+.minicard .pic img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .minicard .inf{
+    display: flex;
+    flex-direction: column;
     width: 60%;
     height: 100%;
     padding-top: 4px;
-    font-size: 0; /* levels the space of <br> between lines */
+    overflow: hidden;
 }
 
-/* Skeleton loading lines */
-.minicard h1{
-    font-size: 0;
-    color: transparent;
-    height: 9px;
-    margin: 0 4px 8px 0;
-    border-radius: 3px;
-    background-color: rgba(240, 248, 255, 0.22);
+.minicard .inf a{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+
+    color: var(--alice);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.25;
+    text-decoration: none;
+    word-break: break-word;
 }
 
-.minicard h1:nth-of-type(2){ width: 72%; background-color: rgba(240, 248, 255, 0.16); }
-.minicard h1:nth-of-type(3){ width: 46%; margin-top: 14px; background-color: rgba(240, 248, 255, 0.16); }
+.minicard .inf a:hover{
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.minicard .inf h2{
+    margin: 4px 0 0 0;
+    color: rgba(240, 248, 255, 0.55);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+}
 
 
 /* ============================================================
@@ -240,7 +271,7 @@ body{
 }
 
 .testinput:has(input:focus) label::after{
-    content: "Escrevendo";
+    content: attr(data-focus-label);
     font-size: 13px;
 }
 
@@ -369,11 +400,19 @@ body{
 
 .post .img{
     position: relative;
-    width: 45%;
+    flex: 0 0 45%;
     height: 100%;
     margin: 0;
+    overflow: hidden;
     border-radius: 6px;
     background-color: var(--cover-green);
+}
+
+.post .img img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .post:nth-child(2) .img{ background-color: var(--cover-blue); }
@@ -413,6 +452,7 @@ body{
     font-family: var(--font-sans);
     font-size: 12px;
     font-weight: 400;
+    text-transform: capitalize;
 }
 
 
@@ -510,11 +550,6 @@ body{
         height: 140px;
         padding: 10px;
         margin: 6px 8px;
-    }
-
-    .minicard h1{
-        height: 11px;
-        margin-bottom: 11px;
     }
 
     .testinput{

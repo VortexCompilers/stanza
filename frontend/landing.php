@@ -1,4 +1,7 @@
-<?php require_once __DIR__ . '/lang/load.php'; ?>
+<?php
+require_once __DIR__ . '/lang/load.php';
+require_once __DIR__ . '/../backend/landing.php';
+?>
 <!DOCTYPE html>
 <html lang="<?= $htmlLang ?>">
 <head>
@@ -35,25 +38,25 @@
     <div class="demos">
         <div class="cards">
 
-          <div class="minicard" style="margin-top:-2px;">
-            <div class="pic"></div>
-                <div class="inf">
-              <h1>.</h1><h1>.</h1><br><h1>.</h1>
+            <?php foreach ($highlights as $i => $text): ?>
+                <div class="minicard" style="margin-top:<?= $i === 0 ? '-2px' : '18px' ?>;">
+                    <div class="pic">
+                        <?php if ($text['cover_image']): ?>
+                            <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
+                        <?php endif; ?>
+                    </div>
+                    <div class="inf">
+                        <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                        <h2><?= htmlspecialchars($text['category']) ?></h2>
+                    </div>
                 </div>
-            </div>
-
-          <div class="minicard" style="margin-top:18px;">
-            <div class="pic"></div>
-                <div class="inf">
-              <h1>.</h1><h1>.</h1><br><h1>.</h1>
-                </div>
-            </div>
+            <?php endforeach; ?>
 
         </div>
 
 
         <div class="testinput">
-            <label for="test"><?= translator('landing_demo_label') ?></label>
+            <label for="test" data-focus-label="<?= translator('landing_demo_label_focus') ?>"><?= translator('landing_demo_label') ?></label>
             <input type="text" id="test" name="test" placeholder="<?= translator('landing_demo_placeholder') ?>">
         </div>
   </div>
@@ -83,33 +86,20 @@
 
 
   <div class="carousel">
-              <div class="post">
-                  <div class="img"></div>
-                  <div class="info">
-                      <a href="LINNNNK">Title Example Like This One</a>
-                      <h2>Book</h2>
-                  
-                  </div>
-              </div>
 
-
-                 <div class="post">
-                  <div class="img"></div>
-                  <div class="info">
-                      <a href="LINNNNK">Title Example Like This One</a>
-                      <h2>Book</h2>
-                  
-                  </div>
+      <?php foreach ($explore as $text): ?>
+          <div class="post">
+              <div class="img">
+                  <?php if ($text['cover_image']): ?>
+                      <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
+                  <?php endif; ?>
               </div>
-
-                 <div class="post">
-                  <div class="img"></div>
-                  <div class="info">
-                      <a href="LINNNNK">Title Example Like This One</a>
-                      <h2>Book</h2>
-                  
-                  </div>
+              <div class="info">
+                  <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                  <h2><?= htmlspecialchars($text['category']) ?></h2>
               </div>
+          </div>
+      <?php endforeach; ?>
 
 </div>
 
@@ -125,10 +115,30 @@
 
 </main>
 
+<?php
+$erroLogin = $erroRegister = '';
+$loginAberto = $registerAberto = false;
 
+if (isset($_GET['erro'])) {
+    $errorKeys = [
+        'campo_vazio'           => 'error_empty_fields',
+        'credenciais_invalidas' => 'error_invalid_credentials',
+        'email_duplicado'       => 'error_email_taken',
+    ];
+    $msg = translator($errorKeys[$_GET['erro']] ?? 'error_generic');
 
-<?php include __DIR__ . '/partials/modal-login.php'; ?>
-<?php include __DIR__ . '/partials/modal-register.php'; ?>
+    if (($_GET['modal'] ?? '') === 'register') {
+        $erroRegister = $msg;
+        $registerAberto = true;
+    } else {
+        $erroLogin = $msg;
+        $loginAberto = true;
+    }
+}
+
+include __DIR__ . '/partials/modal-login.php'; 
+include __DIR__ . '/partials/modal-register.php';
+?>
 
 
 
