@@ -7,7 +7,7 @@ Utilizamos commits semânticos baseados no padrão do
 
 | Prefixo | Quando usar |
 |---|---|
-| `feat` | Novo recurso |
+| `feat` | Novo recurso externo |
 | `fix` | Correção de bug |
 | `docs` | Mudanças na documentação |
 | `raw` | Arquivos de dados, configuração, schema SQL |
@@ -38,44 +38,6 @@ run: executa o servidor de desenvolvimento do FastAPI (só o endpoint de recomen
 test: executa os testes com pytest de forma verbosa (-vv) e adiciona nosso código como base de cobertura
 \`\`\`
 
-### Configurando o backend básico localmente (PHP procedural, checkpoint 14/08)
-
-Pra apresentação de 14/08/2026, o backend usado é `backend-basico/` — PHP procedural puro (sem Composer, sem framework), pra bater com o que o grupo já viu em aula (`docs/php-conteudo/`). Ver raciocínio completo em `docs/plano-apresentacao-14-08.md`.
-
-1. Rode `db/schema.sql` no seu MySQL — é a fonte de verdade do banco. Pelo phpMyAdmin do XAMPP (`http://localhost/phpmyadmin`, aba "Import") ou pelo `mysql` empacotado do XAMPP:
-   \`\`\`
-   /opt/lampp/bin/mysql -u root < db/schema.sql
-   \`\`\`
-2. Confira as credenciais em `backend-basico/config/database.php` (padrão do MySQL do XAMPP: usuário `root`, senha vazia).
-3. Como o repo já vive em `htdocs/`, os arquivos ficam acessíveis direto pelo Apache do XAMPP — sem servidor separado, sem `.htaccess`: `http://localhost/stanza/backend-basico/cadastro.php`, etc.
-
-### Configurando o backend em PHP / Slim (fase futura, congelado)
-
-O back-end de longo prazo do StanzAI (`backend-php/`) é PHP com o Slim Framework — congelado até o grupo ver OOP/Composer em aula (ver `docs/plano-apresentacao-14-08.md`). O motor de recomendação (`ml-engine/`) continua em Python, como um serviço HTTP separado.
-
-1. Instale as dependências:
-   \`\`\`
-   cd backend-php
-   composer install
-   \`\`\`
-2. Copie `.env.example` para `.env` e preencha com as credenciais do seu MySQL local:
-   \`\`\`
-   DB_HOST=127.0.0.1
-   DB_NAME=stanza
-   DB_USER=root
-   DB_PASSWORD=
-   ML_ENGINE_URL=http://localhost:8000
-   \`\`\`
-3. Rode `db/schema.sql` no seu MySQL — é a fonte de verdade do banco, não há mais ORM/migrations gerando as tabelas. O jeito recomendado é pelo phpMyAdmin do próprio XAMPP (`http://localhost/phpmyadmin`, aba "Import" ou colar o conteúdo do arquivo na aba "SQL"). Se preferir linha de comando, use o `mysql` empacotado do XAMPP (não o do sistema):
-   \`\`\`
-   /opt/lampp/bin/mysql -u root < ../db/schema.sql
-   \`\`\`
-4. Suba o servidor:
-   - Recomendado: sirva `backend-php/public/` via Apache do XAMPP, já que o repo vive em `htdocs/` (acesse em `http://localhost/stanza/backend-php/public/`)
-   - Alternativa rápida sem depender do Apache: `composer start` (servidor embutido do PHP em `localhost:8080`)
-
-O `.env` nunca deve ser commitado (já está no `.gitignore`) — cada membro do time usa suas próprias credenciais locais.
-
 ### Configurando o motor de ML localmente (Python)
 
 1. Instale as dependências:
@@ -99,3 +61,170 @@ sudo /opt/lampp/lampp stop
 # ngrok
 
 abrir o link uma vez na máquina da apresentação antes de começar
+https://jovial-both-amuck.ngrok-free.dev/stanza/frontend/landing.php
+
+---
+
+## Rodando o projeto completo (site + chat bubble + motor de recomendação)
+
+Os comandos estão separados por sistema: **Linux Mint** (meu PC) e **Windows 11**
+(máquina da escola). Escolha a coluna do sistema em que você está.
+
+São três processos no ar ao mesmo tempo:
+
+| Processo | O que serve | Onde |
+|---|---|---|
+| XAMPP (Apache + MySQL) | `frontend/` + `backend/` + o banco `stanza` | `http://localhost/stanza/` |
+| Motor de ML (FastAPI) | `POST /add`, `POST /search` — embeddings + FAISS | `http://127.0.0.1:8000` |
+| ngrok | túnel HTTPS público pro agente do Chatvolt alcançar `backend/api/catalog_chatvolt.php` | `https://jovial-both-amuck.ngrok-free.dev/stanza/...` |
+
+O **balão de chat** do Chatvolt em si é carregado de uma CDN (`@chatvolt/embeds`)
+e não precisa de nenhum processo local. Só as *respostas sobre o catálogo* do
+agente dependem do ngrok + do endpoint com token; sem eles o balão abre do mesmo
+jeito, só não enxerga o catálogo.
+
+O repositório precisa ficar dentro do `htdocs` do XAMPP:
+
+- **Linux Mint:** `/opt/lampp/htdocs/stanza`
+- **Windows 11:** `C:\xampp\htdocs\stanza`
+
+Os comandos abaixo são rodados a partir dessa pasta (a raiz do repositório).
+No Windows, use o **Prompt de Comando (cmd)**, não o PowerShell — o `<` de
+redirecionamento de arquivo não funciona no PowerShell.
+
+---
+
+### Setup inicial (uma vez por máquina)
+
+**1. Dependências do motor de ML**
+
+Linux Mint:
+```bash
+cd ml-engine && poetry install && cd ..
+```
+
+Windows 11:
+```bat
+cd ml-engine
+poetry install
+cd ..
+```
+
+**2. Token da API de catálogo** (usado pelo agente do Chatvolt; está no
+`.gitignore` — nunca commite).
+
+Linux Mint:
+```bash
+cp backend/config/api_token.example.php backend/config/api_token.php
+/opt/lampp/bin/php -r "echo bin2hex(random_bytes(24)) . PHP_EOL;"
+```
+
+Windows 11:
+```bat
+copy backend\config\api_token.example.php backend\config\api_token.php
+C:\xampp\php\php.exe -r "echo bin2hex(random_bytes(24)) . PHP_EOL;"
+```
+
+Cole o valor gerado dentro de `backend/config/api_token.php` (no lugar de
+`replace-me-with-a-real-token`) e coloque **o mesmo valor** na HTTP Tool do
+agente no Chatvolt, no header `X-API-Key`.
+
+**3. ngrok** — instalar e configurar o authtoken uma vez (igual nos dois
+sistemas):
+```bash
+ngrok config add-authtoken <SEU_AUTHTOKEN>
+```
+
+---
+
+### Toda sessão
+
+#### 1. Subir o XAMPP (Apache + MySQL)
+
+O MySQL não sobe sozinho — precisa iniciar os dois.
+
+Linux Mint:
+```bash
+sudo /opt/lampp/lampp start
+```
+
+Windows 11: abrir o **XAMPP Control Panel** e clicar em **Start** no Apache e no
+MySQL (ou rodar `C:\xampp\xampp_start.exe`).
+
+#### 2. Carregar o banco (na primeira vez, ou pra zerar pro demo)
+
+Linux Mint:
+```bash
+/opt/lampp/bin/mysql -u root < db/schema.sql
+/opt/lampp/bin/mysql --default-character-set=utf8mb4 -u root stanza < db/seed.sql
+```
+
+Windows 11:
+```bat
+C:\xampp\mysql\bin\mysql.exe -u root < db\schema.sql
+C:\xampp\mysql\bin\mysql.exe --default-character-set=utf8mb4 -u root stanza < db\seed.sql
+```
+
+#### 3. Subir o motor de recomendação (deixar rodando)
+
+Linux Mint:
+```bash
+cd ml-engine
+poetry run task run
+```
+
+Windows 11:
+```bat
+cd ml-engine
+poetry run task run
+```
+
+- `poetry run task run` = `fastapi dev app/main.py`, escuta em `127.0.0.1:8000`.
+- Docs interativas: `http://127.0.0.1:8000/docs` (dá pra testar o `/search` por
+  ali, no botão "Try it out" — mais simples que `curl` no Windows).
+- A **primeira** execução baixa o modelo `baai/bge-m3` (~2 GB). Fazer isso com
+  antecedência, na máquina da apresentação.
+- O índice FAISS é lido/gravado em `ml-engine/index_cache.faiss`.
+- Teste rápido no Linux (terminal separado):
+
+  ```bash
+  curl -s -X POST http://127.0.0.1:8000/search \
+    -H 'Content-Type: application/json' \
+    -d '{"query":"clock shop","k":5}'
+  ```
+
+#### 4. Subir o ngrok (só pro chat responder sobre o catálogo)
+
+Igual nos dois sistemas, usando o domínio reservado do time:
+```bash
+ngrok http --url=https://jovial-both-amuck.ngrok-free.dev 80
+```
+Sem domínio reservado: `ngrok http 80` e copie a URL `https://...` que o ngrok
+mostrar.
+
+Na HTTP Tool do agente no Chatvolt, a URL fica
+`https://jovial-both-amuck.ngrok-free.dev/stanza/backend/api/catalog_chatvolt.php`
+e o header `X-API-Key` é o token do passo 2 do setup. Teste rápido (troque
+`SEU_TOKEN` pelo valor real):
+
+```bash
+curl -s -H "X-API-Key: SEU_TOKEN" http://localhost/stanza/backend/api/catalog_chatvolt.php
+```
+
+#### 5. Abrir o site
+
+`http://localhost/stanza/` (redireciona pra landing page).
+
+---
+
+### Parar
+
+Linux Mint:
+```bash
+sudo /opt/lampp/lampp stop
+```
+
+Windows 11: **Stop** no Apache e no MySQL pelo XAMPP Control Panel (ou
+`C:\xampp\xampp_stop.exe`).
+
+Nos dois: fechar com `Ctrl+C` os terminais do `poetry run task run` e do `ngrok`.
