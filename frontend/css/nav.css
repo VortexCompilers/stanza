@@ -25,7 +25,7 @@ nav{
         border-radius: 8px;
         background-color: rgb(30, 51, 114);
     }
-    .navbt a {margin-left: 2px;}
+    nav a {margin:0;text-decoration: none; color: aliceblue;}
 
     .createbt{
         font-weight: bold;
@@ -33,7 +33,7 @@ nav{
         border-radius: 4px;
         background-color: rgb(23, 146, 187);
     }
-    .createbt a, .navbt a{text-decoration: none; color: aliceblue;}
+   
   
 
 

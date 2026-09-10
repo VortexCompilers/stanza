@@ -5,13 +5,13 @@
 <br>
 
 
-<div class="navbt"><a href="home.php"> <?= translator('nav_home') ?> </a></div>
+<a href="home.php"> <div class="navbt"><?= translator('nav_home') ?> </div></a>
 
-<div class="navbt"><a href="catalog.php"> <?= translator('nav_explore') ?> </a></div>
+<a href="catalog.php"><div class="navbt"> <?= translator('nav_explore') ?></div></a>
 
-<div class="navbt"><a href="profile.php"> <?= translator('nav_profile') ?> </a></div>
+<a href="profile.php"><div class="navbt"> <?= translator('nav_profile') ?> </div></a>
 
 <br>
 
-<div class="navbt"><a href="settings.php"> <?= translator('nav_settings') ?> </a></div>
+<a href="settings.php"><div class="navbt"> <?= translator('nav_settings') ?> </div></a>
 </nav>
