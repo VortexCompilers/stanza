@@ -10,7 +10,9 @@ from app.routes import search
 async def lifespan(app: FastAPI):  
     print("trying to load index...") 
     app.state.index = carregar_indice()
+    id_map = app.state.index.id_map
     print("index loaded successfully")
+    filter_index_dict = {i:book_id for i, book_id in enumerate(id_map)}
 
 
     yield

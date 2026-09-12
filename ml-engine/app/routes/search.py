@@ -1,13 +1,13 @@
 from fastapi import APIRouter, Request
 import numpy as np
-
+import faiss 
 from sentence_transformers import SentenceTransformer
-
+from app.main import filter_index_dict
 from app.faiss_index import index_update_embedding
 from app.config import MODEL_NAME
 from app.models import (
     AddRequest, AddResponse,
-    SearchRequest, SearchResponse, SearchResultItem,
+    SearchRequest, SearchResponse, SearchResultItem, FilteredSearchRequest
 )
 from app.database import salvar_embedding
 
@@ -37,10 +37,53 @@ def search(req: SearchRequest, request: Request):
     embedding = model.encode([req.query]).astype(np.float32)
     distances, ids = index.search(embedding, req.k)
 
-    resultados = [
+    results = [
         SearchResultItem(id=int(i), score=float(d))
         for i, d in zip(ids[0], distances[0])
         if i != -1  # FAISS returns -1 when there are no more results, so we filter those out
     ]
 
-    return SearchResponse(results=resultados)
+    return SearchResponse(results=results)
+
+@router.post("/filteredsearch", response_model=SearchResponse)
+def search(req: FilteredSearchRequest, request: Request):
+
+    index = request.app.state.index
+
+    query = model.encode([req.query]).astype(np.float32)
+
+    # book ids after the filter
+    filtered_ids = [
+        id
+        for id in req.ids
+        if id in filter_index_dict
+    ]
+
+    # books position in the index 
+    positions = [
+        filter_index_dict[id]
+        for id in filtered_ids
+    ]
+
+    # takes the needed vectors to the similarity search
+    vectors = index.index.reconstruct_batch(
+        np.array(positions, dtype=np.int64)
+    )
+
+    # creates a temporary index to do the similarity
+    filtered_index = faiss.IndexFlatL2(vectors.shape[1])
+    filtered_index.add(vectors)
+
+    # searches the query only in this books
+    distances, subset_positions = filtered_index.search(
+        query,
+        min(req.k, len(filtered_ids))
+    )
+
+    results = [
+        SearchResultItem(id = int(filtered_ids[position]), score=float(distance))
+        for position, distance in zip(subset_positions[0], distances[0])
+        if position != -1
+    ]
+
+    return SearchResponse(results=results)

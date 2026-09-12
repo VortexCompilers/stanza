@@ -24,3 +24,10 @@ class SearchResultItem(BaseModel):
 
 class SearchResponse(BaseModel):
     results: list[SearchResultItem]
+
+class FilteredSearchRequest(BaseModel):
+    ids: list[int]
+    query: str
+    k: int = 20
+
+
