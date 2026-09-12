@@ -22,6 +22,8 @@ require_once __DIR__ . '/../backend/home.php';
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/nav.css">
 
+  
+ <link rel="icon" type="image/png" href="img/logo.png">
 
     <title>Stanza</title>
 </head>

@@ -13,6 +13,7 @@ require_once __DIR__ . '/../backend/settings.php';
 
 
 
+ <link rel="icon" type="image/png" href="img/logo.png">
     <title>Stanza</title>
 </head>
 <body>

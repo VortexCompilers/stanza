@@ -9,6 +9,8 @@ require_once __DIR__ . '/../backend/read.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="css/edit.css">
    <link rel="stylesheet" href="css/header.css">
+   
+ <link rel="icon" type="image/png" href="img/logo.png">
     <title>Stanza</title>
 </head>
 

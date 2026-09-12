@@ -17,13 +17,28 @@ z-index: 5;
 
 }
 
-header img{
-width: 48px;
-height: 48px;
-margin: auto 0;
+/* Logo */
+.logobox{
+    display: flex;
+    align-items:center;
+    width: auto;
+    height: 64%;
+
+    margin: auto 0;
+
 }
 
+#feather{
+width: 48px;
+height: 100%;
+margin: 0 -4px;
+}
+#stanzalogo{
+    width: 128px;
+    height: 80%;
+    margin: 4px 0 0 0 ;
 
+}
 
 
 /* Buttons */
@@ -124,22 +139,28 @@ main{
 
 @media (min-width: 800px)
 {   
-            header{height: 96px;}
-            header img{
-        width: 64px;
-        height: 64px;
-        }
-        header .bup button,  .menugrid{
-            display: none;
-        }
+    header{height: 96px;}
+
+    #feather {
+    width: 48px;
+    height: 48px;
+    }
+    #stanzalogo{
+    width: 132px;
+    height: 36px;
+    }
+
+    header .bup button,  .menugrid{
+    display: none;
+    }
 
 
 
-        main{
-            box-sizing: border-box;
-            width: 100%;
-        padding-top: 96px;
-          
+    main{
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 96px;
+
     }
 
 

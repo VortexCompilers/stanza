@@ -1,5 +1,8 @@
 <header>
-<img src="img/logo.png">
+<div class="logobox">
+<img id="stanzalogo" src="img/stanza.png">
+<img id="feather" src="img/logo.png">
+</div>
 <div class="bup">
     <button id="menubutton">☰</button>
 </div>

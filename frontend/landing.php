@@ -14,6 +14,7 @@ require_once __DIR__ . '/../backend/landing.php';
    <link rel="stylesheet" href="css/landing.css">
    <link rel="stylesheet" href="css/modal.css">
 
+ <link rel="icon" type="image/png" href="img/logo.png">
 
     <title>Stanza</title>
 </head>
