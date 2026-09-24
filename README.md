@@ -71,7 +71,7 @@ http://localhost/stanza/
 
 ---
 
-## DECLARAÇÃO DE USO DE INTELIGÊNCIA ARTIFICIAL
+## DECLARATION OF ARTIFICIAL INTELLIGENCE USE
 
 | Tool | Stage | Purpose | Validation |
 |---|---|---|---|
