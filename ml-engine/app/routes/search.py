@@ -2,7 +2,6 @@ from fastapi import APIRouter, Request
 import numpy as np
 import faiss 
 from sentence_transformers import SentenceTransformer
-from app.main import filter_index_dict
 from app.faiss_index import index_update_embedding
 from app.config import MODEL_NAME
 from app.models import (
@@ -56,12 +55,12 @@ def search(req: FilteredSearchRequest, request: Request):
     filtered_ids = [
         id
         for id in req.ids
-        if id in filter_index_dict
+        if id in request.app.state.filter_index_dict
     ]
 
     # books position in the index 
     positions = [
-        filter_index_dict[id]
+        request.app.state.filter_index_dict[id]
         for id in filtered_ids
     ]
 
