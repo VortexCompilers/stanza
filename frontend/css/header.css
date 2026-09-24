@@ -24,6 +24,8 @@ z-index: 5;
     width: auto;
     height: 64%;
 
+    
+
     margin: auto 0;
 
 }
@@ -49,7 +51,7 @@ header .bup{
 margin: auto 0 auto auto;
  height: 32px;
 }
-header a{
+header .bup a{
     color: black;
     background-color: aliceblue;
     text-decoration: none;

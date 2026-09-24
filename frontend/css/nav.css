@@ -14,7 +14,7 @@ nav{
     }
     
     .createbt, .navbt{
-    width: 90%;
+        width: 84%;
         height: 18px;
         margin: 10px 0;
         padding: 6px;
@@ -28,9 +28,11 @@ nav{
     nav a {margin:0;text-decoration: none; color: aliceblue;}
 
     .createbt{
+         width: 90%;
+          font-size: 17px;
         font-weight: bold;
         height: 20px;
-        border-radius: 4px;
+        border-radius: 2px;
         background-color: rgb(23, 146, 187);
     }
    

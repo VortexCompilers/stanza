@@ -20,7 +20,7 @@ form{
 
 main h1{
     margin: 18px 0 6px 24px;
-    font-family: arial;
+    font-family: 'Times New Roman', Times, serif;
     color: aliceblue;
 }
 
@@ -40,7 +40,7 @@ padding: 12px;
 .cblock label, .imgblock label{
     display: block;
 
-    font-family: arial;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     color: aliceblue;
 

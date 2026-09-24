@@ -152,7 +152,7 @@ require_once __DIR__ . '/../backend/home.php';
 
 
         <div class="Bsection">
-        <p>STANZA <span style="color: rgb(29, 114, 241); font-weight: normal;"><?= translator('home_tops') ?></span></p>
+        <p>STANZA <span style="color: deepskyblue; font-weight: normal;"><?= translator('home_tops') ?></span></p>
 
 
 

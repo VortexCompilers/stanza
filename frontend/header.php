@@ -1,8 +1,8 @@
 <header>
-<div class="logobox">
+<a href="home.php" class="logobox">
 <img id="stanzalogo" src="img/stanza.png">
 <img id="feather" src="img/logo.png">
-</div>
+</a>
 <div class="bup">
     <button id="menubutton">☰</button>
 </div>
