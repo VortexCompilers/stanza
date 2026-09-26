@@ -1,4 +1,21 @@
-<?php require_once __DIR__ . '/lang/load.php'; ?>
+<?php 
+
+/*
+  DECLARATION OF ARTIFICIAL INTELLIGENCE USE
+ 
+  Tool: ChatGPT
+  Stage: Development
+  Purpose: Assisted with JavaScript and CSS implementation for interactive frontend
+           behavior, including event handling, visibility and color toggling based on
+           radio button selection, and debugging DOM manipulation issues.
+ 
+  Validation: Verified event listeners, element state changes, and interface
+              behavior through browser testing.
+ */
+
+
+
+require_once __DIR__ . '/lang/load.php'; ?>
 <!DOCTYPE html>
 <html lang="<?= $htmlLang ?>">
 <head>
@@ -98,9 +115,23 @@
         </div>
 
             <p class="aviso-visibilidade">&#9888 <?= translator('editor_visibility_warning') ?></p>
+            
+            <script>
+                const warning = document.querySelector(".aviso-visibilidade");    
+                const publicbt = document.querySelector("#public")
+                const privatebt = document.querySelector("#private")
 
+            function warningcheck(){
+                if (publicbt.checked == true){
+                    warning.style.visibility = "visible";
+                }else{
+                    warning.style.visibility = "hidden";
+                }
+             }
 
-
+            publicbt.addEventListener("change", warningcheck)
+            privatebt.addEventListener("change", warningcheck)
+        </script>
 
 
 
