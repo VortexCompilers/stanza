@@ -5,6 +5,9 @@
 </a>
 <div class="bup">
     <button id="menubutton">☰</button>
+
+    <a href="profile.php"><div class="pfp"></div></a>
+
 </div>
 </header>
 

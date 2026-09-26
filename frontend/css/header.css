@@ -44,14 +44,15 @@ margin: 0 -4px;
 
 
 /* Buttons */
-header .bup{
+header .bup, header .Lbup{
  display: flex;
-
- gap: 12px;
-margin: auto 0 auto auto;
- height: 32px;
+margin: auto 32px auto auto;
+gap: 16px;
 }
-header .bup a{
+header .Lbup {
+margin-right: 0;
+}
+header .Lbup a{
     color: black;
     background-color: aliceblue;
     text-decoration: none;
@@ -59,6 +60,14 @@ header .bup a{
     margin: auto 0;
     border-radius: 54px;
 
+}
+
+header .bup .pfp{
+    align-self: center;
+    width: 54px;
+    height: 54px;
+    background-color: aquamarine;
+    border-radius: 100%;
 }
 
 
@@ -70,7 +79,7 @@ header .bup a{
     display: none;
     z-index: 7;
     
-padding-top: 128px;
+    padding-top: 128px;
 
     width: 100%;
     height: 100%;
@@ -108,11 +117,10 @@ padding-top: 128px;
     color: aliceblue;
     font-weight: bolder;
     align-self: center;
-    width: 32px;
-    height:48px;
+    padding:  0;
     background:none;
     border: none;
-    margin: 0 44px 0 0;
+    
 }
 
 
@@ -139,6 +147,11 @@ main{
     padding-right: 0;
 }
 
+
+
+
+
+
 @media (min-width: 800px)
 {   
     header{height: 96px;}
@@ -155,9 +168,13 @@ main{
     header .bup button,  .menugrid{
     display: none;
     }
+    
+    header .bup{margin-right: 36px;}
 
-
-
+    header .bup .pfp{   
+        width: 64px;
+        height: 64px;
+    }
     main{
     box-sizing: border-box;
     width: 100%;
