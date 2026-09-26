@@ -67,7 +67,7 @@ display: flex;
 }
 .post .img img{
 max-width: 45%;
-max-width: 92%;
+max-height: 92%;
 border-radius: 10px;
 }
 

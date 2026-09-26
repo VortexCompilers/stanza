@@ -39,7 +39,7 @@ require_once __DIR__ . '/../backend/edit.php';
         <?php if ($text['cover_image']): ?>
             <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>"
                  alt="<?= translator('editor_current_cover_alt') ?>"
-                 style="width:100%; height:100%; object-fit:cover;">
+                 style="object-fit:cover;">
         <?php endif; ?>
     </div>
 

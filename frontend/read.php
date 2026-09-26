@@ -35,7 +35,13 @@ require_once __DIR__ . '/../backend/read.php';
        <button class="fecha" id="fecharBar">X</button>
 
         <div class="fsec">
-                <div class="img">  </div>
+                <div class="img"> 
+        <?php if ($text['cover_image']): ?>
+            <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>"
+            alt="<?= translator('editor_current_cover_alt') ?>"
+            style="object-fit:cover;">
+        <?php endif; ?>
+     </div>
 
                 <div class="rinfo">
 
