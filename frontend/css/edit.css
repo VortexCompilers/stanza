@@ -34,7 +34,7 @@ form{
     border: 3px solid rgb(7, 12, 36, 0.2);
     border-radius: 10px;
 
-    color: aliceblue;
+    color: var(--light);
     font-size: 18px;
 
     background-color: rgb(49, 47, 63, 30%);
@@ -94,15 +94,15 @@ textarea{
 .mbbt2 label{
     margin: 2px;
 display: inline;
-color: white;
+color: var(--light);
 font-size: 14px;
 font-family: arial;
 
 }
 .mbbt2 input{
-   color: aliceblue;
-    background-color: rgba(206, 203, 226, 0.3);
-    border: 3px solid rgb(49, 47, 63, 30%);
+   color: var(--light);
+    background-color: var(--medium);
+    border: 3px solid var(--dark);
     border-radius: 10px;
     width: 24px;
     height: 12px;
@@ -127,8 +127,8 @@ font-family: arial;
     height: 80%;
     padding: 10px;
 
-    background-color: rgb(28, 29, 63);
-    border: 3px solid rgb(52, 52, 132);
+    background: var(--secondary);
+    border: 3px solid var(--dark);
     border-radius: 13px;
 
 }
@@ -141,12 +141,12 @@ font-family: arial;
         text-align: center;
 
 
-        border: 2px solid aliceblue;
+        border: 2px solid var(--light);
         border-radius: 10px;
         background-color: rgba(0, 123, 255, 0.2);
 
         font-size: 22px;
-        color: aliceblue;
+        color: var(--light);
 
         width: 30px;
         height: 30px;
@@ -163,7 +163,7 @@ font-family: arial;
     height: auto; 
     padding: 6px; 
     font-size: 14px; 
-    color: aliceblue; 
+    color: var(--light); 
     background-color: rgb(155, 32, 32);
 }
 
@@ -192,7 +192,7 @@ font-family: arial;
     margin: 0;
 }
 input[type="file"]{
-    color: aliceblue;
+    color: var(--light);
    margin-bottom: 18px;
    font-size: 9px;
 }
@@ -219,9 +219,9 @@ input[type="file"]{
 
 .bar h2{
    margin: 0;
-    color: aliceblue;
+    color: var(--light);
 
-    font-family: arial;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
     font-size: 22px;
     text-align: left;
@@ -235,18 +235,19 @@ input[type="file"]{
     margin: 0;
     padding: 2px 8px;
     text-align: center;
-    background-color: aliceblue;
-    border: 1px solid darkgray;
+    background-color: var(--light);
+    border: 1px solid var(--medium);
     border-radius: 2px;
-color: black;
+color: var(--dark);
 font-size: 20px;
 font-family: arial;
 font-weight: normal;
 }
 .visibt input[type="radio"]:checked + label{
-    background-color: rgba(0, 123, 255);
+    background-color: var(--tertiary);
     border-color:rgb(24, 52, 155);
-    color: aliceblue;
+    color: var(--light);
+    font-weight: bold;
 }
 .visibt input[type="radio"]{
     display: none;
@@ -256,8 +257,8 @@ font-weight: normal;
     display: block;
     margin: 24px 2px ;
     padding: 4px 50px;
-    color: aliceblue;
-    background-color: rgb(20, 60, 155);
+    color: var(--light);
+    background-color: var(--tertiary);
     font-size: 18px;
     font-weight: bold;
     text-align: center;
@@ -373,7 +374,7 @@ textarea{
     align-items: center;
 
 
-    color: aliceblue; 
+    color: var(--light);
     background-color: rgb(155, 32, 32);
 }
 
@@ -417,7 +418,7 @@ textarea{
     font-size: 24px;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    color: aliceblue;
+    color: var(--light);
     margin: 0 0 0 4px;
 }
 .rinfo .dw {
@@ -430,7 +431,7 @@ textarea{
 .rinfo h3{
     font-size: 16px;
     font-family: 'Times New Roman', Times, serif;
-    color: aliceblue;
+    color: var(--light);
     margin: 0 0 0 4px;
 }
 .rinfo button{ 
@@ -458,7 +459,7 @@ textarea{
     padding: 10px;
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
-    color: aliceblue;
+    color: var(--light);
 }
 
 

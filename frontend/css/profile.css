@@ -1,15 +1,7 @@
-:root{
-    --colorPrim:rgb(229, 237, 254);
-    --colorSec:rgb(81, 131, 247);
-    --colorThr:rgb(11, 11, 50);
-
-}
-
-
 
 body{
 
-background-color: var(--colorPrim);
+background-color: var(--primary);
 }
 
 /* Top bar */
@@ -20,7 +12,7 @@ background-color: var(--colorPrim);
     height: 172px;
     margin: 0;
  
-    background: linear-gradient(90deg,rgba(30, 28, 107, 1) 0%, rgba(27, 27, 125, 1) 18%, rgb(44, 87, 143) 100%);
+    background:var(--backblue);
 align-content: center;
 }
 
@@ -40,7 +32,7 @@ align-content: center;
 
 .userinfo{
 margin: 0 12px;
-color: aliceblue;
+color: var(--light);
 }
 .userinfo h1, .userinfo h2{
     margin: 0;
@@ -62,7 +54,7 @@ color: aliceblue;
 
 
 .botinf{
-    color: aliceblue;
+    color: var(--light);
     display: flex;
     gap: 6px;
    
@@ -223,10 +215,6 @@ display: flex;
 height: 120px;
 width: 180px;
 }
-
-
-    
-
 
 
 }
