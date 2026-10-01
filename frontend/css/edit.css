@@ -96,7 +96,7 @@ textarea{
 display: inline;
 color: var(--light);
 font-size: 14px;
-font-family: arial;
+font-family: 'Times New Roman', Times, serif;
 
 }
 .mbbt2 input{
@@ -124,7 +124,7 @@ font-family: arial;
     transform: translate(-50%, -50%);
 
     width: 86%;
-    height: 80%;
+    height: auto;
     padding: 10px;
 
     background: var(--secondary);
@@ -171,50 +171,53 @@ font-family: arial;
 
 
 
+
+
+
+
+
+.bar textarea, .bar input, .bar select{
+    background-color: var(--backTertblue);
+    color: var(--light);
+    border:1px solid var(--light);
+    border-radius: 4px;
+    padding:0.8%;
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
 .bar textarea {
     width: 90%;
     height: 80px;
+    min-height: 120px;
     line-height: 18px;
-    font-size: 14px;
     margin: 2px 0 24px 0;
 }
 
 
-
-
-
-
 .img, .img img{
+    border: 1px solid var(--deep);
     border-radius: 10px;
     width: 96px;
     height: 128px;
-    background-color: aquamarine;
     margin: 0;
 }
-input[type="file"]{
+
+.bar input{
+   margin-bottom: 12px;
+}
+
+.bar input[type="file"]{
     color: var(--light);
-   margin-bottom: 18px;
    font-size: 9px;
-}
-
-
-.bar textarea{
-    width: 84%;
-    min-height: 120px;
-    border-radius: 1px;
     border: 0;
-
-    padding: 4px;
-
 }
-
-
 
 .bar select{
     display: block;
       width: 60%;
-      margin: 2px 0 24px 0;
-      font-size: 20px;
+      margin: 2px 0 12px 0;
 }
 
 .bar h2{
@@ -223,9 +226,15 @@ input[type="file"]{
 
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
-    font-size: 22px;
+    font-size: 20px;
     text-align: left;
 }
+
+
+
+
+
+
 
 
 .visibt{  display: flex;
@@ -233,14 +242,14 @@ input[type="file"]{
     gap:10px;}
 .visibt label{
     margin: 0;
-    padding: 2px 8px;
+    padding: 4px 8px;
     text-align: center;
     background-color: var(--light);
     border: 1px solid var(--medium);
     border-radius: 2px;
 color: var(--dark);
-font-size: 20px;
-font-family: arial;
+font-size: 18px;
+font-family: 'Times New Roman', Times, serif;
 font-weight: normal;
 }
 .visibt input[type="radio"]:checked + label{
@@ -321,9 +330,6 @@ max-height: 100%;
 .bar textarea{
     width: 154px;
     min-height: 100px;
-    border-radius: 1px;
-    border: 0;
-
     padding: 4px;
 
 }
@@ -333,7 +339,7 @@ max-height: 100%;
     margin: 16px 0 0 0;
     }
 
-     .bar a{display: block; width: 12px; margin-bottom: 36px;}
+    .bar a{display: block; width: 12px; margin-bottom: 36px;}
 
 .bar select{
     font-size: 14px;
@@ -382,8 +388,6 @@ textarea{
 
 
 .bar .fecha{display: none;}
-
-
 }
 
 
