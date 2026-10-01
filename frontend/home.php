@@ -12,6 +12,15 @@ Validation: Hit the page over curl with a logged-in session cookie and with
             no cookie; compared the rendered <a href="read.php?id=..."> rows
             against the reading_logs/texts data returned by the backend
             query. Dev to confirm visually in the browser.
+
+Tool: Chat GPT
+Stage: Development
+Purpose: Assistance with understanding, readability, and writing of the 
+        PHP code for checking and adapting the 'title' of posts according 
+        to their length.
+Validation: Code analyzed and adapted by the student.
+
+
 */
 require_once __DIR__ . '/lang/load.php';
 require_once __DIR__ . '/../backend/home.php';
@@ -58,7 +67,14 @@ require_once __DIR__ . '/../backend/home.php';
                             <?php endif; ?>
                         </div>
                         <div class="info">
-                            <a href="read.php?id=<?= (int) $text['text_id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                             <a href="read.php?id=<?= (int) $text['text_id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
+                             <?php if (mb_strlen(($text['title'])) > 50) : ?>    
+                               <?= htmlspecialchars(mb_substr($text['title'], 0, 45)) . '...' ?>
+                            <?php else: ?>
+                               <?= htmlspecialchars($text['title']) ?>
+                            <?php endif; ?>
+                            </a>
+                                                        
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
                                 <h3><?= (int) $text['read_count'] ?> <?= translator('views') ?></h3>
@@ -107,14 +123,20 @@ require_once __DIR__ . '/../backend/home.php';
             <div class="carousel">
 
                 <?php foreach ($most_viewed as $text): ?>
-                    <div class="post">
+                   <div class="post">
                         <div class="img">
                             <?php if ($text['cover_image']): ?>
                                 <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
                             <?php endif; ?>
                         </div>
                         <div class="info">
-                            <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                             <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
+                             <?php if (mb_strlen(($text['title'])) > 50) : ?>    
+                               <?= htmlspecialchars(mb_substr($text['title'], 0, 45)) . '...' ?>
+                            <?php else: ?>
+                               <?= htmlspecialchars($text['title']) ?>
+                            <?php endif; ?>
+                            </a>
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
                                 <h3><?= (int) $text['read_count'] ?> <?= translator('views') ?></h3>
@@ -134,14 +156,20 @@ require_once __DIR__ . '/../backend/home.php';
             <div class="carousel">
 
                 <?php foreach ($most_favorited as $text): ?>
-                    <div class="post">
+                   <div class="post">
                         <div class="img">
                             <?php if ($text['cover_image']): ?>
                                 <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
                             <?php endif; ?>
                         </div>
                         <div class="info">
-                            <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                             <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
+                             <?php if (mb_strlen(($text['title'])) > 50) : ?>    
+                               <?= htmlspecialchars(mb_substr($text['title'], 0, 45)) . '...' ?>
+                            <?php else: ?>
+                               <?= htmlspecialchars($text['title']) ?>
+                            <?php endif; ?>
+                            </a>
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
                                 <h3><?= (int) $text['favorites'] ?> <?= translator('favorites') ?></h3>
@@ -161,14 +189,20 @@ require_once __DIR__ . '/../backend/home.php';
             <div class="carousel">
 
                 <?php foreach ($recents as $text): ?>
-                    <div class="post">
+                  <div class="post">
                         <div class="img">
                             <?php if ($text['cover_image']): ?>
                                 <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
                             <?php endif; ?>
                         </div>
                         <div class="info">
-                            <a href="read.php?id=<?= (int) $text['id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                             <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
+                             <?php if (mb_strlen(($text['title'])) > 50) : ?>    
+                               <?= htmlspecialchars(mb_substr($text['title'], 0, 45)) . '...' ?>
+                            <?php else: ?>
+                               <?= htmlspecialchars($text['title']) ?>
+                            <?php endif; ?>
+                            </a>
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
                                 <h3><?= (int) $text['read_count'] ?> <?= translator('views') ?></h3>
