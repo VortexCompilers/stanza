@@ -4,11 +4,14 @@ DECLARAÇÃO DE USO DE INTELIGÊNCIA ARTIFICIAL
 
 Tool: Claude Code
 Stage: Development
-Purpose: Turning the "Most favourited" carousel from static mockup markup
-         into a PHP loop over the query results, mirroring the "Most viewed"
-         block and escaping output with htmlspecialchars().
-Validation: Rendered in the browser against the seeded data and the output
-            compared with the rows returned by the query.
+Purpose: Turning the "Recently viewed" carousel from static mockup markup
+         into a PHP loop over $recently_viewed (backend/home.php), mirroring
+         the "Most viewed" block and escaping output with htmlspecialchars()
+         (issue #43).
+Validation: Hit the page over curl with a logged-in session cookie and with
+            no cookie; compared the rendered <a href="read.php?id=..."> rows
+            against the reading_logs/texts data returned by the backend
+            query. Dev to confirm visually in the browser.
 */
 require_once __DIR__ . '/lang/load.php';
 require_once __DIR__ . '/../backend/home.php';
@@ -47,83 +50,24 @@ require_once __DIR__ . '/../backend/home.php';
         <h1><?= translator('home_recently_viewed') ?></h1>
 
         <div class="carousel"> 
-
+                <?php foreach ($recently_viewed as $text): ?>
                     <div class="post">
-                        <div class="img"></div>
+                        <div class="img">
+                            <?php if ($text['cover_image']): ?>
+                                <img src="img/uploads/<?= htmlspecialchars($text['cover_image']) ?>" alt="">
+                            <?php endif; ?>
+                        </div>
                         <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
+                            <a href="read.php?id=<?= (int) $text['text_id'] ?>"><?= htmlspecialchars($text['title']) ?></a>
+                            <h2><?= htmlspecialchars($text['category']) ?></h2>
+                            <div class="postfooter">
+                                <h3><?= (int) $text['read_count'] ?> <?= translator('views') ?></h3>
+                                <button>&#9661</button>
+                            </div>
                         </div>
                     </div>
+                <?php endforeach; ?>
 
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-
-                    
-                    <div class="post">
-                        <div class="img"></div>
-                        <div class="info">
-                            <a href="LINNNNK">Title Example Like This One</a>
-                            <h2>Book</h2>
-                          <div class="postfooter">  
-                            <h3>232 views</h3>
-                            <button>&#9661</button>
-                          </div>
-                        </div>
-                    </div>
-
-
-
-
-
-                
-
-                    
         </div>
 
 

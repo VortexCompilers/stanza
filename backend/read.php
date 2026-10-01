@@ -26,6 +26,18 @@ if (!$text) {
     exit;
 }
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (isset($_SESSION['user_id'])) {
+    $reader_id = $_SESSION['user_id'];
+
+    $sql = 'INSERT INTO reading_logs (reader_id, text_id, time_spent_seconds) VALUES (?,?,?)';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$reader_id, $id, 0]);
+}
+
 $pdo->prepare('UPDATE texts SET read_count = read_count + 1 WHERE id = :id')
     ->execute([':id' => $id]);
 ?>
