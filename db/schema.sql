@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS text_genres;
 DROP TABLE IF EXISTS texts;
 DROP TABLE IF EXISTS genres;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS password_resets;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -82,3 +83,18 @@ INSERT IGNORE INTO genres (name) VALUES
 ('Realismo Mágico'),
 ('Comédia'),
 ('Distopia');
+
+CREATE TABLE password_resets (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  token_hash CHAR(64) NOT NULL,
+  expires_at DATETIME NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  used TINYINT(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (id),
+  UNIQUE KEY uniq_password_resets_token_hash (token_hash),
+  KEY idx_password_resets_user_id (user_id),
+  CONSTRAINT fk_password_resets_user_id
+    FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+
