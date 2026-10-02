@@ -40,7 +40,7 @@ $loginAberto = $loginAberto ?? false;
                 <input type="password" id="loginPassword" name="password" autocomplete="current-password">
             </div>
 
-            <a class="modal-link" href="forgottt"><?= translator('auth_forgot') ?></a>
+            <a class="modal-link" href="password-reset/auth.php"><?= translator('auth_forgot') ?></a>
 
         </div>
 

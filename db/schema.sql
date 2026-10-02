@@ -7,8 +7,8 @@ DROP TABLE IF EXISTS embeddings;
 DROP TABLE IF EXISTS text_genres;
 DROP TABLE IF EXISTS texts;
 DROP TABLE IF EXISTS genres;
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS password_resets;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -96,5 +96,5 @@ CREATE TABLE password_resets (
   KEY idx_password_resets_user_id (user_id),
   CONSTRAINT fk_password_resets_user_id
     FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

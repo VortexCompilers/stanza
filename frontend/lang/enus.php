@@ -97,10 +97,10 @@ $strings = [
     // %s is the e-mail address the code was sent to.
     // ------------------------------------------------------------
     'verify_title'           => 'Authenticate',
-    'verify_code_label'      => 'Enter the code sent to %s',
+    'verify_code_label'      => 'Enter your email to receive a reset link',
     'verify_terms'           => 'I agree to the terms and conditions',
     'verify_submit'          => 'Confirm',
-    'verify_resend'          => 'Resend code',
+    'verify_resend'          => 'Resend email',
 
     // ------------------------------------------------------------
     // Home — home.php

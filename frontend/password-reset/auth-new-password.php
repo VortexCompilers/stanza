@@ -1,12 +1,12 @@
-<?php require_once __DIR__ . '/lang/load.php'; ?>
+<?php require_once __DIR__ . '/../lang/load.php'; ?>
 <!DOCTYPE html>
 <html lang="<?= $htmlLang ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="../css/style.css">
 
- <link rel="icon" type="image/png" href="img/logo.png">
+ <link rel="icon" type="image/png" href="../img/logo.png">
 
 
     <title>Stanza</title>
@@ -20,14 +20,15 @@
 
 <form action=" ddd ">
 
-    <label><?= sprintf(translator('verify_code_label'), 'email@gmail.com') ?></label>
+    <label>Enter your password</label>
 
-    <input type="number" id="code" name="code">
+    <input type="password" id="password" name="password">
 
+    <label for="">Confirm your password</label>
 
-    <label class="labelCheck"><input type="checkbox" name="terms" value="yes"><?= translator('verify_terms') ?></label>
+    <input type="password" id="confirm-password" name="confirm-password">
 
-
+    
    <button type="submit"><?= translator('verify_submit') ?></button>
 
 </form>

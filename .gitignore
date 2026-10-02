@@ -24,3 +24,6 @@ exemplo-professor/
 
 # Static token for the catalog API (see api_token.example.php)
 backend/config/api_token.php
+
+# Password-reset email log (demo stand-in for a real mailer — contains raw reset tokens)
+backend/password-reset/reset_email.log
