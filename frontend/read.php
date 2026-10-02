@@ -12,10 +12,12 @@ require_once __DIR__ . '/../backend/read.php';
    <link rel="stylesheet" href="css/header.css">
    
  <link rel="icon" type="image/png" href="img/logo.png">
-    <title>Stanza</title>
+ <title>Stanza</title>
+<style>
+    html, body{ background: var(--backblue);}
+</style>
 </head>
-
-<body style="background-color: rgba(25, 22, 109, 0.94);">
+<body>
 
 
 <?php include 'header.php'; ?>

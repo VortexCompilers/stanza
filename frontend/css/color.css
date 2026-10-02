@@ -20,8 +20,6 @@
     --secondary:linear-gradient(90deg, rgb(19, 22, 68) 0%, rgb(18, 21, 70) 50%, rgb(15, 19, 62) 100%);
     --tertiary: rgb(0, 164, 255);
 
-
-
     /* Texts */
     --light:aliceblue;
     --medium:lightsteelblue;
@@ -31,7 +29,11 @@
 
     /* Backgrounds */
     --backblue:rgb(25, 22, 109);
+    --backlightblue:linear-gradient(145deg, rgb(25, 22, 109) 0%, rgba(0, 164, 255, 1) 100%);
     --backTertblue:rgb(18, 21, 70);
+
+    --deeptert: rgb(0, 164, 255);
+
 }
 
 

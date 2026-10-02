@@ -1,10 +1,11 @@
 
-body{
-    background-color: rgba(59, 127, 190, 0.944);
- 
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--backlightblue);
 }
-
-
 form{
     width: 100%;
 }
@@ -113,10 +114,13 @@ font-family: 'Times New Roman', Times, serif;
 
 
 
+
+
 /* Mobile Bar */
 
 .bar {
-    display: none;
+    z-index: 4;
+ display: none; 
     position: fixed;
 
     top: 50%;
@@ -125,6 +129,7 @@ font-family: 'Times New Roman', Times, serif;
 
     width: 86%;
     height: auto;
+    max-height: 84%;
     padding: 10px;
 
     background: var(--secondary);
@@ -134,65 +139,51 @@ font-family: 'Times New Roman', Times, serif;
 }
 
 
-.bar .fecha, .bar a{
+#fecharBar, #exitarrow{
         display: block; 
       
         text-decoration: none;
         text-align: center;
 
-
-        border: 2px solid var(--light);
+        border: 2px solid var(--medium);
         border-radius: 10px;
         background-color: rgba(0, 123, 255, 0.2);
 
         font-size: 22px;
-        color: var(--light);
+        font-weight: bolder;
+        color: var(--medium);
 
         width: 30px;
         height: 30px;
-
-
 }
-
-.bar .fecha{
-    margin-bottom: 12px;
-}
-.bar a{display: none; margin: 0 0 6px 0;}
-.bar .excluir{
-    width: auto; 
-    height: auto; 
-    padding: 6px; 
-    font-size: 14px; 
-    color: var(--light); 
-    background-color: rgb(155, 32, 32);
-}
-
-
-
-
-
-
-
+#exitarrow{display: none;}
 
 
 
 .bar textarea, .bar input, .bar select{
     background-color: var(--backTertblue);
     color: var(--light);
-    border:1px solid var(--light);
+    border:1px solid var(--deep);
     border-radius: 4px;
     padding:0.8%;
+
+    max-width: 80%;
 
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
 }
+.bar textarea:focus, .bar input:focus , .bar select:focus{
+    outline: 2px solid var(--tertiary);
+}
+
+
+
 
 .bar textarea {
     width: 90%;
-    height: 80px;
-    min-height: 120px;
+    min-height: 50px;
     line-height: 18px;
-    margin: 2px 0 24px 0;
+    margin: 2px 0 16px 0;
 }
 
 
@@ -200,7 +191,7 @@ font-family: 'Times New Roman', Times, serif;
     border: 1px solid var(--deep);
     border-radius: 10px;
     width: 96px;
-    height: 128px;
+    height: 106px;
     margin: 0;
 }
 
@@ -235,8 +226,6 @@ font-family: 'Times New Roman', Times, serif;
 
 
 
-
-
 .visibt{  display: flex;
     margin:2px 0 10px 0; 
     gap:10px;}
@@ -262,50 +251,74 @@ font-weight: normal;
     display: none;
 }
 
+
+
+
+
+
+/* save/delete buttons */
+
+.svv, .excluir{
+    color: var(--light);
+    text-align: center;
+    text-decoration: none;
+    margin: 0 18px 0 0;
+
+      border-radius: 8px;
+}
+
 .bar .svv{ 
     display: block;
-    margin: 24px 2px ;
-    padding: 4px 50px;
-    color: var(--light);
-    background-color: var(--tertiary);
-    font-size: 18px;
+    padding: 2px 24px;
+    font-size: 22px;
     font-weight: bold;
-    text-align: center;
     
-    border-radius: 10px;
-    border: none;
-    
+    background-color: var(--tertiary);
+    border: 2px solid var(--deeptert);
+}
+.bar .svv:hover{
+    background-color: var(--deeptert);
+}
+
+.bar .excluir{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    padding: 0 4px;
+
+    font-size: 28px;
+    font-weight: lighter;
+    background-color: rgb(155, 32, 32);
+    border: 1px solid var(--light);
 }
 
 
-.wbbt{
-    display: none;
+.btmbuttons{
+    display: flex;
+    align-items: center;
+
+    margin: 8px 0 0 0;
 }
-
-
 
 
 
 @media (min-width: 800px){
 
 
-
-body, html {margin: 0; padding: 0;}
-
 /* Web Bar */
-.wbbt{display: block;}
-
 .bar {
+
     display: block;
     border-radius: 0;
     top: 0;
-    overflow: auto;
-    left: -232px;
+    overflow:auto;
+    left: -248px;
     transform: none;
-    width: 220px;
-    height: calc(100% - 126px);
-    padding: 10px 14px 10px 10px;
-    margin: 96px 0 0 0;
+    width: 248px;
+    min-height: 100%;
+    max-height: calc(100%-100px);
+    margin-top: 96px;
     transition: left 400ms;
 }
 
@@ -313,13 +326,15 @@ body, html {margin: 0; padding: 0;}
     left: 0;
 }
 
+
 h2{
     display: block;
+    font-style: italic;
 }
 
 .bar .img{
     width: 96px;
-    height: 128px;
+    height: auto;
 }
 
 .img img{
@@ -330,26 +345,29 @@ max-height: 100%;
 .bar textarea{
     width: 154px;
     min-height: 100px;
+    max-height: 120px;
     padding: 4px;
 
 }
 
 .bar h2{ 
      font-size: 18px;
-    margin: 16px 0 0 0;
+    margin: 8px 0 2px 0;
     }
 
-    .bar a{display: block; width: 12px; margin-bottom: 36px;}
-
 .bar select{
-    font-size: 14px;
      margin: 2px 0 16px 0;
 }
+
+
+.bar textarea, .bar input, .bar select{
+    font-size: 16px;
+}
+
+
+
 .visibt label{font-size: 14px;}
-
 .mbbt1, .mbbt2 {display: none;}
-
-
 .mbbt1 label, .mbbt2 label {display: none;}
 
 textarea{
@@ -359,35 +377,20 @@ textarea{
     padding: 28px 36px;
     width: 480px;
     height: 74vh;
-
 }
 
 
-.bar a{
+#exitarrow{
+    display: block;
+    font-weight: bolder;
     margin: 6px 0;
     width: 30px;
     height: 30px;
-}
+    }
 
-.bar .excluir{
-    width: 24px; 
-    height: 24px;  
-    font-size: 24px;
-    font-weight: bold;
-
-       display:flex;
-    justify-content: center;
-    align-items: center;
+#fecharBar{display: none;}
 
 
-    color: var(--light);
-    background-color: rgb(155, 32, 32);
-}
-
-
-
-
-.bar .fecha{display: none;}
 }
 
 

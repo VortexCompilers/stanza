@@ -1,4 +1,17 @@
 <?php
+/*
+  DECLARATION OF ARTIFICIAL INTELLIGENCE USE
+Tool: ChatGPT
+Stage: Development
+
+Purpose: Assistance in the development and understanding of JavaScript,
+as well as the identification and correction of bugs related to margins, padding, 
+positioning, and other aspects of CSS.
+
+Validation: Code analyzed, adapted, and tested by the student.
+
+*/
+
 require_once __DIR__ . '/lang/load.php';
 require_once __DIR__ . '/../backend/edit.php';
 ?>
@@ -27,14 +40,12 @@ require_once __DIR__ . '/../backend/edit.php';
 
 <!-- Web bar -->
 
-
-
-
 <div class="bar">
 
 
-       <a href="read.php?id=<?= $id ?>">&lt;</a>
-       <button type="button" class="fecha" id="fecharBar">X</button>
+       <a href="read.php?id=<?= $id ?>" id="exitarrow">←</a>
+       <button type="button" id="fecharBar">X</button>
+
 
     <div class="img">
         <?php if ($text['cover_image']): ?>
@@ -101,28 +112,20 @@ require_once __DIR__ . '/../backend/edit.php';
 
     </div>
 
+            <h2><?= translator('editor_font_size') ?></h2>
+            <input type="number" id="fontsize" name="fontsize" value="18" min="1" max="40">
 
+        <!-- save/delete buttons -->
+        <div class="btmbuttons">
+            <button type="submit" class="svv"><?= translator('action_save') ?></button>
+            <a class="excluir"
+            href="../backend/delete.php?id=<?= $id ?>"
+            onclick="return confirm('<?= translator('editor_confirm_delete') ?>');">🗑</a>
+        </div>
 
-                    <div class="wbbt">
-                    <h2><?= translator('editor_font_size') ?></h2>
-                    <input type="number" id="fontsize" name="fontsize" min="1" max="40">
-
-
-
-                    <button type="submit" class="svv"><?= translator('action_save') ?></button>
-
-
-                </div>
-
-                <a class="excluir"
-                   href="../backend/delete.php?id=<?= $id ?>"
-                   onclick="return confirm('<?= translator('editor_confirm_delete') ?>');">🗑</a>
 
 </div>
-
-
-
-
+<!-- Web bar end -->
 
 
 
@@ -131,15 +134,11 @@ require_once __DIR__ . '/../backend/edit.php';
 
 <!-- Mobile -->
 
-
  <div class="mbbt1">
     <a href="read.php?id=<?= $id ?>" style="margin:0;">&lt;</a>
-    <a href="DPS vc muda" style="margin-left:auto;" ><?= translator('action_save') ?></a>
 
     <button type="button" id="abrirBar" style="margin-left:auto;">⋮</button>
 </div>
-
-
 
     <label style="display:none;" for="body"><?= translator('editor_body_label') ?></label>
     <textarea id="body" name="body"><?= htmlspecialchars($text['body']) ?></textarea>
@@ -150,8 +149,8 @@ require_once __DIR__ . '/../backend/edit.php';
 
 
 
+    <!-- !!!! -->
     <div class="mbbt2">
-
         <label>12 <?= translator('editor_words') ?></label>
 
         <label>226 <?= translator('editor_characters') ?></label>
