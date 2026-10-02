@@ -133,16 +133,31 @@ require_once __DIR__ . '/../backend/edit.php';
 
 
 <!-- Mobile -->
-
  <div class="mbbt1">
     <a href="read.php?id=<?= $id ?>" style="margin:0;">&lt;</a>
 
     <button type="button" id="abrirBar" style="margin-left:auto;">⋮</button>
 </div>
 
+
+
+
     <label style="display:none;" for="body"><?= translator('editor_body_label') ?></label>
     <textarea id="body" name="body"><?= htmlspecialchars($text['body']) ?></textarea>
 
+
+<!-- fonts change -->
+<script>
+    const fonts = document.querySelector("#fontsize");
+    const bd = document.querySelector("#body");
+    
+    function changefont(){
+        bd.style.fontSize = fonts.value + "px";
+        bd.style.lineHeight = (Number(fonts.value) + 8) + "px"
+    }
+
+    fonts.addEventListener("change", changefont);
+</script>
 
 
 
@@ -161,17 +176,7 @@ require_once __DIR__ . '/../backend/edit.php';
 
 
 
-
-
-
-
-
-
-
-<!-- Pop-up Mobile Buttons -->
-
 </form>
-
 </main>
 
 

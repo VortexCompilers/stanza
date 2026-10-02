@@ -51,11 +51,20 @@ require_once __DIR__ . '/../backend/settings.php';
                 <h2><?= translator('settings_default_font_size') ?></h2>
 
                     
-                    <input type="range" name="fontsize" id="fontsie" min="1" max="50" value="12">
-                    <label>31</label>
-
+                    <input type="range" name="fontsize" id="fontsize" min="1" max="50" value="12">
+                    <label id="showvalue"></label>
                 </div>
 
+                <script>
+                    const lbfont = document.querySelector("#showvalue");
+                    const fontrange = document.querySelector("#fontsize");
+
+                    function showvalue(){
+                        lbfont.textContent = fontrange.value;
+                    }
+
+                    fontrange.addEventListener("change", showvalue);
+                </script>
 
 
 
