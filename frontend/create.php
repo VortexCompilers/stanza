@@ -49,17 +49,36 @@ require_once __DIR__ . '/lang/load.php'; ?>
         <div class="imgblock">
 
             <label for="cape"><?= translator('editor_cover') ?></label>
-                <input 
+             
+
+            <div class="imgqd"><img src="" id="cover"></div>
+
+            <input 
                 type="file" 
                 id="image-picker" 
                 name="cover_image" 
 
                 accept="image/png, image/jpeg, image/webp" 
                 />
-
-
-
     </div>
+
+    <!-- image preview -->
+    <script>
+        const image = document.querySelector("#cover");
+        const imagepicker = document.querySelector("#image-picker");
+
+        function getimg(){
+            const file = imagepicker.files[0];
+            
+            if (file){
+                image.src = URL.createObjectURL(file);
+            }
+        }
+
+        imagepicker.addEventListener("change", getimg);
+
+        </script>
+
 
 
         
