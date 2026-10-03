@@ -15,11 +15,8 @@ Validation: Hit the page over curl with a logged-in session cookie and with
 
 Tool: Chat GPT
 Stage: Development
-Purpose: Assistance with understanding, readability, and writing of the 
-        PHP code for checking and adapting the 'title' of posts according 
-        to their length.
+Purpose: Assistance with CSS for text clamp and overflow in titles.
 Validation: Code analyzed and adapted by the student.
-
 
 */
 require_once __DIR__ . '/lang/load.php';
@@ -68,11 +65,7 @@ require_once __DIR__ . '/../backend/home.php';
                         </div>
                         <div class="info">
                              <a href="read.php?id=<?= (int) $text['text_id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
-                             <?php if (mb_strlen(($text['title'])) > 50) : ?>    
-                               <?= htmlspecialchars(mb_substr($text['title'], 0, 45)) . '...' ?>
-                            <?php else: ?>
                                <?= htmlspecialchars($text['title']) ?>
-                            <?php endif; ?>
                             </a>
                                                         
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
@@ -130,12 +123,8 @@ require_once __DIR__ . '/../backend/home.php';
                             <?php endif; ?>
                         </div>
                         <div class="info">
-                             <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
-                             <?php if (mb_strlen(($text['title'])) > 50) : ?>    
-                               <?= htmlspecialchars(mb_substr($text['title'], 0, 45)) . '...' ?>
-                            <?php else: ?>
+                                <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
                                <?= htmlspecialchars($text['title']) ?>
-                            <?php endif; ?>
                             </a>
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
@@ -163,13 +152,7 @@ require_once __DIR__ . '/../backend/home.php';
                             <?php endif; ?>
                         </div>
                         <div class="info">
-                             <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
-                             <?php if (mb_strlen(($text['title'])) > 50) : ?>    
-                               <?= htmlspecialchars(mb_substr($text['title'], 0, 45)) . '...' ?>
-                            <?php else: ?>
-                               <?= htmlspecialchars($text['title']) ?>
-                            <?php endif; ?>
-                            </a>
+                                 <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>"> <?= htmlspecialchars($text['title']) ?></a>
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
                                 <h3><?= (int) $text['favorites'] ?> <?= translator('favorites') ?></h3>
@@ -196,12 +179,8 @@ require_once __DIR__ . '/../backend/home.php';
                             <?php endif; ?>
                         </div>
                         <div class="info">
-                             <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
-                             <?php if (mb_strlen(($text['title'])) > 50) : ?>    
-                               <?= htmlspecialchars(mb_substr($text['title'], 0, 45)) . '...' ?>
-                            <?php else: ?>
+                                <a href="read.php?id=<?= (int) $text['id'] ?>" title="<?= htmlspecialchars($text['title']) ?>">
                                <?= htmlspecialchars($text['title']) ?>
-                            <?php endif; ?>
                             </a>
                             <h2><?= htmlspecialchars($text['category']) ?></h2>
                             <div class="postfooter">
