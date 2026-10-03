@@ -29,6 +29,7 @@ require_once __DIR__ . '/../backend/home.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="css/homestt.css">
+    <link rel="stylesheet" href="css/post.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/nav.css">
 

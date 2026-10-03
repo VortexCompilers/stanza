@@ -9,6 +9,7 @@ require_once __DIR__ . '/../backend/profile.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link rel="stylesheet" href="css/color.css">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/post.css">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/nav.css">
 
