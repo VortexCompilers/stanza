@@ -5,7 +5,7 @@ body{margin: 0;}
 header{  
 position: fixed;
 display: flex;
-height: 72px;
+height: 54px;
 width: 100%;
 padding: 0 16px;
 
@@ -24,8 +24,6 @@ z-index: 5;
     width: auto;
     height: 64%;
 
-    
-
     margin: auto 0;
 
 }
@@ -36,7 +34,7 @@ height: 100%;
 margin: 0 -4px;
 }
 #stanzalogo{
-    width: 128px;
+    width: 104px;
     height: 80%;
     margin: 4px 0 0 0 ;
 
@@ -47,7 +45,7 @@ margin: 0 -4px;
 header .bup, header .Lbup{
  display: flex;
 margin: auto 32px auto auto;
-gap: 16px;
+gap: 8px;
 }
 header .Lbup {
 margin-right: 0;
@@ -64,8 +62,8 @@ header .Lbup a{
 
 header .bup .pfp{
     align-self: center;
-    width: 54px;
-    height: 54px;
+    width: 42px;
+    height: 42px;
     background-color: aquamarine;
     border-radius: 100%;
 }
@@ -114,14 +112,13 @@ header .bup .pfp{
 }
 
 #menubutton{
-    font-size: 32px;
+    font-size: 24px;
     color: var(--light);
     font-weight: bolder;
     align-self: center;
     padding:  0;
     background:none;
     border: none;
-    
 }
 
 
@@ -143,13 +140,10 @@ header .bup .pfp{
 
 /* Main Padding */
 main{
-    padding-top: 72px;
+    padding-top: 54px;
     padding-bottom: 0;
     padding-right: 0;
 }
-
-
-
 
 
 

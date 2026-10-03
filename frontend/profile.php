@@ -63,7 +63,8 @@ require_once __DIR__ . '/../backend/profile.php';
 
 
 
-
+          <div class="pgroup">
+            <h1><?= translator('profile_texts_written') ?></h1>
             <section>
 
                 <?php foreach ($texts as $text): ?>
@@ -84,7 +85,18 @@ require_once __DIR__ . '/../backend/profile.php';
                     </div>
                 <?php endforeach; ?>
 
-</section>
+          </section>
+        </div>
+
+        
+
+          <div class="pgroup">
+           <h1><?= translator('profile_texts_saved') ?></h1>
+            <section>
+        </section>
+
+
+
 
 
 </main>
