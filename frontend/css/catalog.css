@@ -1,9 +1,28 @@
+/*
+DECLARATION OF ARTIFICIAL INTELLIGENCE USE
+
+Tool: ChatGPT
+
+Stage: Development
+
+Purpose: Assisted with HTML and CSS adjustments, including setting the
+    minimum height of the HTML/body elements to properly fill the
+    viewport, and structuring the filter layout to improve its
+    positioning, responsiveness, and behavior within the page.
+
+Validation: Reviewed CSS implementation, visual consistency, and layout         
+    behavior through browser testing across project pages.
+
+*/
+
+body{
+    background: var(--primary);
+}
 
 .filtersec{
-
 width: 100%;
 height: 52px;
-background-color: rgb(30, 51, 114);
+background-color: var(--backblue);
 
 align-content: center;
  margin: 0;
@@ -15,19 +34,19 @@ align-content: center;
     padding: 0 6px;
     width: 54%;
     height: 28px;
-    border: 2px solid rgb(0, 136, 255);
+    border: 2px solid var(--tertiary);
     border-radius: 18px;
 }
 .filtersec a{
  font-size: 12px;
     font-family: arial;
-    color: aliceblue;
+    color: var(--light);
    
-    background-color: rgba(0, 136, 255, 0.418);
+    background-color: var(--deep);
     padding:4px;
     border-radius: 2px;
 }
-.filtersec a:hover{cursor:pointer;}
+.filtersec a:hover, .filtersec button:hover{cursor:pointer;}
 .filtersec button{
     font-size: 12px;
     font-weight: bold;
@@ -35,8 +54,8 @@ align-content: center;
     height: 28px;
     width: auto;
 
-    color: aliceblue;
-    background-color: rgb(0, 136, 255);
+    color: var(--light);
+    background-color: var(--tertiary);
     border: none;
     
 
@@ -48,17 +67,18 @@ align-content: center;
 .filterpop{
     z-index: 1000;
     display: none;
-    width: min(320px, calc(100vw - 24px));
+    width: min(280px, calc(100vw - 72px));
     max-height: min(520px, calc(100vh - 150px));
     overflow-y: auto;
     padding: 4px;
     position: absolute;
 
-    left: 54%;
-    top: 124px;
+    top: 112px;
+    right: 0;
+    margin: 0 4px;
 
-    background-color: rgb(244, 247, 247);
-    border: 3px solid rgb(207, 200, 200);
+    background:var(--backblue);
+    border: 3px solid var(--deep);
     border-radius: 6px;
     box-sizing: border-box;
 }
@@ -66,14 +86,14 @@ align-content: center;
 .filterpop h1{
     font-size: 18px;
     margin: 0;
-    color: rgb(54, 52, 52);
+    color:var(--light);
 }
 
 .filterpop h2{
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 100;
     margin: 8px 2px 0px 2px ;
-    color: rgb(85, 85, 85);
+    color: var(--medium);
 }
 
 .stsbox{
@@ -82,9 +102,9 @@ align-content: center;
     padding: 4px 6px;
     margin: 0;
 
-    background-color: rgb(244, 247, 247);
-    border: 3px solid rgb(216, 212, 212);
-    border-radius: 28px;
+    background-color:var(--secondary);
+    border: 2px solid var(--medium);
+    border-radius: 12px;
     box-sizing: border-box;
 }
 
@@ -92,15 +112,16 @@ align-content: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start; 
-    gap: 2px;
+    gap: 4px;
 }
 
 .rdbt label{
     font-family: Arial;
     text-align: center;
     font-size: 12px;
-    background-color: aliceblue;
-    border: 3px solid darkgray;
+    background-color: var(--deep);
+    border: 2px solid var(--medium);
+    color: var(--light);
     border-radius: 14px;
     padding: 4px 8px;
 }
@@ -110,27 +131,28 @@ align-content: center;
 }
 
 .rdbt input[type="radio"]:checked + label{
-    background-color: rgb(14, 124, 221);
-    border-color: rgb(24, 72, 155);
-    color: aliceblue;
+    background-color: var(--tertiary);
+    border-color: var(--deeptert);
+    color: var(--light);
 }
 
 .rdbt input[type="checkbox"]:checked + label{
-    background-color: rgb(14, 124, 221);
-    border-color: rgb(24, 72, 155);
-    color: aliceblue;
+    background-color: var(--tertiary);
+    border-color:var(--deeptert);
+    color: var(--light);
 }
 
 .tagbox{
     max-height: 180px;
     overflow-y: auto;
+    scrollbar-width: none;
     border-radius: 18px;
 }
 
 .catalog-message{
     width: 100%;
     margin: 10px;
-    color: rgb(85, 85, 85);
+    color: var(--deep);
     font-family: Arial;
 }
 
@@ -142,7 +164,7 @@ align-content: center;
 
     .filterpop{
         top: 150px;
-        right: 16px;
+        left: 60%;
     }
     .filterpop h2{
         margin: 8px 0 2px 4px;

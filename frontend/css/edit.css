@@ -117,8 +117,9 @@ font-family: 'Times New Roman', Times, serif;
 
 .bar {
     z-index: 4;
- display: none; 
+    display: none; 
     position: fixed;
+    scrollbar-width: none;
 
     top: 50%;
     left: 50%;

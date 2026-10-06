@@ -162,7 +162,11 @@ require_once __DIR__ . '/../backend/catalog.php';
     abrir.addEventListener("click", function() {
         if(filter.style.display == "block"){
             filter.style.display = "none";
-        }else{filter.style.display = "block"}
+            abrir.textContent = "▼ <?= translator('action_filter') ?>"
+        }else{
+            filter.style.display = "block"
+            abrir.textContent = "✖ <?= translator('action_filter') ?>"
+        }
 
          
     });
