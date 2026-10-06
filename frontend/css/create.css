@@ -17,17 +17,19 @@ main h1{
     color: var(--light);
 }
 
-
 .cblock{
 background: var(--secondary);
 border: 2px solid var(--deep);
 border-radius: 10px;
 
-width: 90%;
+width: 94%;
 
 margin: 0 auto;
 padding: 12px;
 }
+
+
+
 
 
 .cblock label, .imgblock label{
@@ -80,6 +82,17 @@ padding: 12px;
 
 
 
+
+.cblock input, .cblock textarea, .cblock select, .cblock .tag-picker{
+    margin-bottom: 24px;
+}
+
+
+
+
+
+
+
 .visibt{
     width: 90%;
     display: flex;
@@ -110,12 +123,21 @@ padding: 12px;
 display: none;
 }
 
+
+
+
+
 .tag-picker{
+ background-color: var(--backblue);
+    border: 2px solid var(--deep);
+    border-radius: 4px;
+
     width: 90%;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
     margin: 4px 0 14px 0;
+    padding: 4px;
 }
 
 .tag-picker input{
@@ -126,22 +148,30 @@ display: none;
     width: auto;
     margin: 0;
     padding: 4px 8px;
-    border: 2px solid var(--medium);
+    border: 2px solid var(--dark);
     border-radius: 14px;
-    background-color: var(--light);
-    color: var(--dark);
+    background: var(--secondary);
+    color: var(--light);
     font-family: Arial, sans-serif;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .tag-picker input:checked + label{
-    background-color: var(--tertiary);
+    background: var(--tertiary);
     border-color: var(--deeptert);
     color: var(--light);
     font-weight: bold;
 }
 
-p{
+
+
+
+
+
+
+
+
+.cblock p{
     color: rgb(255, 144, 144);
 }
 
@@ -180,7 +210,7 @@ border: 2px solid var(--deep);
 border-radius: 10px;
 color: var(--light);
 
-width: 90%;
+width: 94%;
 height:280px;
 
 margin: 0 auto 12px auto;
@@ -197,6 +227,7 @@ padding: 8px 12px;
 #cover{
     width: 100%;
     height: 100%;
+    border-radius: 12px;
 }
 
 
@@ -236,6 +267,17 @@ padding: 8px 12px;
         margin: 2px;
         width: 96px;
     }
+
+
+
+    .tag-picker label{
+        font-size: 14px;
+    }
+
+
+
+
+
 
 
     .botoes-form{

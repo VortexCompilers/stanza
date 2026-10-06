@@ -87,9 +87,7 @@ require_once __DIR__ . '/../backend/create_form.php';
     <div class="cblock">
         
             <label for="title"><?= translator('editor_title') ?></label>
-
             <input type="text" id="title" name="title">
-
 
 
 
@@ -109,7 +107,6 @@ require_once __DIR__ . '/../backend/create_form.php';
                     <option value="poetry"><?= translator('category_poetry') ?></option>
                     <option value="story"><?= translator('category_story') ?></option>
                 </select>
-
 
 
             <label><?= translator('catalog_tags_label') ?></label>
