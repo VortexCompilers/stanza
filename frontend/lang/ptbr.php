@@ -91,6 +91,19 @@ $strings = [
     'verify_resend'          => 'Reenviar código',
 
     // ------------------------------------------------------------
+    // Set new password screen — auth-new-password.php
+    // ------------------------------------------------------------
+    'reset_new_password_title' => 'Defina uma nova senha',
+    'reset_password_label'     => 'Nova senha',
+    'reset_confirm_label'      => 'Confirme a nova senha',
+    'reset_submit'             => 'Atualizar senha',
+    'reset_error_invalid'      => 'Este link de redefinição é inválido ou expirou.',
+    'reset_error_password'     => 'A senha precisa ter pelo menos 8 caracteres.',
+    'reset_error_mismatch'     => 'As senhas não coincidem.',
+    'reset_error_server'       => 'Não foi possível processar sua solicitação agora. Tente novamente mais tarde.',
+    'reset_request_new_link'   => 'Solicitar um novo link',
+
+    // ------------------------------------------------------------
     // Home — home.php
     // ------------------------------------------------------------
     'home_search_placeholder'   => 'Pesquisar..',

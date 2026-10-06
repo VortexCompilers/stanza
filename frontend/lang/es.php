@@ -93,6 +93,19 @@ $strings = [
     'verify_resend'          => 'Reenviar código',
 
     // ------------------------------------------------------------
+    // Set new password screen — auth-new-password.php
+    // ------------------------------------------------------------
+    'reset_new_password_title' => 'Establece una nueva contraseña',
+    'reset_password_label'     => 'Nueva contraseña',
+    'reset_confirm_label'      => 'Confirma la nueva contraseña',
+    'reset_submit'             => 'Actualizar contraseña',
+    'reset_error_invalid'      => 'Este enlace de restablecimiento no es válido o ha expirado.',
+    'reset_error_password'     => 'La contraseña debe tener al menos 8 caracteres.',
+    'reset_error_mismatch'     => 'Las contraseñas no coinciden.',
+    'reset_error_server'       => 'No se pudo procesar tu solicitud en este momento. Inténtalo de nuevo más tarde.',
+    'reset_request_new_link'   => 'Solicitar un nuevo enlace',
+
+    // ------------------------------------------------------------
     // Home — home.php
     // ------------------------------------------------------------
     'home_search_placeholder'   => 'Buscar..',

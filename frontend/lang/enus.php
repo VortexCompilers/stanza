@@ -103,6 +103,19 @@ $strings = [
     'verify_resend'          => 'Resend email',
 
     // ------------------------------------------------------------
+    // Set new password screen — auth-new-password.php
+    // ------------------------------------------------------------
+    'reset_new_password_title' => 'Set a new password',
+    'reset_password_label'     => 'New password',
+    'reset_confirm_label'      => 'Confirm new password',
+    'reset_submit'             => 'Update password',
+    'reset_error_invalid'      => 'This reset link is invalid or has expired.',
+    'reset_error_password'     => 'Password must be at least 8 characters long.',
+    'reset_error_mismatch'     => 'Passwords do not match.',
+    'reset_error_server'       => 'Unable to process your request right now. Please try again later.',
+    'reset_request_new_link'   => 'Request a new link',
+
+    // ------------------------------------------------------------
     // Home — home.php
     // ------------------------------------------------------------
     'home_search_placeholder'   => 'Search..',

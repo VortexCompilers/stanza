@@ -1,4 +1,22 @@
-<?php require_once __DIR__ . '/../lang/load.php'; ?>
+<?php
+require_once __DIR__ . '/../lang/load.php';
+
+$token = isset($_GET['token']) ? trim((string) $_GET['token']) : '';
+$errorParam = isset($_GET['error']) ? (string) $_GET['error'] : '';
+
+$errorKey = '';
+if ($errorParam === 'password') {
+    $errorKey = 'reset_error_password';
+} elseif ($errorParam === 'mismatch') {
+    $errorKey = 'reset_error_mismatch';
+} elseif ($errorParam === 'server') {
+    $errorKey = 'reset_error_server';
+} elseif ($errorParam === 'invalid' || $token === '') {
+    $errorKey = 'reset_error_invalid';
+}
+
+$showForm = $token !== '' && $errorKey !== 'reset_error_invalid';
+?>
 <!DOCTYPE html>
 <html lang="<?= $htmlLang ?>">
 <head>
@@ -15,33 +33,35 @@
 
 <div class="wblock">
 
-<h1><?= translator('verify_title') ?></h1>
+<h1><?= translator('reset_new_password_title') ?></h1>
 
+<?php if ($errorKey !== ''): ?>
+    <div class="alert error"><?= translator($errorKey) ?></div>
+<?php endif; ?>
 
-<form action=" ddd ">
+<?php if ($showForm): ?>
 
-    <label>Enter your password</label>
+<form action="../../backend/password-reset/update-password.php" method="POST">
 
+    <input type="hidden" name="token" value="<?= htmlspecialchars($token, ENT_QUOTES, 'UTF-8') ?>">
+
+    <label for="password"><?= translator('reset_password_label') ?></label>
     <input type="password" id="password" name="password">
 
-    <label for="">Confirm your password</label>
+    <label for="confirm-password"><?= translator('reset_confirm_label') ?></label>
+    <input type="password" id="confirm-password" name="confirm_password">
 
-    <input type="password" id="confirm-password" name="confirm-password">
-
-    
-   <button type="submit"><?= translator('verify_submit') ?></button>
+    <button type="submit"><?= translator('reset_submit') ?></button>
 
 </form>
 
-<a href="reeeeenviar"><?= translator('verify_resend') ?></a>
+<?php else: ?>
 
+    <a class="modal-link" href="auth.php"><?= translator('reset_request_new_link') ?></a>
 
-
+<?php endif; ?>
 
 </div>
-
-
-
 
 </body>
 </html>
