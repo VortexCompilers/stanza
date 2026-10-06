@@ -110,6 +110,37 @@ padding: 12px;
 display: none;
 }
 
+.tag-picker{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 4px 0 14px 0;
+}
+
+.tag-picker input{
+    display: none;
+}
+
+.tag-picker label{
+    width: auto;
+    margin: 0;
+    padding: 4px 8px;
+    border: 2px solid var(--medium);
+    border-radius: 14px;
+    background-color: var(--light);
+    color: var(--dark);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.tag-picker input:checked + label{
+    background-color: var(--tertiary);
+    border-color: var(--deeptert);
+    color: var(--light);
+    font-weight: bold;
+}
+
 p{
     color: rgb(255, 144, 144);
 }

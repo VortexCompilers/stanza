@@ -11,6 +11,7 @@ Validation: Code reviewed with diffs and checked with php -l.
 
 require_once __DIR__ . '/../backend-php/src/Services/MlClient.php';
 require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/includes/tags.php';
 
 $query = trim($_GET['search'] ?? $_GET['catal'] ?? '');
 $order = $_GET['order'] ?? 'recent';
@@ -37,8 +38,7 @@ if (!in_array($category, $validCategories, true)) {
     $category = '';
 }
 
-$genreStmt = $pdo->query('SELECT id, name FROM genres ORDER BY name ASC');
-$genres = $genreStmt->fetchAll(PDO::FETCH_ASSOC);
+$genres = getAllGenres($pdo);
 
 $where = ["t.visibility = 'public'"];
 $params = [];

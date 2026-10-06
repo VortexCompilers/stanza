@@ -248,6 +248,37 @@ font-weight: normal;
     display: none;
 }
 
+.tag-picker{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 2px 0 12px 0;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.tag-picker input{
+    display: none;
+}
+
+.tag-picker label{
+    margin: 0;
+    padding: 4px 8px;
+    background-color: var(--light);
+    border: 1px solid var(--medium);
+    border-radius: 14px;
+    color: var(--dark);
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.tag-picker input:checked + label{
+    background-color: var(--tertiary);
+    border-color: rgb(24, 52, 155);
+    color: var(--light);
+    font-weight: bold;
+}
+
 
 
 

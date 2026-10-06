@@ -9,6 +9,8 @@ Validation: All changes tested by the dev
 */
 
 require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/includes/tags.php';
+require_once __DIR__ . '/../backend-php/src/Services/MlClient.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -41,6 +43,9 @@ $title       = $_POST['title'] ?? '';
 $description = $_POST['description'] ?? '';
 $category    = $_POST['category'] ?? '';
 $visibility  = $_POST['visibility'] ?? '';
+$genres = getAllGenres($pdo);
+$selectedTags = getSelectedGenreIdsFromPost($genres);
+$selectedTagNames = getGenreNamesByIds($genres, $selectedTags);
 
 $body = $_POST['body'] ?? $text['body'];
 
@@ -64,27 +69,30 @@ if (isset($_FILES['cover_image']) && $_FILES['cover_image']['error'] !== UPLOAD_
     }
 
 
-    $tiposPermitidos = ['image/png' => 'png', 'image/jpeg' => 'jpg', 'image/webp' => 'webp'];
-    $tipoReal = mime_content_type($_FILES['cover_image']['tmp_name']);
+    $allowedTypes = ['image/png' => 'png', 'image/jpeg' => 'jpg', 'image/webp' => 'webp'];
+    $detectedType = mime_content_type($_FILES['cover_image']['tmp_name']);
 
-    if (!isset($tiposPermitidos[$tipoReal])) {
+    if (!isset($allowedTypes[$detectedType])) {
         header('Location: ../frontend/edit.php?id=' . $id . '&erro=formato_invalido');
         exit;
     }
 
    
-    $nomeArquivo = bin2hex(random_bytes(8)) . '.' . $tiposPermitidos[$tipoReal];
-    $destino = __DIR__ . '/../frontend/img/uploads/' . $nomeArquivo;
+    $fileName = bin2hex(random_bytes(8)) . '.' . $allowedTypes[$detectedType];
+    $destination = __DIR__ . '/../frontend/img/uploads/' . $fileName;
 
-    if (!move_uploaded_file($_FILES['cover_image']['tmp_name'], $destino)) {
+    if (!move_uploaded_file($_FILES['cover_image']['tmp_name'], $destination)) {
         header('Location: ../frontend/edit.php?id=' . $id . '&erro=upload_falhou');
         exit;
     }
 
-    $cover_image = $nomeArquivo; 
+    $cover_image = $fileName;
 }
 
 try {
+    ensureTagSchema($pdo);
+    $pdo->beginTransaction();
+
     $sql = 'UPDATE texts
             SET title = :title, body = :body, description = :description,
                 category = :category, language = :language,
@@ -103,10 +111,28 @@ try {
         ':id'          => $id,
         ':author_id'   => $author_id,
     ]);
+
+    syncTextGenres($pdo, $id, $selectedTags);
+    $pdo->commit();
 } catch (PDOException $e) {
+    if ($pdo->inTransaction()) {
+        $pdo->rollBack();
+    }
+
     error_log($e->getMessage());
     header('Location: ../frontend/edit.php?id=' . $id . '&erro=erro_interno');
     exit;
+}
+
+if ($visibility === 'public') {
+    $embedding_text = implode('. ', array_filter([
+        $title,
+        $description,
+        $body,
+        ...$selectedTagNames,
+    ]));
+
+    mlAdicionar($id, $embedding_text);
 }
 
 header('Location: ../frontend/read.php?id=' . $id);

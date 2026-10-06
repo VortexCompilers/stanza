@@ -9,6 +9,7 @@ Validation: All changes tested by the dev
 */
 
 require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/includes/tags.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -34,3 +35,6 @@ if (!$text) {
     header('Location: ../frontend/home.php?erro=sem_permissao');
     exit;
 }
+
+$genres = getAllGenres($pdo);
+$selectedTags = getTextGenreIds($pdo, $id);

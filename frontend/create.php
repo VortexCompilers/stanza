@@ -15,7 +15,9 @@
 
 
 
-require_once __DIR__ . '/lang/load.php'; ?>
+require_once __DIR__ . '/lang/load.php';
+require_once __DIR__ . '/../backend/create_form.php';
+?>
 <!DOCTYPE html>
 <html lang="<?= $htmlLang ?>">
 <head>
@@ -108,6 +110,16 @@ require_once __DIR__ . '/lang/load.php'; ?>
                     <option value="story"><?= translator('category_story') ?></option>
                 </select>
 
+
+
+            <label><?= translator('catalog_tags_label') ?></label>
+            <div class="tag-picker">
+                <?php foreach ($genres as $genre): ?>
+                    <?php $genreId = (int) $genre['id']; ?>
+                    <input type="checkbox" name="tags[]" id="tag_<?= $genreId ?>" value="<?= $genreId ?>">
+                    <label for="tag_<?= $genreId ?>"><?= htmlspecialchars($genre['name']) ?></label>
+                <?php endforeach; ?>
+            </div>
 
 
                     

@@ -85,6 +85,15 @@ require_once __DIR__ . '/../backend/edit.php';
             <option value="story"  <?= $text['category'] === 'story'  ? 'selected' : '' ?>><?= translator('category_story') ?></option>
         </select>
 
+    <h2><?= translator('catalog_tags_label') ?></h2>
+    <div class="tag-picker">
+        <?php foreach ($genres as $genre): ?>
+            <?php $genreId = (int) $genre['id']; ?>
+            <input type="checkbox" name="tags[]" id="tag_<?= $genreId ?>" value="<?= $genreId ?>" <?= in_array($genreId, $selectedTags, true) ? 'checked' : '' ?>>
+            <label for="tag_<?= $genreId ?>"><?= htmlspecialchars($genre['name']) ?></label>
+        <?php endforeach; ?>
+    </div>
+
 
     <!-- Content language: each option stays in its own language, not translated -->
     <h2><?= translator('editor_language') ?></h2>
