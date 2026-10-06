@@ -117,6 +117,9 @@ $strings = [
     'catalog_sort_most_saved'    => 'Más guardados',
     'catalog_sort_most_viewed'   => 'Más vistos',
     'catalog_category_label'     => 'Categoría',
+    'catalog_category_all'       => 'Todas',
+    'catalog_tags_label'         => 'Tags',
+    'catalog_semantic_unavailable' => 'La búsqueda por similitud no está disponible ahora. Mostrando los resultados filtrados por tags.',
 
     // ------------------------------------------------------------
     // Categories — shared by create.php, edit.php and catalog.php.

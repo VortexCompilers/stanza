@@ -12,7 +12,10 @@ async def lifespan(app: FastAPI):
     app.state.index = carregar_indice()
     id_map = faiss.vector_to_array(app.state.index.id_map)
     print("index loaded successfully")
-    app.state.filter_index_dict = {i:book_id for i, book_id in enumerate(id_map)}
+    app.state.filter_index_dict = {
+        int(book_id): int(position)
+        for position, book_id in enumerate(id_map)
+    }
 
 
     yield

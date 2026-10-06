@@ -18,6 +18,17 @@ function mlBuscar(string $query, int $k = 20): array
     return $resposta['results'] ?? [];
 }
 
+function mlBuscarFiltrado(string $query, array $ids, int $k = 20): array
+{
+    $resposta = mlChamarApi('/filteredsearch', [
+        'query' => $query,
+        'ids' => array_values(array_map('intval', $ids)),
+        'k' => $k,
+    ]);
+
+    return $resposta['results'] ?? [];
+}
+
 function mlChamarApi(string $endpoint, array $dados): array
 {
     $baseUrl = $_ENV['ML_ENGINE_URL'] ?? 'http://127.0.0.1:8000';

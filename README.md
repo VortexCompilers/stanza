@@ -71,10 +71,11 @@ http://localhost/stanza/
 
 ---
 
-## DECLARATION OF ARTIFICIAL INTELLIGENCE USE
+## DECLARAÇÃO DE USO DE INTELIGÊNCIA ARTIFICIAL
 
 | Tool | Stage | Purpose | Validation |
 |---|---|---|---|
 | ChatGPT | Planning | Organizing the planning files and refining ideas | Reviewed and adjusted by the team |
 | ChatGPT | Development | Help identifying bugs in the code | Code reviewed, corrected, and tested by the team |
 | Claude Code | Development | Help identifying bugs in the code | Code reviewed, corrected, and tested by the team |
+| Codex | Development | Implementing advanced catalog filtering with tags, category sorting, and optional FAISS semantic ranking | Code reviewed with diffs, PHP syntax checks, and Python compile checks |

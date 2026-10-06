@@ -1,6 +1,6 @@
 <?php
 /*
-DECLARAÇÃO DE USO DE INTELIGÊNCIA ARTIFICIAL
+AI USE DECLARATION
 
 Tool: Claude Code
 Stage: Development

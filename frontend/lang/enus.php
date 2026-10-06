@@ -127,6 +127,9 @@ $strings = [
     'catalog_sort_most_saved'    => 'Most saved',
     'catalog_sort_most_viewed'   => 'Most viewed',
     'catalog_category_label'     => 'Category',
+    'catalog_category_all'       => 'All',
+    'catalog_tags_label'         => 'Tags',
+    'catalog_semantic_unavailable' => 'Semantic search is unavailable right now. Showing the tag-filtered results.',
 
     // ------------------------------------------------------------
     // Categories — shared by create.php, edit.php and catalog.php.

@@ -24,6 +24,11 @@ def add_item(item: AddRequest, request: Request):
     salvar_embedding(item.id, embedding[0].tobytes())
 
     index_update_embedding(index, item.id, embedding)
+    id_map = faiss.vector_to_array(index.id_map)
+    request.app.state.filter_index_dict = {
+        int(book_id): int(position)
+        for position, book_id in enumerate(id_map)
+    }
 
     return AddResponse(status="ok", id=item.id)
 
@@ -57,6 +62,9 @@ def search(req: FilteredSearchRequest, request: Request):
         for id in req.ids
         if id in request.app.state.filter_index_dict
     ]
+
+    if not filtered_ids:
+        return SearchResponse(results=[])
 
     # books position in the index 
     positions = [
