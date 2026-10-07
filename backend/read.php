@@ -9,6 +9,7 @@ Validation: All changes tested by the dev
 */
 
 require_once __DIR__ . '/../backend/config/database.php';
+require_once __DIR__ . '/includes/tags.php';
 
 $id = (int) ($_GET['id'] ?? 0);
 
@@ -40,4 +41,8 @@ if (isset($_SESSION['user_id'])) {
 
 $pdo->prepare('UPDATE texts SET read_count = read_count + 1 WHERE id = :id')
     ->execute([':id' => $id]);
+
+
+$genres = getAllGenres($pdo);
+$selectedTags = getTextGenreIds($pdo, $id);
 ?>

@@ -116,23 +116,24 @@ font-family: 'Times New Roman', Times, serif;
 /* Mobile Bar */
 
 .bar {
-    z-index: 4;
+    z-index: 6;
     display: none; 
     position: fixed;
-    scrollbar-width: none;
+    scrollbar-width:thin;
+    overflow: auto;
+
 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 
     width: 86%;
-    height: auto;
-    max-height: 84%;
-    padding: 10px;
+    height: 84%;
+    padding: 2px 10px;
 
     background: var(--secondary);
-    border: 3px solid var(--dark);
-    border-radius: 13px;
+    border: 2px solid var(--deep);
+    border-radius: 16px 0 0 16px;
 
 }
 
@@ -145,27 +146,34 @@ font-family: 'Times New Roman', Times, serif;
 
         border: 2px solid var(--medium);
         border-radius: 10px;
-        background-color: rgba(0, 123, 255, 0.2);
+        background-color: var(--tertiary);
 
-        font-size: 22px;
+        font-size: 14px;
         font-weight: bolder;
-        color: var(--medium);
+        color: var(--light);
 
         width: 30px;
         height: 30px;
+
+        padding: 0;
 }
-#exitarrow{display: none;}
+#fecharBar{
+    margin-left: auto;
+}
+#exitarrow{
+    display: none;
+}
 
 
 
-.bar textarea, .bar input, .bar select{
+.bar textarea, .bar input, .bar select, .bar .tag-picker{
     background-color: var(--backTertblue);
     color: var(--light);
     border:1px solid var(--deep);
     border-radius: 4px;
     padding:0.8%;
 
-    max-width: 80%;
+    max-width: 88%;
 
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
@@ -211,7 +219,7 @@ font-family: 'Times New Roman', Times, serif;
 
 .bar h2{
    margin: 0;
-    color: var(--light);
+    color: var(--medium);
 
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
@@ -256,6 +264,8 @@ font-weight: normal;
     margin: 2px 0 12px 0;
     max-height: 120px;
     overflow-y: auto;
+
+   
 }
 
 .tag-picker input{
@@ -337,17 +347,16 @@ font-weight: normal;
 
 /* Web Bar */
 .bar {
-
     display: block;
     border-radius: 0;
-    top: 0;
-    overflow:auto;
+    overflow: auto;
+    overflow-x: hidden;
     left: -248px;
     transform: none;
     width: 248px;
-    min-height: 100%;
-    max-height: calc(100%-100px);
-    margin-top: 96px;
+    height: calc(100vh - 96px);
+    top: 96px;
+    margin: 0;
     transition: left 400ms;
 }
 
@@ -393,6 +402,12 @@ max-height: 100%;
     font-size: 16px;
 }
 
+.bar .btmbuttons{
+    margin: 24px 0;
+}
+.bar .svv{
+    font-size: 18px;
+}
 
 
 .visibt label{font-size: 14px;}
@@ -412,9 +427,10 @@ textarea{
 #exitarrow{
     display: block;
     font-weight: bolder;
+    border-radius: 6px;
     margin: 6px 0;
     width: 30px;
-    height: 30px;
+    height: 18px;
     }
 
 #fecharBar{display: none;}
@@ -437,13 +453,16 @@ textarea{
 .fsec{
     display: flex;
     height: 110px;
+
+    margin: 0 0 24px 0;
 }
 
 .rinfo{
-    width: 64%;
+    width: auto;
+    min-width: 32%;
     height: 100%;
-    
 
+    margin: 0 12px;
     display: flex;
     flex-direction: column;
 }
@@ -455,11 +474,11 @@ textarea{
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     color: var(--light);
-    margin: 0 0 0 4px;
+    margin: 0;
 }
 .rinfo .dw {
     display: flex;
-    margin-top: auto;
+    margin-top: 32px;
     align-items: end;
 
 }
@@ -467,16 +486,17 @@ textarea{
 .rinfo h3{
     font-size: 16px;
     font-family: 'Times New Roman', Times, serif;
-    color: var(--light);
-    margin: 0 0 0 4px;
+    color: var(--medium);
+    margin: 0 0 2px 2px;
 }
 .rinfo button{ 
     width: 28px;
     height: 28px;
-    margin:0 0 0 auto;
+    margin:0 0 0 24px;
+    color: var(--light);
     border: 2px solid gray;
     border-radius:10px;
-    background-color: rgba(222, 225, 228, 0.4);
+    background-color: rgba(222, 225, 228, 0.2);
    
 }
 
@@ -484,30 +504,69 @@ textarea{
 
 
 .rdesc{
-    width: 80%;
-    min-height:100px ;
-    margin: 24px 0;
-    background-color: rgb(53, 68, 143);
-    border:3px solid rgb(28, 29, 40) ;
+    width: 88%;
+    min-height:100px;
 
+    background-color:var(--backblue);
+    border:2px solid var(--deep) ;
+    border-radius: 16px 4px 16px 4px;
 
-    /* text */
-    padding: 10px;
+    padding: 12px 0;
+    margin: 0.8px 0 16px 0;
+}
+
+.rdesc p{
     font-family: 'Times New Roman', Times, serif;
     font-size: 16px;
     color: var(--light);
+
+    margin: 0 12px;
 }
 
 
 
 
+/* tags */
+.rdesc label{
+    padding: 4px 8px;
+    background-color: var(--tertiary);
+    border: 1px solid var(--deeptert);
+    border-radius: 14px;
+
+    color: var(--light);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+
+    margin: 12px 8px;
+}
+
+
+
 @media (min-width: 800px){
     .rdesc{
-        padding: 16px;
+        padding: 8px;
+        width: 80%;
+        min-height: 64px;
+        height: auto;
     }
+
+    .rdesc p{
+        margin: 0 4px;
+    }
+    .rdesc label{
+        margin: 24px 4px;
+    }
+
     .rinfo{
         width: 70%;
+        margin: 0 8px;
     }
+    
+    .rinfo .dw {
+        margin-top: auto;
+    }
+
     .rinfo h2{
         font-size: 20px;
     }

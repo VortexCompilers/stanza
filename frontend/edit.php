@@ -44,7 +44,7 @@ require_once __DIR__ . '/../backend/edit.php';
 
 
        <a href="read.php?id=<?= $id ?>" id="exitarrow">←</a>
-       <button type="button" id="fecharBar">X</button>
+       <button type="button" id="fecharBar">✕</button>
 
 
     <div class="img">

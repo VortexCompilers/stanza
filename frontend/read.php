@@ -1,4 +1,21 @@
 <?php
+/*
+ DECLARATION OF ARTIFICIAL INTELLIGENCE USE
+
+ Tool: ChatGPT
+
+ Stage: Development
+
+ Purpose: Assisted with displaying only the tags previously selected and  
+    stored in the database, adapting the PHP loop to filter the     
+    available genres and present the selected tags as non-editable
+    interface elements
+
+ Validation: Reviewed PHP logic, data filtering, and visual behavior
+    through browser testing.
+
+ */
+
 require_once __DIR__ . '/lang/load.php';
 require_once __DIR__ . '/../backend/read.php';
 ?>
@@ -34,8 +51,8 @@ require_once __DIR__ . '/../backend/read.php';
 <div class="bar"> 
 
         
-       <a href="home.php"><</a>
-       <button class="fecha" id="fecharBar">X</button>
+       <a href="home.php" id="exitarrow">←</a>
+       <button class="fecha" id="fecharBar">✕</button>
 
         <div class="fsec">
                 <div class="img"> 
@@ -53,28 +70,34 @@ require_once __DIR__ . '/../backend/read.php';
 
             
                     <div class="dw">
-                    <h3><?= htmlspecialchars($text['read_count'])?></h3>
+                    <h3><?= htmlspecialchars($text['read_count'])?> <?= translator('views') ?> </h3>
                     <button>&#9661</button>
                       </div>
                 </div>
-        
-
-
-
-
-
-
-
-
 
 
         </div> 
 
+
+        
+        <h2><?= translator('editor_description') ?></h2>
         <div class="rdesc">
-
-            <?= htmlspecialchars($text['description'])?>
-
+           <p> <?= htmlspecialchars($text['description'])?></p>
         </div>
+      
+      
+        <h2><?= translator('catalog_tags_label') ?></h2>
+            <div class="rdesc">
+                <?php foreach ($genres as $genre): ?>
+                    <?php $genreId = (int) $genre['id']; ?>
+
+                    <?php if (in_array($genreId, $selectedTags, true)): ?>
+                        <label><?= htmlspecialchars($genre['name']) ?></label>
+                    <?php endif; ?>
+
+                <?php endforeach; ?>
+            </div>
+
 
 
 </div> 
@@ -92,7 +115,7 @@ require_once __DIR__ . '/../backend/read.php';
 
 
  <div class="mbbt1">
-    <a href="home.php"  style="margin:0;"><</a>
+    <a href="home.php"  style="margin:0;"> < </a>
    
     <button id="abrirBar" style="margin-left:auto;">⋮</button>
 </div>
@@ -107,7 +130,7 @@ require_once __DIR__ . '/../backend/read.php';
 
 
 
-    
+
 
 
 
@@ -117,10 +140,10 @@ require_once __DIR__ . '/../backend/read.php';
 
         <label>226 <?= translator('editor_characters') ?></label>
 
-        <label for="fontsize"><?= translator('editor_font_size_inline') ?> </label>
-        <input type="number" id="fontsize" name="fontsize" min="1" max="40">
+       // <label for="fontsize"><?= translator('editor_font_size_inline') ?> </label>
     </div>
-    </form>
+    
+</form>
 
 
 
