@@ -31,6 +31,7 @@ $strings = [
     'action_search'          => 'Search',
     'action_filter'          => 'Filter',
     'action_write'           => 'Write',
+    'action_next'            => 'Next',
 
     // ------------------------------------------------------------
     // Navigation — nav.php

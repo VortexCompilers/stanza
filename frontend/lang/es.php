@@ -26,6 +26,7 @@ $strings = [
     'action_search'          => 'Buscar',
     'action_filter'          => 'Filtrar',
     'action_write'           => 'Escribir',
+    'action_next'            => 'Siguiente',
 
     // ------------------------------------------------------------
     // Navigation — nav.php

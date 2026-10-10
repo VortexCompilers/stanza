@@ -119,18 +119,25 @@ require_once __DIR__ . '/../backend/landing.php';
 <?php
 $erroLogin = $erroRegister = '';
 $loginAberto = $registerAberto = false;
+$registerStartStep = 1;
 
 if (isset($_GET['erro'])) {
     $errorKeys = [
         'campo_vazio'           => 'error_empty_fields',
         'credenciais_invalidas' => 'error_invalid_credentials',
         'email_duplicado'       => 'error_email_taken',
+        'upload_falhou'         => 'error_upload_failed',
+        'formato_invalido'      => 'error_invalid_format',
     ];
     $msg = translator($errorKeys[$_GET['erro']] ?? 'error_generic');
 
     if (($_GET['modal'] ?? '') === 'register') {
         $erroRegister = $msg;
         $registerAberto = true;
+
+        if (in_array($_GET['erro'], ['upload_falhou', 'formato_invalido'], true)) {
+            $registerStartStep = 2;
+        }
     } else {
         $erroLogin = $msg;
         $loginAberto = true;

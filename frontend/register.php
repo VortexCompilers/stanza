@@ -2,15 +2,22 @@
 require_once __DIR__ . '/lang/load.php';
 
 $erroRegister = '';
+$registerStartStep = 1;
 
 if (isset($_GET['erro'])) {
 
     $errorKeys = [
-        'campo_vazio'     => 'error_empty_fields',
-        'email_duplicado' => 'error_email_taken',
+        'campo_vazio'      => 'error_empty_fields',
+        'email_duplicado'  => 'error_email_taken',
+        'upload_falhou'    => 'error_upload_failed',
+        'formato_invalido' => 'error_invalid_format',
     ];
 
     $erroRegister = translator($errorKeys[$_GET['erro']] ?? 'error_generic');
+
+    if (in_array($_GET['erro'], ['upload_falhou', 'formato_invalido'], true)) {
+        $registerStartStep = 2;
+    }
 }
 
 $registerAberto = true;

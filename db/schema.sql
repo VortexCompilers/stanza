@@ -17,6 +17,7 @@ CREATE TABLE users (
     gender ENUM('male', 'female', 'other') NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    avatar_image VARCHAR(255),
     role ENUM('reader', 'author', 'admin') NOT NULL DEFAULT 'reader'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
