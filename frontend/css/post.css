@@ -11,7 +11,7 @@ section{
 
 .post{
 background-color: rgba(235, 235, 235, 10%);
-border:solid 3px rgba(193, 188, 188, 0.32);
+border: solid 3px rgba(193, 188, 188, 0.32);
 border-radius: 10px;
 
 height: 104px;
@@ -73,13 +73,13 @@ border-radius: 10px;
     margin-top: auto;
     display: flex;
     align-items: center;
-    width: 98%;
+    width: 100%;
  
 }
 .post .info button{
     width: 20px;
     height: 22px;
-    margin: 2px 0 0 auto;
+    margin: 2px 0 2px auto;
    padding: 0;
     font-size: 14px;
 
@@ -120,4 +120,29 @@ border-radius: 8px;
     font-size: 14px;
     font-weight: 300 ;
     margin: 1px 0 0 2px;}
+
+
+
+
+
+/* Hover Interaction */
+.post:hover{
+    cursor:default;
+    border-color: var(--medium);
+    transition: 120ms;
+
+    box-shadow: 1.2px 1.2px 6px 2.6px rgba(18, 91, 116, 0.2);
+}
+
+.post a:hover{
+    text-decoration: underline;
+}
+
+.info button:hover{
+    cursor: pointer;
+    border-color: var(--medium);
+}
+
+
+
 }
