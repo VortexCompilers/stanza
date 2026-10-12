@@ -76,7 +76,7 @@ textarea{
     border-radius: 10px;
     line-height:28px;
     font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: var(--font2);
 
 }
 
@@ -97,7 +97,7 @@ textarea{
 display: inline;
 color: var(--light);
 font-size: 14px;
-font-family: 'Times New Roman', Times, serif;
+font-family: var(--font2);
 
 }
 .mbbt2 input{
@@ -175,7 +175,7 @@ font-family: 'Times New Roman', Times, serif;
 
     max-width: 88%;
 
-    font-family: 'Times New Roman', Times, serif;
+    font-family: var(--font2);
     font-size: 18px;
 }
 .bar textarea:focus, .bar input:focus , .bar select:focus{
@@ -221,7 +221,7 @@ font-family: 'Times New Roman', Times, serif;
    margin: 0;
     color: var(--medium);
 
-    font-family: 'Times New Roman', Times, serif;
+    font-family: var(--font1);
     font-weight: normal;
     font-size: 20px;
     text-align: left;
@@ -242,10 +242,10 @@ font-family: 'Times New Roman', Times, serif;
     background-color: var(--light);
     border: 1px solid var(--medium);
     border-radius: 2px;
-color: var(--dark);
-font-size: 18px;
-font-family: 'Times New Roman', Times, serif;
-font-weight: normal;
+    color: var(--dark);
+    font-size: 18px;
+    font-family: var(--font2);
+    font-weight: normal;
 }
 .visibt input[type="radio"]:checked + label{
     background-color: var(--tertiary);
@@ -279,7 +279,7 @@ font-weight: normal;
     border: 1px solid var(--medium);
     border-radius: 14px;
     color: var(--dark);
-    font-family: Arial, sans-serif;
+    font-family: var(--font1);
     font-size: 12px;
 }
 
@@ -471,7 +471,7 @@ textarea{
 
 .rinfo h2{
     font-size: 24px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: var(--font1);
     font-weight: bold;
     color: var(--light);
     margin: 0;
@@ -485,7 +485,7 @@ textarea{
 
 .rinfo h3{
     font-size: 16px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: var(--font1);
     color: var(--medium);
     margin: 0 0 2px 2px;
 }
@@ -508,7 +508,7 @@ textarea{
     min-height:100px;
 
     background-color:var(--backblue);
-    border:2px solid var(--deep) ;
+    border:2px dashed var(--deep) ;
     border-radius: 16px 4px 16px 4px;
 
     padding: 12px 0;
@@ -516,7 +516,7 @@ textarea{
 }
 
 .rdesc p{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: var(--font1);
     font-size: 16px;
     color: var(--light);
 
@@ -534,7 +534,7 @@ textarea{
     border-radius: 14px;
 
     color: var(--light);
-    font-family: Arial, sans-serif;
+    font-family: var(--font1);
     font-weight: bold;
     font-size: 12px;
 

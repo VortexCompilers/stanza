@@ -10,6 +10,8 @@ margin: 0;
 .search{
     width: auto;
     margin: 16px 10px;
+
+    font-family: var(--font1);
 }
 
 input[type="search"]{
@@ -41,6 +43,8 @@ h1{
     font-size: 16px;
     font-weight: 100;
     color: var(--deep);
+
+    font-family: var(--font2);
 }
 
 .carousel{
@@ -53,6 +57,8 @@ h1{
     overflow-x: auto;
     overflow-y: hidden;
     scroll-behavior:smooth;
+
+    scrollbar-width:none;
 }
 
 

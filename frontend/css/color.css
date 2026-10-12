@@ -14,13 +14,17 @@
              behavior through browser testing across project pages.
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+
 :root{
     /* Base Colors */
     --primary:linear-gradient(155deg,rgb(222, 232, 247) 0%, rgba(247, 255, 254, 1) 46%, rgb(239, 242, 255) 100%);
     --secondary:linear-gradient(90deg, rgb(19, 22, 68) 0%, rgb(18, 21, 70) 50%, rgb(15, 19, 62) 100%);
     --tertiary: rgb(0, 164, 255);
 
-    /* Texts */
+    /* Texts / Borders*/
     --light:aliceblue;
     --medium:lightsteelblue;
     --deep:slategrey;
@@ -33,6 +37,11 @@
     --backTertblue:rgb(18, 21, 70);
 
     --deeptert: rgb(4, 114, 172);
+
+
+    /* Fonts */
+    --font1:"Nunito", sans-serif;
+    --font2:"Crimson Text", serif;
 }
 
 

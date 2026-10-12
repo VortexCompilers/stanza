@@ -1,9 +1,9 @@
 <?php require_once __DIR__ . '/lang/load.php'; ?>
 <nav>
-<div class="createbt"><a href="create.php"> <?= translator('nav_create') ?> </a></div>
+
+<a href="create.php"><div class="navbt"> <?= translator('nav_create') ?> </div></a>
 
 <br>
-
 
 <a href="home.php"> <div class="navbt"><?= translator('nav_home') ?> </div></a>
 
