@@ -50,7 +50,7 @@ require_once __DIR__ . '/../backend/catalog.php';
 
     
 
-       <a id="abrirPop">▼ <?= translator('action_filter') ?></a>
+       <a id="abrirPop">Ⴤ <?= translator('action_filter') ?></a>
 
     <button type="submit"><?= translator('action_search') ?></button>
 
@@ -162,7 +162,7 @@ require_once __DIR__ . '/../backend/catalog.php';
     abrir.addEventListener("click", function() {
         if(filter.style.display == "block"){
             filter.style.display = "none";
-            abrir.textContent = "▼ <?= translator('action_filter') ?>"
+            abrir.textContent = "Ⴤ <?= translator('action_filter') ?>"
         }else{
             filter.style.display = "block"
             abrir.textContent = "✖ <?= translator('action_filter') ?>"
