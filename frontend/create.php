@@ -53,7 +53,7 @@ require_once __DIR__ . '/../backend/create_form.php';
             <label for="cape"><?= translator('editor_cover') ?></label>
              
 
-            <div class="imgqd"><img src="" id="cover"></div>
+            <div class="imgqd"><img id="cover"></div>
 
             <input 
                 type="file" 
@@ -165,7 +165,7 @@ require_once __DIR__ . '/../backend/create_form.php';
 
 
         <div class="botoes-form">
-            <button type="button" style="background-color:white; padding:8px 12px;color:black;" ><?= translator('action_cancel') ?> </button>
+            <button type="button" style="background-color:white; padding:8px 12px;color:var(--deeptert);" ><?= translator('action_cancel') ?> </button>
             <button type="submit" ><?= translator('editor_submit_create') ?></button>
         </div>
 

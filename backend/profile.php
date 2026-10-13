@@ -46,6 +46,7 @@ $texts_written = (int) $stats['texts_written'];
 $total_views = (int) $stats['total_views'];
 $texts_saved = 0;
 
+
 $stmt = $pdo->prepare(
     'SELECT id, title, category, read_count, cover_image
      FROM texts

@@ -30,7 +30,13 @@ require_once __DIR__ . '/../backend/profile.php';
           <div class="topbar">
 
             <div class="topinf">
-                <div class="pfp"></div>
+                <div class="pfp">
+                  <?php if (!empty($user['avatar_image'])): ?>
+                  <img src="img/uploads/<?= htmlspecialchars($user['avatar_image']) ?>"
+                  alt="<?= htmlspecialchars($user['name']) ?>">
+                  <?php endif; ?>
+
+                </div>
 
                     <div class="userinfo">
                         <h1><?= htmlspecialchars($user['name']) ?></h1>

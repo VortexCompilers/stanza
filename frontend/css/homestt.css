@@ -22,6 +22,12 @@ input[type="search"]{
     border-radius: 18px;
 }
 
+input[type="search"]:focus{
+    outline:none;
+    border-color: var(--deeptert);
+}
+
+
 button[type="submit"]{
     
       height: 32px;
@@ -32,6 +38,10 @@ button[type="submit"]{
     border-radius: 4px;
 }
 
+button[type="submit"]:hover{
+    background-color: var(--deeptert);
+    cursor: pointer;
+}
 
 
 
@@ -75,8 +85,7 @@ width: 90%;
 margin: 10px auto;
 padding: 10px;
 
-border: 2px solid rgba(0, 0, 0, 0.2);
-border-style: inset;
+border: 2px solid var(--deep);
 border-radius: 10px;
 background-color:brown;
 

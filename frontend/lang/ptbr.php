@@ -172,7 +172,7 @@ $strings = [
     // %s is the month and year the account was created.
     // ------------------------------------------------------------
     'profile_joined'         => 'Ingressou em %s',
-    'profile_views'          => 'visualizações',
+    'profile_views'          => 'visualizações totais',
     'profile_texts_written'  => 'textos escritos',
     'profile_texts_saved'    => 'textos salvos',
 

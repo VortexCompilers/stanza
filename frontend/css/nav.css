@@ -1,66 +1,103 @@
-
 nav{
-    
-    display: none;
-    position: fixed;
+display: none;
+position: fixed;
+
+background: var(--secondary);
+z-index: 3;
+
+width: 100%;
+height:100%;
+
+margin: 54px 0 0 0;
+}
+
+.navbt{
+    width: 84%;
+    height: 28px;
+    margin: 10px auto;
+    padding: 12px;
+
+    align-content: center;
+    font-size: 22px;
+
+    border-radius: 2px;
+    border: 1px double var(--dark);
+    border-left: 4px solid var(--deep);
+    background-color: rgba(30, 51, 114, 0.239);
+
+    font-family: var(--font2);
+}
+    .navbt:hover{ background-color: rgb(30, 51, 114);}
+
+
+    nav a {
+        margin: 0;
+        text-decoration: none; 
+        color: var(--light);
+    }
+
+
+
+    nav a:first-child .navbt{
+        margin-top: 24px;
+
+         width: 84%;
+         height: 32px;
+          font-size: 24px;
+        font-weight: bold;
+        background-color: var(--tertiary);
+        border: none;
+         }
+    nav a:first-child .navbt:hover{
+        background-color: var(--deeptert);
+    }
+
+
+
+
+@media (min-width: 800px)
+{   
+
+  nav{ 
+    display: block;
     height: 100%;
     width: 128px;
     padding: 12px;
     
     margin: 96px 0 0 0;
-    
-    background: var(--secondary);
-    z-index: 3;
     }
     
     .navbt{
-        width: 84%;
+       
         height: 18px;
         margin: 10px 0;
         padding: 6px;
     
-        align-content: center;
+        border: none;
+
         font-size: 16px;
-
-        border-radius: 8px;
-       background-color: rgba(30, 51, 114, 0.239);
-
-        font-family: var(--font2);
-    }
-    .navbt:hover{ background-color: rgb(30, 51, 114);}
-
-
-    nav a {
-        margin:0;
-        text-decoration: none; 
-        color: var(--light);
     }
 
     nav a:first-child .navbt{
-         width: 90%;
-          font-size: 17px;
-        font-weight: bold;
-        height: 20px;
-        border-radius: 2px;
-        background-color: var(--tertiary);
-         }
-    nav a:first-child .navbt:hover{
-        background-color: var(--deeptert);
+        width: 90%;
+        height: 24px;
+         font-size: 17px;
+
+         margin: 0;
     }
-  
-
-
-    @media (min-width: 800px)
-    {   
-
-    nav{display: block;}
-
-
-        main{
+    
+    
+     main{
             box-sizing: border-box;
             width: 100%;
         padding-left:152px;
             
         }
+
+
+
+
+
+
 
     }

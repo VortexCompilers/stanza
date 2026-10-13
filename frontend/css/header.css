@@ -13,7 +13,7 @@ padding: 0 16px;
 align-content: center;
 
 background: var(--secondary);
-border-bottom: 3px solid rgb(151, 152, 189);
+border-bottom: 3px solid var(--deep);
 z-index: 5;
 
 }
@@ -121,22 +121,6 @@ header .bup .pfp{
     background:none;
     border: none;
 }
-
-
-#menuclose{ 
-    background-color: rgba(240, 248, 255, 0.5);
-    border: 2px solid gray;
-    border-radius: 4px;
-    font-weight: bold;
-    color: var(--light);
-
-   width: 48px; 
-   height: 48px;
-
-   font-size: 24px;
-   margin: 16px;
-}
-
 
 
 /* Main Padding */
