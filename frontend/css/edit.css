@@ -62,7 +62,6 @@ form{
 /* Write Area*/
 
 textarea{
-
     resize: none;
 
     display: block;
@@ -72,12 +71,11 @@ textarea{
     padding: 12px;
     outline: none;
 
-    border: 2px solid rgb(224, 224, 224);
-    border-radius: 10px;
+    border: 2px solid var(--medium);
+    border-radius: 2px;
     line-height:28px;
     font-size: 20px;
     font-family: var(--font2);
-
 }
 
 

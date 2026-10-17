@@ -52,14 +52,25 @@ header .Lbup {
 margin-right: 0;
 }
 header .Lbup a{
-    color: var(--secondary);
-    background-color: var(--light);
     text-decoration: none;
-    padding: 8px;
+    padding: 6px 8px;
     margin: auto 0;
-    border-radius: 54px;
+    border-radius: 6px;
+ color: var(--light);
+}
+header .Lbup a:hover{
+    text-decoration: underline;
+}
+header .Lbup a:first-child{
+  border: 2px solid var(--light);
+  background-color: none;
 
 }
+header .Lbup a:last-child{
+    border: 2px solid var(--deeptert);
+    background-color: var(--tertiary);
+}
+
 
 header .bup .pfp{
     align-self: center;

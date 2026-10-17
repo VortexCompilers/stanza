@@ -20,7 +20,7 @@ $stmt = $pdo->prepare(
      FROM texts
      WHERE visibility = 'public'
      ORDER BY read_count DESC
-     LIMIT 5"
+     LIMIT 12"
 );
 $stmt->execute();
 $most_viewed = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -30,7 +30,7 @@ $stmt = $pdo->prepare(
      FROM texts
      WHERE visibility = 'public'
      ORDER BY favorites DESC
-     LIMIT 5"
+     LIMIT 12"
 );
 $stmt->execute();
 $most_favorited = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -40,7 +40,7 @@ $stmt = $pdo->prepare(
      FROM texts
      WHERE visibility = 'public'
      ORDER BY created_at DESC
-     LIMIT 5"
+     LIMIT 12"
 );
 $stmt->execute();
 $recents = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -54,7 +54,7 @@ $stmt = $pdo->prepare(
     WHERE reader_id = ? and visibility = 'public'
     GROUP BY txt.id
     ORDER BY MAX(started_at) DESC
-    LIMIT 5"
+    LIMIT 12"
 );
 $stmt->execute([$_SESSION['user_id']]);
 $recently_viewed = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -90,11 +90,11 @@ require_once __DIR__ . '/../backend/home.php';
                 <h1><?= translator('home_card_books') ?></h1>
                 <a href="OUTRO LINK"> o </a>
             </div>
-            <div class="card" style="background-color:darkcyan;">
+            <div class="card" style="background-color:steelblue;">
                 <h1><?= translator('home_card_poetry') ?></h1>
                 <a href="OUTRO LINK"> o </a>
             </div>
-            <div class="card" style="background-color:forestgreen;">
+            <div class="card" style="background-color:dodgerblue;">
                 <h1><?= translator('home_card_stories') ?></h1>
                 <a href="OUTRO LINK"> o </a>
             </div>

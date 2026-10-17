@@ -48,11 +48,10 @@ $strings = [
     // styled with an accent colour: <h1><span>ACCENT</span> REST</h1>.
     // Both halves are separate keys so word order can change per language.
     // ------------------------------------------------------------
-    'landing_hero_line1_accent'  => 'Create',
-    'landing_hero_line1_rest'    => 'texts',
-    'landing_hero_line2_accent'  => 'Imagine',
-    'landing_hero_line2_rest'    => 'more',
-    'landing_hero_subtitle'      => 'Write stories, share ideas, take the next step',
+    'landing_hero_line1'         => 'Write and share your own stories and creations',
+    
+    'landing_hero_subtitle'      => 'Join the Stanza platform today and connect with fellow reading and writing enthusiasts from all around the world.',
+    'landing_bts_line'           => 'Your place to explore and relax',
     'landing_demo_label'         => 'Reading',
     'landing_demo_placeholder'   => 'Write the first verse...',
     'landing_demo_label_focus'   => 'Writing',

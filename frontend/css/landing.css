@@ -1,52 +1,6 @@
 * {
     box-sizing: border-box;
 }
-
-/* ============================================================
-   Tokens — extracteds from catalog.css / header.css
-   Lightfull surfaces, navy belts, a unique blue accent.
-   ============================================================ */
-:root{
-    /* Compatibility with the rest of the project */
-    --colorPrim: #E8EEFB;
-    --colorSec:  #0088FF;
-    --colorThr:  #131348;
-    --colorcardgray: rgba(164, 163, 163, 0.20);
-
-    /* Navy — header and filter bar */
-    --navy-900: #131348;   /* header */
-    --navy-700: #1E3372;   /* .filtersec, .navbt */
-    --navy-500: #18489B;   /* marked radio bar */
-
-    /* Accent — actions */
-    --blue-500: #0088FF;   /* search button, search field border */
-    --blue-600: #0E7CDD;   /* marked radio / hover */
-    --blue-300: #4DA6FF;   /* accent about navy background */
-    --cyan-500: #1792BB;   /* .createbt */
-
-    /* Surfaces */
-    --white:  #FFFFFF;
-    --paper:  #F4F7F7;     /* .filterpop, .stsbox */
-    --alice:  #F0F8FF;     /* text about navy */
-
-    /* Text and lines */
-    --ink:    #1B1A1A;     /* post titles */
-    --muted:  #808080;     /* h2/h3 of posts */
-    --line:   rgba(164, 163, 163, 0.28);
-    --line-strong: #C9CED6;
-
-    /* Caps (placeholder of catalog.css) */
-    --cover-green: #6DA56D;
-    --cover-blue:  #3E7FC1;
-    --cover-navy:  #2C3E7A;
-
-    --radius-card: 10px;
-    --radius-pill: 18px;
-
-    --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    --font-sans: system-ui, -apple-system, "Segoe UI", Arial, Helvetica, sans-serif;
-}
-
 html{
     margin: 0;
     -webkit-text-size-adjust: 100%;
@@ -54,557 +8,170 @@ html{
 
 body{
     margin: 0;
-    background-color: var(--white);
-    color: var(--ink);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
+    background:var(--primary);
 }
 
 
-::selection{
-    background-color: rgba(0, 136, 255, 0.20);
-}
-
-:focus-visible{
-    outline: 2px solid var(--blue-500);
-    outline-offset: 2px;
-}
-
-
-/* ============================================================
-   Top — hero
-   navy plateau belt, same tone as the app header.
-   ============================================================ */
-
-.up{
-    height: auto;
-    padding: 32px 18px 36px 18px;
-    background-image: linear-gradient(180deg, var(--navy-900) 0%, var(--navy-700) 100%);
-}
 
 .hero{
-    position: relative;
     width: 100%;
     height: auto;
-    padding: 4px;
-}
+   
 
-.hero h1, .hero h2{
-    color: var(--alice);
-    font-family: var(--font-display);
-    margin: 8px 0;
-}
-
-.hero h1{
-    font-weight: 400;
-    font-size: clamp(36px, 11vw, 46px);
-    line-height: 1.06;
-    letter-spacing: -0.015em;
-}
-
-.hero span{
-    font-weight: 700;
-    font-style: italic;
-    color: var(--blue-300);
-}
-
-.hero h2{
-    font-family: var(--font-sans);
-    font-size: 16px;
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.5;
-    color: rgba(240, 248, 255, 0.72);
-    max-width: 36ch;
-    padding: 0;
-    margin-top: 20px;
-}
-
-
-/* ============================================================
-   Mini cards — content preview
-   ============================================================ */
-
-.cards{
-    display: flex;
-    width: 100%;
-    margin: 30px 0 0 0;
-}
-
-.minicard{
-    display: flex;
-    flex: 0 0 auto;
-    width: 160px;
-    height: 90px;
-    padding: 6px;
-    margin: 6px;
-    gap: 8px;
-
-    background-color: rgba(240, 248, 255, 0.07);
-    border: 1px solid rgba(240, 248, 255, 0.16);
-    border-radius: var(--radius-card);
-}
-
-.minicard:nth-child(1){ margin-top: -2px; }
-.minicard:nth-child(2){ margin-top: 18px; }
-
-.minicard .pic{
-    flex: 0 0 40%;
-    height: 100%;
-    overflow: hidden;
-    border-radius: 6px;
-    background-color: var(--cover-green);
-}
-
-.minicard:nth-child(2) .pic{
-    background-color: var(--cover-blue);
-}
-
-.minicard .pic img{
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
-.minicard .inf{
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    height: 100%;
-    padding-top: 4px;
-    overflow: hidden;
+/* Hero texts */
+.hero .hero-1{
+width: 100%;
+padding: 16px 0;
 }
 
-.minicard .inf a{
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-
-    color: var(--alice);
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.25;
-    text-decoration: none;
-    word-break: break-word;
+.hero-1 .hero-texts{
+    width: 80%;
+    margin: 16px auto;
+    color: var(--dark);
 }
 
-.minicard .inf a:hover{
-    text-decoration: underline;
-    text-underline-offset: 2px;
+.hero-1 h1{
+font-family: var(--font1);
+font-size: 32px;
+font-weight: 800;
+margin: 0;
 }
-
-.minicard .inf h2{
-    margin: 4px 0 0 0;
-    color: rgba(240, 248, 255, 0.55);
-    font-family: var(--font-sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: capitalize;
+.hero-1 h2{
+font-family: var(--font2);
+font-size: 24px;
+font-weight: 400;
+margin: 8px 0;
 }
 
 
-/* ============================================================
-   Demonstration field (reading / writing)
-   ============================================================ */
-
-.testinput{
-    width: 100%;
-    padding: 16px 10px 4px 10px;
-    align-content: center;
+/* Hero Pictures */
+.hero .hero-2{
+width: 80%;
+height: auto;
+display: flex;
+margin: auto;
 }
 
-.testinput label{
-    display: inline-block;
-    margin: 0 0 8px 2px;
-
-    color: rgba(240, 248, 255, 0.85);
-    font-family: var(--font-sans);
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+.hero-2 .mock-1{
+margin: auto 0;
+height: auto;
+width: 24%;
 }
 
-.testinput label::before{
-    content: "";
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    margin-right: 7px;
-    vertical-align: middle;
-    border-radius: 50%;
-    background-color: var(--blue-300);
+.hero-2 .mock-2 {
+margin: auto 0;
+height: auto;
+width: 76%;
 }
 
-.testinput input{
-    width: 100%;
-    padding: 9px 14px;
-
-    color: var(--alice);
-    font-family: var(--font-sans);
-    font-size: 15px;
-
-    background-color: rgba(240, 248, 255, 0.08);
-    border: 2px solid rgba(240, 248, 255, 0.20);
-    border-radius: var(--radius-pill);
-    transition: border-color 160ms ease, background-color 160ms ease;
-}
-
-.testinput input::placeholder{
-    color: rgba(240, 248, 255, 0.45);
-}
-
-.testinput input:focus{
-    outline: none;
-    background-color: rgba(240, 248, 255, 0.12);
-    border-color: var(--blue-500);
-}
-
-/* original label exchange preserved*/
-.testinput:has(input:focus) label{
-    transition: 200ms;
-    font-size: 0;
-}
-
-.testinput:has(input:focus) label::after{
-    content: attr(data-focus-label);
-    font-size: 13px;
+.hero-2 img{
+width: 100%;
+height: 100%;
+object-fit: contain;
 }
 
 
-/* ============================================================
-   Access — buttons
-   ============================================================ */
-
-.bts{
+.bts-sec{
     width: 100%;
     height: auto;
-    padding: 36px 20px 40px 20px;
+    padding: 24px 0;
+    margin: 32px 0;
     align-content: center;
     text-align: center;
-    background-color: var(--white);
+    background: var(--secondary);
+}
+.bts-sec h1{
+    font-family: var(--font1);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--light);
+    margin: 0;
 }
 
-.bts button{
+.bts-fig{
+    width: 400px;
+    margin: 16px auto;
+}
+.bts-fig img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.bts-sec button{
     display: block;
     justify-self: center;
     margin: 0 auto;
     padding: 13px 34px;
 
     color: var(--white);
-    font-family: var(--font-sans);
+    font-family: var(--font1);
     font-size: 16px;
     font-weight: 700;
 
-    background-color: var(--blue-500);
+    background-color: var(--tertiary);
     border: none;
-    border-radius: 999px;
+    border-radius: 64px;
     cursor: pointer;
-    transition: background-color 160ms ease;
 }
 
-.bts button:hover{
-    background-color: var(--blue-600);
+.bts-sec button:hover{
+    background-color: var(--deeptert);
 }
 
-.bts a{
+.bts-sec a{
     display: block;
     justify-self: center;
     margin: 18px auto 0 auto;
 
-    color: var(--navy-700);
-    font-family: var(--font-sans);
-    font-size: 15px;
+    color: var(--tertiary);
+    font-family: var(--font1);
+    font-size: 14px;
     font-weight: 600;
     text-decoration: none;
     text-underline-offset: 4px;
 }
 
-.bts a:hover{
-    color: var(--blue-600);
+.bts-sec a:hover{
+    color: var(--deeptert);
     text-decoration: underline;
 }
 
-
-/* ============================================================
-   Explore
-   ============================================================ */
-
-.explore{
-    width: 100%;
-    height: auto;
-    padding: 24px 0 30px 0;
-    background-color: var(--paper);
-    border-top: 1px solid var(--line);
-}
-
-.explore h1{
-    margin: 0 18px 2px 18px;
-
-    color: var(--navy-900);
-    font-family: var(--font-display);
-    font-size: 23px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-}
-
-
-/* Post blocks */
-
-.carousel{
-    display: flex;
-    gap: 10px;
-    width: 100%;
-    margin: 14px 0 0 0;
-    padding: 2px 18px 10px 18px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    scroll-snap-type: x proximity;
-    scrollbar-width: thin;
-    scrollbar-color: var(--line-strong) transparent;
-}
-
-.carousel::-webkit-scrollbar{
-    height: 6px;
-}
-
-.carousel::-webkit-scrollbar-thumb{
-    background-color: var(--line-strong);
-    border-radius: 999px;
-}
-
-.post{
-    display: flex;
-    flex: 0 0 auto;
-    height: 130px;
-    width: 220px;
-    padding: 4px;
-    gap: 8px;
-
-    background-color: var(--white);
-    border: 2px solid var(--line);
-    border-radius: var(--radius-card);
-    scroll-snap-align: start;
-    transition: border-color 160ms ease;
-}
-
-.post:hover{
-    border-color: var(--blue-500);
-}
-
-.post .img{
-    position: relative;
-    flex: 0 0 45%;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    border-radius: 6px;
-    background-color: var(--cover-green);
-}
-
-.post .img img{
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.post:nth-child(2) .img{ background-color: var(--cover-blue); }
-.post:nth-child(3) .img{ background-color: var(--cover-navy); }
-
-.post .info{
-    display: flex;
-    flex-direction: column;
-    width: 55%;
-    height: 100%;
-    padding: 6px 4px;
-}
-
-.post a{
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-
-    margin: 0;
-    color: var(--ink);
-    font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.3;
-    text-decoration: none;
-    word-break: break-word;
-}
-
-.post a:hover{
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
-.post h2{
-    margin: 6px 0 0 0;
-    color: var(--muted);
-    font-family: var(--font-sans);
-    font-size: 12px;
-    font-weight: 400;
-    text-transform: capitalize;
-}
-
-
-/* ============================================================
-   Search — final strip
-   ============================================================ */
-
-.procurar{
-    width: 100%;
-    height: auto;
-    padding: 26px 20px 32px 20px;
-
-    background-color: var(--navy-700);
-    color: var(--alice);
-    font-family: var(--font-sans);
-    text-align: center;
-}
-
-.procurar label{
-    display: block;
-    margin-bottom: 12px;
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.procurar input{
-    width: 100%;
-    max-width: 420px;
-    padding: 9px 16px;
-
-    color: var(--ink);
-    font-family: var(--font-sans);
-    font-size: 15px;
-
-    background-color: var(--white);
-    border: 2px solid var(--blue-500);
-    border-radius: var(--radius-pill);
-}
-
-.procurar input::placeholder{
-    color: var(--muted);
-}
-
-.procurar input:focus{
-    outline: none;
-    border-color: var(--blue-300);
-}
-
-
-/* ============================================================
-   Desktop
-   ============================================================ */
 
 @media (min-width: 800px){
-    .up{
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        width: 100%;
-        height: auto;
-        padding: 60px 48px 64px 48px;
-    }
-
+   
     .hero{
-        width: 50%;
-        max-width: 620px;
-        padding: 0;
+        display: flex;
+        width: 88%;
+        height: 320px;
+        margin: 32px auto;
     }
-
-    .hero h1, .hero h2{
-        margin: 6px 0;
-    }
-
-    .hero h1{
-        font-size: clamp(44px, 4vw, 56px);
-        margin: 2px 0;
-    }
-
-    .hero h2{
-        font-size: 18px;
-        margin-top: 24px;
-    }
-
-    .demos{
+    .hero-1, .hero-2{
         width: 50%;
     }
-
-    .cards{
-        margin-top: 0;
+    .hero-1 .hero-texts{    
+        margin: 0 8px;
     }
 
-    .minicard{
-        width: 240px;
-        height: 140px;
-        padding: 10px;
-        margin: 6px 8px;
+    .hero-2{
+        height: 100%;
     }
-
-    .testinput{
-        width: 100%;
-        max-width: 400px;
-        margin: 18px 0 0 8px;
-        padding: 0;
+    .hero-2 .mock-1{
+        height: 230px;
+        margin:auto 0 0 0;
     }
-
-    .bts{
-        padding: 56px 20px 60px 20px;
+    .hero-2 .mock-2{
+        height: 248px;
     }
-
-    .bts button{
+    .bts-sec{
+        margin: 0;
+    }
+    .bts-sec button{
         padding: 15px 40px;
         font-size: 17px;
     }
-
-    .explore{
-        padding: 32px 0 40px 0;
-    }
-
-    .explore h1{
-        font-size: 28px;
-        margin: 0 48px 2px 48px;
-    }
-
-    .carousel{
-        margin: 18px 0 0 0;
-        padding: 2px 48px 12px 48px;
-    }
-
-    .post{
-        height: 160px;
-        width: 260px;
-        padding: 6px;
-    }
-
-    .procurar{
-        padding: 40px 20px 48px 20px;
-    }
-
-    .procurar label{
-        font-size: 24px;
-    }
 }
 
-
-/* ============================================================
-   Accessibility — reduced motion
-   ============================================================ */
-
-@media (prefers-reduced-motion: reduce){
-    *{
-        transition-duration: 0.001ms !important;
-        scroll-behavior: auto !important;
-    }
-}

@@ -38,11 +38,9 @@ $strings = [
     // ------------------------------------------------------------
     // Landing page — landing.php
     // ------------------------------------------------------------
-    'landing_hero_line1_accent'  => 'Crie',
-    'landing_hero_line1_rest'    => 'textos',
-    'landing_hero_line2_accent'  => 'Imagine',
-    'landing_hero_line2_rest'    => 'mais',
-    'landing_hero_subtitle'      => 'Escreva histórias, compartilhe ideias, dê o próximo passo',
+    'landing_hero_line1'         => 'Escreva e compartilhe suas próprias histórias e criações',
+    'landing_hero_subtitle'      => 'Entre agora mesmo na plataforma Stanza e se conecte com outros amantes da leitura e escrita por todo o mundo.',
+    'landing_bts_line'           => 'Seu cantinho para explorar e relaxar',
     'landing_demo_label'         => 'Lendo',
     'landing_demo_placeholder'   => 'Escreva o primeiro verso...',
     'landing_demo_label_focus'   => 'Escrevendo',

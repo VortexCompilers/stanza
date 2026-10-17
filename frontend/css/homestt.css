@@ -68,9 +68,9 @@ h1{
     overflow-y: hidden;
     scroll-behavior:smooth;
 
-    scrollbar-width:none;
+    scrollbar-width:thin;
+   scrollbar-color:var(--tertiary) var(--light);
 }
-
 
 
 
@@ -85,13 +85,17 @@ width: 90%;
 margin: 10px auto;
 padding: 10px;
 
-border: 2px solid var(--deep);
+border: none;
 border-radius: 10px;
-background-color:brown;
+background-color:cornflowerblue;
 
 
 }
 .card h1, a{color: var(--light);}
+.card h1{
+    font-family: var(--font2);
+    font-weight: 400;
+}
 
 .card a{
 margin: 0 0 0 auto;
@@ -100,7 +104,7 @@ opacity: 24%;
 width: 50%;
 padding:10px;
 
-border: 3px solid rgba(0, 0, 0, 0.45);
+border: none;
 border-radius: 10px;
 
 text-align: end;
@@ -135,7 +139,9 @@ text-decoration: none;
 }
 
 
-
+.Bsection .carousel{
+   scrollbar-color:var(--deeptert) var(--dark);
+}
 
 
 @media (min-width: 800px)
